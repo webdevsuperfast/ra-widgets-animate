@@ -1,0 +1,289 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: RA Widgets Animate\n"
+"POT-Creation-Date: 2017-06-21 13:20+0800\n"
+"PO-Revision-Date: 2017-06-21 13:19+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: animate-widgets.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: animate-widgets.php:15
+msgid "With great power comes great responsibility."
+msgstr ""
+
+#: animate-widgets.php:50 animate-widgets.php:224
+msgid "Fade"
+msgstr ""
+
+#: animate-widgets.php:51 animate-widgets.php:225
+msgid "Fade Up"
+msgstr ""
+
+#: animate-widgets.php:52 animate-widgets.php:226
+msgid "Fade Down"
+msgstr ""
+
+#: animate-widgets.php:53 animate-widgets.php:227
+msgid "Fade Left"
+msgstr ""
+
+#: animate-widgets.php:54 animate-widgets.php:228
+msgid "Fade Right"
+msgstr ""
+
+#: animate-widgets.php:55 animate-widgets.php:229
+msgid "Fade Up Right"
+msgstr ""
+
+#: animate-widgets.php:56 animate-widgets.php:230
+msgid "Fade Up Left"
+msgstr ""
+
+#: animate-widgets.php:57 animate-widgets.php:231
+msgid "Fade Down Right"
+msgstr ""
+
+#: animate-widgets.php:58 animate-widgets.php:232
+msgid "Fade Down Left"
+msgstr ""
+
+#: animate-widgets.php:60 animate-widgets.php:234
+msgid "Flip Up"
+msgstr ""
+
+#: animate-widgets.php:61 animate-widgets.php:235
+msgid "Flip Down"
+msgstr ""
+
+#: animate-widgets.php:62 animate-widgets.php:236
+msgid "Flip Left"
+msgstr ""
+
+#: animate-widgets.php:63 animate-widgets.php:237
+msgid "Flip Right"
+msgstr ""
+
+#: animate-widgets.php:65 animate-widgets.php:239
+msgid "Slide Up"
+msgstr ""
+
+#: animate-widgets.php:66 animate-widgets.php:240
+msgid "Slide Down"
+msgstr ""
+
+#: animate-widgets.php:67 animate-widgets.php:241
+msgid "Slide Left"
+msgstr ""
+
+#: animate-widgets.php:68 animate-widgets.php:242
+msgid "Slide Right"
+msgstr ""
+
+#: animate-widgets.php:70 animate-widgets.php:75 animate-widgets.php:244
+#: animate-widgets.php:249
+msgid "Zoom In"
+msgstr ""
+
+#: animate-widgets.php:71 animate-widgets.php:76 animate-widgets.php:245
+#: animate-widgets.php:250
+msgid "Zoom In Up"
+msgstr ""
+
+#: animate-widgets.php:72 animate-widgets.php:77 animate-widgets.php:246
+#: animate-widgets.php:251
+msgid "Zoom In Down"
+msgstr ""
+
+#: animate-widgets.php:73 animate-widgets.php:78 animate-widgets.php:247
+#: animate-widgets.php:252
+msgid "Zoom In Left"
+msgstr ""
+
+#: animate-widgets.php:74 animate-widgets.php:79 animate-widgets.php:248
+#: animate-widgets.php:253
+msgid "Zoom In Right"
+msgstr ""
+
+#: animate-widgets.php:84 animate-widgets.php:259
+msgid "Top Bottom"
+msgstr ""
+
+#: animate-widgets.php:85 animate-widgets.php:260
+msgid "Top Center"
+msgstr ""
+
+#: animate-widgets.php:86 animate-widgets.php:261
+msgid "Top Top"
+msgstr ""
+
+#: animate-widgets.php:87 animate-widgets.php:262
+msgid "Center Bottom"
+msgstr ""
+
+#: animate-widgets.php:88 animate-widgets.php:263
+msgid "Center Center"
+msgstr ""
+
+#: animate-widgets.php:89 animate-widgets.php:264
+msgid "Center Top"
+msgstr ""
+
+#: animate-widgets.php:90 animate-widgets.php:265
+msgid "Bottom Bottom"
+msgstr ""
+
+#: animate-widgets.php:91 animate-widgets.php:266
+msgid "Bottom Center"
+msgstr ""
+
+#: animate-widgets.php:92 animate-widgets.php:267
+msgid "Bottom Top"
+msgstr ""
+
+#: animate-widgets.php:97 animate-widgets.php:273
+msgid "Linear"
+msgstr ""
+
+#: animate-widgets.php:98 animate-widgets.php:274
+msgid "Ease"
+msgstr ""
+
+#: animate-widgets.php:99 animate-widgets.php:275
+msgid "Ease In"
+msgstr ""
+
+#: animate-widgets.php:100 animate-widgets.php:276
+msgid "Ease Out"
+msgstr ""
+
+#: animate-widgets.php:101 animate-widgets.php:277
+msgid "Ease In Out"
+msgstr ""
+
+#: animate-widgets.php:102 animate-widgets.php:278
+msgid "Ease In Back"
+msgstr ""
+
+#: animate-widgets.php:103 animate-widgets.php:279
+msgid "Ease Out Back"
+msgstr ""
+
+#: animate-widgets.php:104 animate-widgets.php:280
+msgid "Ease In Out Back"
+msgstr ""
+
+#: animate-widgets.php:105 animate-widgets.php:281
+msgid "Ease In Sine"
+msgstr ""
+
+#: animate-widgets.php:106 animate-widgets.php:282
+msgid "Ease Out Sine"
+msgstr ""
+
+#: animate-widgets.php:107 animate-widgets.php:283
+msgid "Ease In Out Sine"
+msgstr ""
+
+#: animate-widgets.php:108 animate-widgets.php:284
+msgid "Ease In Quad"
+msgstr ""
+
+#: animate-widgets.php:109 animate-widgets.php:285
+msgid "Ease Out Quad"
+msgstr ""
+
+#: animate-widgets.php:110 animate-widgets.php:286
+msgid "Ease In Out Quad"
+msgstr ""
+
+#: animate-widgets.php:111 animate-widgets.php:287
+msgid "Ease In Cubic"
+msgstr ""
+
+#: animate-widgets.php:112 animate-widgets.php:288
+msgid "Ease Out Cubic"
+msgstr ""
+
+#: animate-widgets.php:113 animate-widgets.php:289
+msgid "Ease In Out Cubic"
+msgstr ""
+
+#: animate-widgets.php:114 animate-widgets.php:290
+msgid "Ease In Quart"
+msgstr ""
+
+#: animate-widgets.php:115 animate-widgets.php:291
+msgid "Ease Out Quart"
+msgstr ""
+
+#: animate-widgets.php:116 animate-widgets.php:292
+msgid "Ease In Out Quart"
+msgstr ""
+
+#: animate-widgets.php:212
+msgid "Animation"
+msgstr ""
+
+#: animate-widgets.php:222
+msgid "No animation"
+msgstr ""
+
+#: animate-widgets.php:258
+msgid "No Placement"
+msgstr ""
+
+#: animate-widgets.php:272
+msgid "No Easing"
+msgstr ""
+
+#: animate-widgets.php:302
+msgid "Type"
+msgstr ""
+
+#: animate-widgets.php:311
+msgid "Anchor Placement"
+msgstr ""
+
+#: animate-widgets.php:320
+msgid "Easing"
+msgstr ""
+
+#: animate-widgets.php:329
+msgid "Duration"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "RA Widgets Animate"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/webdevsuperfast/ra-widgets-animate"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"A plugin that adds additional fields into existing widget form and adds "
+"Animate on Scroll data attributes."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Rotsen Mark Acob"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://rotsenacob.com/"
+msgstr ""

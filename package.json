@@ -1,0 +1,30 @@
+{
+  "name": "ra-widgets-animate",
+  "version": "1.0.0",
+  "description": "Animate widgets using Animate on Scroll library.",
+  "keywords": [
+    "animate",
+    "widgets"
+  ],
+  "author": "Rotsen Mark Acob",
+  "license": "GPL-2.0",
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-cache": "^0.4.6",
+    "gulp-changed": "^3.1.0",
+    "gulp-clean-css": "^3.4.1",
+    "gulp-combine-mq": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-concat-css": "^2.3.0",
+    "gulp-flatmap": "^1.0.0",
+    "gulp-jsbeautifier": "^2.1.0",
+    "gulp-notify": "^3.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "merge-stream": "^1.0.1",
+    "vinyl-paths": "^2.1.0"
+  }
+}

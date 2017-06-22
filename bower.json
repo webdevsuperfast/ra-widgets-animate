@@ -1,0 +1,23 @@
+{
+  "name": "ra-widgets-animate",
+  "description": "Animate widgets using Animate on Scroll library.",
+  "authors": [
+    "Rotsen Mark Acob"
+  ],
+  "license": "GPL-2.0",
+  "keywords": [
+    "animate",
+    "widgets"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "aos": "^2.1.1"
+  }
+}

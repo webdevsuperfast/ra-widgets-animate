@@ -1,0 +1,40 @@
+/* ## Animate Widgets
+----------------------------------------------------------------------------- */
+.rawa-fields {
+    padding: 10px;
+    background: #f1f1f1;
+    border: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+.rawa-fields:before, .rawa-fields:after {
+    content: '';
+    display: table;
+}
+
+.rawa-fields:after {
+    clear: both;
+}
+
+.rawa-fields p {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.rawa-fields p label {
+    margin-right: auto;
+}
+
+.rawa-fields p strong {
+    text-transform: uppercase;
+}
+
+.rawa-fields p:first-child {
+    display: block;
+    margin-top: 0;
+}
+
+.rawa-fields p:last-child {
+    margin-bottom: 0;
+}
