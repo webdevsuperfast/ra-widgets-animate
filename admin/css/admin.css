@@ -13,15 +13,6 @@
     margin: 10px 0;
 }
 
-.rawa-fields:before, .rawa-fields:after {
-    content: '';
-    display: table;
-}
-
-.rawa-fields:after {
-    clear: both;
-}
-
 .rawa-fields p {
     display: flex;
     align-items: center;
