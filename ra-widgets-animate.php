@@ -28,10 +28,13 @@ class RA_Widgets_Animate {
         // Enqueue scripts
         add_action( 'wp_enqueue_scripts', array( $this, 'rawa_enqueue_scripts' ) );
 
+        // Filter SiteOrigin Panels Widget Style Groups
         add_filter( 'siteorigin_panels_widget_style_groups', array( $this, 'rawa_siteorigin_style_groups' ), 2, 3 );
 
+        // Filter SiteOrigin Panels Widget Style Fields
         add_filter( 'siteorigin_panels_widget_style_fields', array( $this, 'rawa_siteorigin_style_fields' ), 1, 3 );
 
+        // Filter SiteOrigin Panels Widget Style Attributes
         add_filter( 'siteorigin_panels_widget_style_attributes', array( $this, 'rawa_siteorigin_style_attributes' ), 1, 2 );
 
         // Enqueue Admin scripts
@@ -369,7 +372,8 @@ class RA_Widgets_Animate {
             // AOS JS
             wp_register_script( 'rawa-aos-js', plugin_dir_url( __FILE__ ) . 'public/js/aos.min.js', array(), null, true );
             wp_enqueue_script( 'rawa-aos-js' );
-
+            
+            // Initialize AOS
             wp_add_inline_script( 'rawa-aos-js', 'AOS.init()' );
         }
     }
