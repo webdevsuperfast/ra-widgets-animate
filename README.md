@@ -34,12 +34,6 @@ A: No, the fields will attached itself to existing widgets on 'Widgets' screen i
 3. 'Animation' tab settings when opened in SiteOrigin Panels.
 
 ## Changelog
-<<<<<<< HEAD
-1.0.1.1
-* Removed unneeded line of codes
-
-=======
->>>>>>> 9dd67ca2f62afe9755a8fdb9efc1b41687de4a98
 1.0.1
 * Fixed float issue with two-column widgets
 
@@ -47,12 +41,6 @@ A: No, the fields will attached itself to existing widgets on 'Widgets' screen i
 * First release
 
 ## Upgrade Notice
-<<<<<<< HEAD
-1.0.1.1
-* Removed unneeded line of codes
-
-=======
->>>>>>> 9dd67ca2f62afe9755a8fdb9efc1b41687de4a98
 1.0.1
 * Fixes an issue with two-column widgets not clearing floats
 
