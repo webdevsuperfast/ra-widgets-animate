@@ -3,7 +3,7 @@
 Plugin Name: RA Widgets Animate
 Plugin URI:  https://github.com/webdevsuperfast/ra-widgets-animate
 Description: Animate widgets using Animate on Scroll library.
-Version:     1.0.1
+Version:     1.0.2
 Author:      Rotsen Mark Acob
 Author URI:  https://rotsenacob.com/
 License:     GPL2
