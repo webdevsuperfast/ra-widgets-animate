@@ -124,7 +124,7 @@ class RA_Widgets_Animate {
         if ( !isset( $instance['easing'] ) ) $instance['easing'] = null;
         if ( !isset( $instance['duration'] ) ) $instance['duration'] = null;
         ?>
-        
+        <div class="rawa-clearfix"></div>
         <div class="rawa-fields">
             <p><strong>Animation Settings</strong></p>
             <hr>
