@@ -4,7 +4,11 @@ Donate link: https://rotsenacob.com/
 Tags: aos, animate, widgets, siteorigin-panels
 Requires at least: 4.7
 Tested up to: 4.8
+<<<<<<< HEAD
 Stable tag: 1.0.1.1
+=======
+Stable tag: 1.0.1
+>>>>>>> 9dd67ca2f62afe9755a8fdb9efc1b41687de4a98
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,9 +46,12 @@ No, the fields will attached itself to existing widgets on 'Widgets' screen in W
 3. 'Animation' tab settings when opened in SiteOrigin Panels.
 
 == Changelog ==
+<<<<<<< HEAD
 = 1.0.1.1 =
 * Removed unneeded line of codes
 
+=======
+>>>>>>> 9dd67ca2f62afe9755a8fdb9efc1b41687de4a98
 = 1.0.1 =
 * Fixed float issue with two-column widgets
 
@@ -52,9 +59,12 @@ No, the fields will attached itself to existing widgets on 'Widgets' screen in W
 * First release
 
 == Upgrade Notice ==
+<<<<<<< HEAD
 = 1.0.1.1 =
 Removed unneeded line of codes.
 
+=======
+>>>>>>> 9dd67ca2f62afe9755a8fdb9efc1b41687de4a98
 = 1.0.1 =
 Fixes an issue with two-column widgets not clearing floats
 
