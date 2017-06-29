@@ -34,6 +34,9 @@ A: No, the fields will attached itself to existing widgets on 'Widgets' screen i
 3. 'Animation' tab settings when opened in SiteOrigin Panels.
 
 ## Changelog
+1.0.3
+* Code cleanup, moved animation, placement, easing into their own function
+
 1.0.2
 * Removed unneeded line of codes
 
@@ -44,6 +47,9 @@ A: No, the fields will attached itself to existing widgets on 'Widgets' screen i
 * First release
 
 ## Upgrade Notice
+1.0.3
+* Code cleanup, moved animation, placement, easing into their own function
+
 1.0.2
 * Removed unneeded line of codes
 
