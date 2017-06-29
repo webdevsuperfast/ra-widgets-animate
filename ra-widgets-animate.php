@@ -47,77 +47,14 @@ class RA_Widgets_Animate {
     public function rawa_in_widget_form( $t, $return, $instance ) {
         $instance = wp_parse_args( (array) $instance, array( 'title' => '', 'text' => '', 'animation' => '', 'anchor' => '', 'easing' => '', 'duration' => '' ) );
 
-        // Animations
-        $animations = array(
-            // Fade Animations
-            'fade' => __( 'Fade' ),
-            'fade-up' => __( 'Fade Up' ),
-            'fade-down' => __( 'Fade Down' ),
-            'fade-left' => __( 'Fade Left' ),
-            'fade-right' => __( 'Fade Right' ),
-            'fade-up-right' => __( 'Fade Up Right' ),
-            'fade-up-left' => __( 'Fade Up Left' ),
-            'fade-down-right' => __( 'Fade Down Right' ),
-            'fade-down-left' => __( 'Fade Down Left' ),
-            // Flip Animations
-            'flip-up' => __( 'Flip Up' ),
-            'flip-down' => __( 'Flip Down' ),
-            'flip-left' => __( 'Flip Left' ),
-            'flip-right' => __( 'Flip Right' ),
-            //Slide Animations
-            'slide-up' => __( 'Slide Up' ),
-            'slide-down' => __( 'Slide Down' ),
-            'slide-left' => __( 'Slide Left' ),
-            'slide-right' => __( 'Slide Right' ),
-            // Zoom Animations
-            'zoom-in' => __( 'Zoom In' ),
-            'zoom-in-up' => __( 'Zoom In Up' ),
-            'zoom-in-down' => __( 'Zoom In Down' ),
-            'zoom-in-left' => __( 'Zoom In Left' ),
-            'zoom-in-right' => __( 'Zoom In Right' ),
-            'zoom-out' => __( 'Zoom In' ),
-            'zoom-out-up' => __( 'Zoom In Up' ),
-            'zoom-out-down' => __( 'Zoom In Down' ),
-            'zoom-out-left' => __( 'Zoom In Left' ),
-            'zoom-out-right' => __( 'Zoom In Right' ),
-        );
-
-        // Anchor Placements
-        $placements = array(
-            'top-bottom' => __( 'Top Bottom' ),
-            'top-center' => __( 'Top Center' ),
-            'top-top' => __( 'Top Top' ),
-            'center-bottom' => __( 'Center Bottom' ),
-            'center-center' => __( 'Center Center' ),
-            'center-top' => __( 'Center Top' ),
-            'bottom-bottom' => __( 'Bottom Bottom' ),
-            'bottom-center' => __( 'Bottom Center' ),
-            'bottom-top' => __( 'Bottom Top' )
-        );
-
+        // Animation
+        $animations = $this->rawa_animations();
+        
+        // Placement
+        $placements = $this->rawa_placements();
+        
         // Easing
-        $easing = array(
-            'linear' => __( 'Linear' ),
-            'ease' => __( 'Ease' ),
-            'ease-in' => __( 'Ease In' ),
-            'ease-out' => __( 'Ease Out' ),
-            'ease-in-out' => __( 'Ease In Out' ),
-            'ease-in-back' => __( 'Ease In Back' ),
-            'ease-out-back' => __( 'Ease Out Back' ),
-            'ease-in-out-back' => __( 'Ease In Out Back' ),
-            'ease-in-sine' => __( 'Ease In Sine' ),
-            'ease-out-sine' => __( 'Ease Out Sine' ),
-            'ease-in-out-sine' => __( 'Ease In Out Sine' ),
-            'ease-in-quad' => __( 'Ease In Quad' ),
-            'ease-out-quad' => __( 'Ease Out Quad' ),
-            'ease-in-out-quad' => __( 'Ease In Out Quad' ),
-            'ease-in-cubic' => __( 'Ease In Cubic' ),
-            'ease-out-cubic' => __( 'Ease Out Cubic' ),
-            'ease-in-out-cubic' => __( 'Ease In Out Cubic' ),
-            'ease-in-quart' => __( 'Ease In Quart' ),
-            'ease-out-quart' => __( 'Ease Out Quart' ),
-            'ease-in-out-quart' => __( 'Ease In Out Quart' )
-        );
+        $easing = $this->rawa_easing();
         
         if ( !isset( $instance['animation'] ) ) $instance['animation'] = null; 
         if ( !isset( $instance['anchor'] ) ) $instance['anchor'] = null;
@@ -131,7 +68,6 @@ class RA_Widgets_Animate {
             <p>
                 <label for="<?php echo $t->get_field_id('animation'); ?>">Animation:</label>
                 <select id="<?php echo $t->get_field_id('animation'); ?>" name="<?php echo $t->get_field_name('animation'); ?>">
-                    <option <?php selected($instance['animation'], '');?> value="">None</option>
                     <?php foreach( $animations as $key => $value ) { ?>
                         <option <?php selected( $instance['animation'], $key ); ?>value="<?php echo $key; ?>"><?php echo $value; ?></option>
                     <?php } ?>
@@ -140,7 +76,6 @@ class RA_Widgets_Animate {
             <p>
                 <label for="<?php echo $t->get_field_id('anchor'); ?>">Anchor Placement:</label>
                 <select id="<?php echo $t->get_field_id('anchor'); ?>" name="<?php echo $t->get_field_name('anchor'); ?>">
-                    <option <?php selected($instance['anchor'], '');?> value="">None</option>
                     <?php foreach( $placements as $key => $value ) { ?>
                         <option <?php selected( $instance['anchor'], $key ); ?>value="<?php echo $key; ?>"><?php echo $value; ?></option>
                     <?php } ?>
@@ -149,7 +84,6 @@ class RA_Widgets_Animate {
             <p>
                 <label for="<?php echo $t->get_field_id('easing'); ?>">Easing:</label>
                 <select id="<?php echo $t->get_field_id('easing'); ?>" name="<?php echo $t->get_field_name('easing'); ?>">
-                    <option <?php selected($instance['easing'], '');?> value="">None</option>
                     <?php foreach( $easing as $key => $value ) { ?>
                         <option <?php selected( $instance['easing'], $key ); ?>value="<?php echo $key; ?>"><?php echo $value; ?></option>
                     <?php } ?>
@@ -158,7 +92,6 @@ class RA_Widgets_Animate {
             <p>
                 <label for="<?php echo $t->get_field_id('duration'); ?>">Duration:</label>
                 <select id="<?php echo $t->get_field_id('duration'); ?>" name="<?php echo $t->get_field_name('duration'); ?>">
-                    <option <?php selected($instance['duration'], '');?> value="">None</option>
                     <?php foreach( range(0, 2000, 100) as $number ) { ?>
                         <option <?php selected( $instance['duration'], $number ); ?>value="<?php echo $number; ?>"><?php echo $number; ?></option>
                     <?php } ?>
@@ -220,80 +153,14 @@ class RA_Widgets_Animate {
     }
 
     public function rawa_siteorigin_style_fields( $fields ) {
-        // Animations
-        $animations = array(
-            '' => __( 'No animation' ),
-            // Fade Animations
-            'fade' => __( 'Fade' ),
-            'fade-up' => __( 'Fade Up' ),
-            'fade-down' => __( 'Fade Down' ),
-            'fade-left' => __( 'Fade Left' ),
-            'fade-right' => __( 'Fade Right' ),
-            'fade-up-right' => __( 'Fade Up Right' ),
-            'fade-up-left' => __( 'Fade Up Left' ),
-            'fade-down-right' => __( 'Fade Down Right' ),
-            'fade-down-left' => __( 'Fade Down Left' ),
-            // Flip Animations
-            'flip-up' => __( 'Flip Up' ),
-            'flip-down' => __( 'Flip Down' ),
-            'flip-left' => __( 'Flip Left' ),
-            'flip-right' => __( 'Flip Right' ),
-            //Slide Animations
-            'slide-up' => __( 'Slide Up' ),
-            'slide-down' => __( 'Slide Down' ),
-            'slide-left' => __( 'Slide Left' ),
-            'slide-right' => __( 'Slide Right' ),
-            // Zoom Animations
-            'zoom-in' => __( 'Zoom In' ),
-            'zoom-in-up' => __( 'Zoom In Up' ),
-            'zoom-in-down' => __( 'Zoom In Down' ),
-            'zoom-in-left' => __( 'Zoom In Left' ),
-            'zoom-in-right' => __( 'Zoom In Right' ),
-            'zoom-out' => __( 'Zoom In' ),
-            'zoom-out-up' => __( 'Zoom In Up' ),
-            'zoom-out-down' => __( 'Zoom In Down' ),
-            'zoom-out-left' => __( 'Zoom In Left' ),
-            'zoom-out-right' => __( 'Zoom In Right' ),
-        );
-
-        // Anchor Placements
-        $placements = array(
-            '' => __( 'No Placement' ),
-            'top-bottom' => __( 'Top Bottom' ),
-            'top-center' => __( 'Top Center' ),
-            'top-top' => __( 'Top Top' ),
-            'center-bottom' => __( 'Center Bottom' ),
-            'center-center' => __( 'Center Center' ),
-            'center-top' => __( 'Center Top' ),
-            'bottom-bottom' => __( 'Bottom Bottom' ),
-            'bottom-center' => __( 'Bottom Center' ),
-            'bottom-top' => __( 'Bottom Top' )
-        );
-
+        // Animation
+        $animations = $this->rawa_animations();
+        
+        // Placement
+        $placements = $this->rawa_placements();
+        
         // Easing
-        $easing = array(
-            '' => __( 'No Easing' ),
-            'linear' => __( 'Linear' ),
-            'ease' => __( 'Ease' ),
-            'ease-in' => __( 'Ease In' ),
-            'ease-out' => __( 'Ease Out' ),
-            'ease-in-out' => __( 'Ease In Out' ),
-            'ease-in-back' => __( 'Ease In Back' ),
-            'ease-out-back' => __( 'Ease Out Back' ),
-            'ease-in-out-back' => __( 'Ease In Out Back' ),
-            'ease-in-sine' => __( 'Ease In Sine' ),
-            'ease-out-sine' => __( 'Ease Out Sine' ),
-            'ease-in-out-sine' => __( 'Ease In Out Sine' ),
-            'ease-in-quad' => __( 'Ease In Quad' ),
-            'ease-out-quad' => __( 'Ease Out Quad' ),
-            'ease-in-out-quad' => __( 'Ease In Out Quad' ),
-            'ease-in-cubic' => __( 'Ease In Cubic' ),
-            'ease-out-cubic' => __( 'Ease Out Cubic' ),
-            'ease-in-out-cubic' => __( 'Ease In Out Cubic' ),
-            'ease-in-quart' => __( 'Ease In Quart' ),
-            'ease-out-quart' => __( 'Ease Out Quart' ),
-            'ease-in-out-quart' => __( 'Ease In Out Quart' )
-        );
+        $easing = $this->rawa_easing();
 
         $duration = array();
 
@@ -391,6 +258,93 @@ class RA_Widgets_Animate {
     public function rawa_siteorigin_panels_admin_scripts() {
         wp_register_script( 'rawa-siteorigin-panels-js', plugin_dir_url( __FILE__ ) . 'admin/js/admin.js', array( 'jquery' ), null, true );
         wp_enqueue_script( 'rawa-siteorigin-panels-js' );
+    }
+
+    function rawa_animations() {
+        // Animations
+        $animations = array(
+            '' => __( 'No Animation' ),
+            // Fade Animations
+            'fade' => __( 'Fade' ),
+            'fade-up' => __( 'Fade Up' ),
+            'fade-down' => __( 'Fade Down' ),
+            'fade-left' => __( 'Fade Left' ),
+            'fade-right' => __( 'Fade Right' ),
+            'fade-up-right' => __( 'Fade Up Right' ),
+            'fade-up-left' => __( 'Fade Up Left' ),
+            'fade-down-right' => __( 'Fade Down Right' ),
+            'fade-down-left' => __( 'Fade Down Left' ),
+            // Flip Animations
+            'flip-up' => __( 'Flip Up' ),
+            'flip-down' => __( 'Flip Down' ),
+            'flip-left' => __( 'Flip Left' ),
+            'flip-right' => __( 'Flip Right' ),
+            //Slide Animations
+            'slide-up' => __( 'Slide Up' ),
+            'slide-down' => __( 'Slide Down' ),
+            'slide-left' => __( 'Slide Left' ),
+            'slide-right' => __( 'Slide Right' ),
+            // Zoom Animations
+            'zoom-in' => __( 'Zoom In' ),
+            'zoom-in-up' => __( 'Zoom In Up' ),
+            'zoom-in-down' => __( 'Zoom In Down' ),
+            'zoom-in-left' => __( 'Zoom In Left' ),
+            'zoom-in-right' => __( 'Zoom In Right' ),
+            'zoom-out' => __( 'Zoom In' ),
+            'zoom-out-up' => __( 'Zoom In Up' ),
+            'zoom-out-down' => __( 'Zoom In Down' ),
+            'zoom-out-left' => __( 'Zoom In Left' ),
+            'zoom-out-right' => __( 'Zoom In Right' ),
+        );
+
+        return $animations;
+    }
+
+    function rawa_placements() {
+        // Anchor Placements
+        $placements = array(
+            '' => __( 'Default' ),
+            'top-bottom' => __( 'Top Bottom' ),
+            'top-center' => __( 'Top Center' ),
+            'top-top' => __( 'Top Top' ),
+            'center-bottom' => __( 'Center Bottom' ),
+            'center-center' => __( 'Center Center' ),
+            'center-top' => __( 'Center Top' ),
+            'bottom-bottom' => __( 'Bottom Bottom' ),
+            'bottom-center' => __( 'Bottom Center' ),
+            'bottom-top' => __( 'Bottom Top' )
+        );
+
+        return $placements;
+    }
+
+    function rawa_easing() {
+        // Easing
+        $easing = array(
+            '' => __( 'Default' ),
+            'linear' => __( 'Linear' ),
+            'ease' => __( 'Ease' ),
+            'ease-in' => __( 'Ease In' ),
+            'ease-out' => __( 'Ease Out' ),
+            'ease-in-out' => __( 'Ease In Out' ),
+            'ease-in-back' => __( 'Ease In Back' ),
+            'ease-out-back' => __( 'Ease Out Back' ),
+            'ease-in-out-back' => __( 'Ease In Out Back' ),
+            'ease-in-sine' => __( 'Ease In Sine' ),
+            'ease-out-sine' => __( 'Ease Out Sine' ),
+            'ease-in-out-sine' => __( 'Ease In Out Sine' ),
+            'ease-in-quad' => __( 'Ease In Quad' ),
+            'ease-out-quad' => __( 'Ease Out Quad' ),
+            'ease-in-out-quad' => __( 'Ease In Out Quad' ),
+            'ease-in-cubic' => __( 'Ease In Cubic' ),
+            'ease-out-cubic' => __( 'Ease Out Cubic' ),
+            'ease-in-out-cubic' => __( 'Ease In Out Cubic' ),
+            'ease-in-quart' => __( 'Ease In Quart' ),
+            'ease-out-quart' => __( 'Ease Out Quart' ),
+            'ease-in-out-quart' => __( 'Ease In Out Quart' )
+        );
+
+        return $easing;
     }
 }
 
