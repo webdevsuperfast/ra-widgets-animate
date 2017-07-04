@@ -1,7 +1,6 @@
 (function($){
-    $(document).on('panelsopen', function(e){
-        var dialog = $(e.target);
-        if ( !dialog.has('.so-panels-dialog-wrapper') ) return;
-        $('.rawa-fields').hide();
+    $('body').on('click', '.rawa-toggle', function(e){
+		$(this).toggleClass('open');
+		$('.rawa-field').toggle();
     });
 })(jQuery);
