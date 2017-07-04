@@ -7,16 +7,7 @@
 }
 
 .rawa-fields {
-    padding: 10px;
-    background: #f1f1f1;
-    border: 1px solid #ddd;
     margin: 10px 0;
-}
-
-.rawa-fields p {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
 }
 
 .rawa-fields p label {
@@ -34,4 +25,60 @@
 
 .rawa-fields p:last-child {
     margin-bottom: 0;
+}
+
+.rawa-fields .rawa-toggle {
+    font-size: 13px;
+    padding: 10px;
+    margin: 0;
+    background: #f1f1f1;
+    border: 1px solid #ddd;
+}
+
+.rawa-fields .rawa-toggle::before {
+    font-family:"dashicons";
+	display:inline-block;
+	vertical-align:middle;
+	line-height:1;
+	font-weight:normal;
+	font-style:normal;
+	speak:none;
+	text-decoration:inherit;
+	text-transform:none;
+	text-rendering:auto;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+    content: "\f132";
+    transition: all 300ms ease-in-out;
+    margin-right: 5px;
+}
+
+.rawa-fields .rawa-toggle.open::before {
+    content: "\f460";
+}
+
+.rawa-field {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-top: -1px;
+    background: #fafafa;
+}
+
+.rawa-field::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.rawa-fields span {
+    font-size: 12px;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.rawa-fields label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 5px;
 }
