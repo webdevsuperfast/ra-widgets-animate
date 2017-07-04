@@ -63,40 +63,46 @@ class RA_Widgets_Animate {
         ?>
         <div class="rawa-clearfix"></div>
         <div class="rawa-fields">
-            <p><strong>Animation Settings</strong></p>
-            <hr>
-            <p>
-                <label for="<?php echo $t->get_field_id('animation'); ?>">Animation:</label>
-                <select id="<?php echo $t->get_field_id('animation'); ?>" name="<?php echo $t->get_field_name('animation'); ?>">
-                    <?php foreach( $animations as $key => $value ) { ?>
-                        <option <?php selected( $instance['animation'], $key ); ?>value="<?php echo $key; ?>"><?php echo $value; ?></option>
-                    <?php } ?>
-                </select>
-            </p>
-            <p>
-                <label for="<?php echo $t->get_field_id('anchor'); ?>">Anchor Placement:</label>
-                <select id="<?php echo $t->get_field_id('anchor'); ?>" name="<?php echo $t->get_field_name('anchor'); ?>">
-                    <?php foreach( $placements as $key => $value ) { ?>
-                        <option <?php selected( $instance['anchor'], $key ); ?>value="<?php echo $key; ?>"><?php echo $value; ?></option>
-                    <?php } ?>
-                </select>
-            </p>
-            <p>
-                <label for="<?php echo $t->get_field_id('easing'); ?>">Easing:</label>
-                <select id="<?php echo $t->get_field_id('easing'); ?>" name="<?php echo $t->get_field_name('easing'); ?>">
-                    <?php foreach( $easing as $key => $value ) { ?>
-                        <option <?php selected( $instance['easing'], $key ); ?>value="<?php echo $key; ?>"><?php echo $value; ?></option>
-                    <?php } ?>
-                </select>
-            </p>
-            <p>
-                <label for="<?php echo $t->get_field_id('duration'); ?>">Duration:</label>
-                <select id="<?php echo $t->get_field_id('duration'); ?>" name="<?php echo $t->get_field_name('duration'); ?>">
-                    <?php foreach( range(0, 2000, 100) as $number ) { ?>
-                        <option <?php selected( $instance['duration'], $number ); ?>value="<?php echo $number; ?>"><?php echo $number; ?></option>
-                    <?php } ?>
-                </select>
-            </p>
+            <h3 class="rawa-toggle"><?php _e( 'Animation Settings', 'ra-widgets-animate' ); ?></h3>
+            <div class="rawa-field" style="display: none;">
+                <p>
+                    <label for="<?php echo $t->get_field_id('animation'); ?>"><?php _e( 'Animation:', 'ra-widgets-animate' ); ?></label>
+                    <select class="widefat" id="<?php echo $t->get_field_id('animation'); ?>" name="<?php echo $t->get_field_name('animation'); ?>">
+                        <?php foreach( $animations as $key => $value ) { ?>
+                            <option <?php selected( $instance['animation'], $key ); ?>value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                        <?php } ?>
+                    </select>
+                    <span><em><?php _e( 'Choose from several predefined animations.', 'ra-widgets-animate' ); ?></em></span>
+                </p>
+                <p>
+                    <label for="<?php echo $t->get_field_id('anchor'); ?>"><?php _e( 'Anchor Placement:', 'ra-widgets-animate' ); ?></label>
+                    <select class="widefat" id="<?php echo $t->get_field_id('anchor'); ?>" name="<?php echo $t->get_field_name('anchor'); ?>">
+                        <?php foreach( $placements as $key => $value ) { ?>
+                            <option <?php selected( $instance['anchor'], $key ); ?>value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                        <?php } ?>
+                    </select>
+                    <span><em><?php _e( 'Select which position of element on the screen should trigger animation.', 'ra-widgets-animate' ); ?></em></span>
+                </p>
+                <p>
+                    <label for="<?php echo $t->get_field_id('easing'); ?>"><?php _e( 'Easing:', 'ra-widgets-animate' ); ?></label>
+                    <select class="widefat" id="<?php echo $t->get_field_id('easing'); ?>" name="<?php echo $t->get_field_name('easing'); ?>">
+                        <?php foreach( $easing as $key => $value ) { ?>
+                            <option <?php selected( $instance['easing'], $key ); ?>value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                        <?php } ?>
+                    </select>
+                    <span><em><?php _e( 'Choose timing function to ease elements in different ways.', 'ra-widgets-animate' ); ?></em></span>
+                </p>
+                <p>
+                    <label for="<?php echo $t->get_field_id('duration'); ?>"><?php _e( 'Duration:', 'ra-widgets-animate' ); ?></label>
+                    <select class="widefat" id="<?php echo $t->get_field_id('duration'); ?>" name="<?php echo $t->get_field_name('duration'); ?>">
+                        <?php foreach( range(0, 2000, 100) as $number ) { ?>
+                            <option <?php selected( $instance['duration'], $number ); ?>value="<?php echo $number; ?>"><?php echo $number; ?></option>
+                        <?php } ?>
+                    </select>
+                    <span><em><?php _e( 'Duration of animation in milliseconds.', 'ra-widgets-animate' ); ?></em></span>
+                </p>
+            </div>
+            
         </div>
         <?php
         
@@ -252,11 +258,14 @@ class RA_Widgets_Animate {
         //Only load if we are not on the widget page - where some of our scripts seem to be conflicting
         if ( $current_page->id === 'widgets' ){
             wp_enqueue_style( 'rawa-admin-css', plugin_dir_url( __FILE__ ) . 'admin/css/admin.css' );
+
+            wp_register_script( 'rawa-admin-js', plugin_dir_url( __FILE__ ) . 'admin/js/admin.js', array( 'jquery' ), null, true );
+            wp_enqueue_script( 'rawa-admin-js' );
         }
     }
 
     public function rawa_siteorigin_panels_admin_scripts() {
-        wp_register_script( 'rawa-siteorigin-panels-js', plugin_dir_url( __FILE__ ) . 'admin/js/admin.js', array( 'jquery' ), null, true );
+        wp_register_script( 'rawa-siteorigin-panels-js', plugin_dir_url( __FILE__ ) . 'admin/js/siteorigin-admin.js', array( 'jquery' ), null, true );
         wp_enqueue_script( 'rawa-siteorigin-panels-js' );
     }
 
