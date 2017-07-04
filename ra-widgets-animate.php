@@ -179,7 +179,7 @@ class RA_Widgets_Animate {
             'type' => 'select',
             'options' => (array) $animations,
             'group' => 'animation',
-            'description' => __( '', 'ra-widgets-animate' ),
+            'description' => __( 'Choose from several predefined animations.', 'ra-widgets-animate' ),
             'priority' => 5
         );
 
@@ -188,7 +188,7 @@ class RA_Widgets_Animate {
             'type' => 'select',
             'options' => (array) $placements,
             'group' => 'animation',
-            'description' => __( '', 'ra-widgets-animate' ),
+            'description' => __( 'Select which position of element on the screen should trigger animation.', 'ra-widgets-animate' ),
             'priority' => 10
         );
 
@@ -197,7 +197,7 @@ class RA_Widgets_Animate {
             'type' => 'select',
             'options' => (array) $easing,
             'group' => 'animation',
-            'description' => __( '', 'ra-widgets-animate' ),
+            'description' => __( 'Choose timing function to ease elements in different ways.', 'ra-widgets-animate' ),
             'priority' => 15
         );
 
@@ -206,7 +206,7 @@ class RA_Widgets_Animate {
             'type' => 'select',
             'options' => (array) $duration,
             'group' => 'animation',
-            'description' => __( '', 'ra-widgets-animate' ),
+            'description' => __( 'Duration of animation in milliseconds.', 'ra-widgets-animate' ),
             'priority' => 15
         );
 
