@@ -18,6 +18,6 @@
     "tests"
   ],
   "dependencies": {
-    "aos": "^2.1.1"
+    "aos": "^2.2.0"
   }
 }
