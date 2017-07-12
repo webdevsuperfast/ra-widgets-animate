@@ -45,7 +45,7 @@ class RA_Widgets_Animate {
     }
 
     public function rawa_in_widget_form( $t, $return, $instance ) {
-        $instance = wp_parse_args( (array) $instance, array( 'title' => '', 'text' => '', 'animation' => '', 'anchor' => '', 'easing' => '', 'duration' => '' ) );
+        $instance = wp_parse_args( (array) $instance, array( 'title' => '', 'text' => '', 'animation' => '', 'anchor' => '', 'anchor-placement' => '', 'easing' => '', 'offset' => '', 'duration' => '', 'delay' => '', 'once' => '' ) );
 
         // Animation
         $animations = $this->rawa_animations();
@@ -58,8 +58,12 @@ class RA_Widgets_Animate {
         
         if ( !isset( $instance['animation'] ) ) $instance['animation'] = null; 
         if ( !isset( $instance['anchor'] ) ) $instance['anchor'] = null;
+        if ( !isset( $instance['anchor-placement'] ) ) $instance['anchor-placement'] = null;
         if ( !isset( $instance['easing'] ) ) $instance['easing'] = null;
+        if ( !isset( $instance['offset'] ) ) $instance['offset'] = null;
         if ( !isset( $instance['duration'] ) ) $instance['duration'] = null;
+        if ( !isset( $instance['delay'] ) ) $instance['delay'] = null;
+        if ( !isset( $instance['once'] ) ) $instance['once'] = 0;
         ?>
         <div class="rawa-clearfix"></div>
         <div class="rawa-fields">
@@ -75,10 +79,15 @@ class RA_Widgets_Animate {
                     <span><em><?php _e( 'Choose from several predefined animations.', 'ra-widgets-animate' ); ?></em></span>
                 </p>
                 <p>
-                    <label for="<?php echo $t->get_field_id('anchor'); ?>"><?php _e( 'Anchor Placement:', 'ra-widgets-animate' ); ?></label>
-                    <select class="widefat" id="<?php echo $t->get_field_id('anchor'); ?>" name="<?php echo $t->get_field_name('anchor'); ?>">
+                    <label for="<?php echo $t->get_field_id('anchor'); ?>"><?php _e( 'Anchor:', 'ra-widgets-animate' ); ?></label>
+                    <input class="widefat" id="<?php echo $t->get_field_id('anchor'); ?>" name="<?php echo $t->get_field_name('anchor'); ?>" value="<?php echo esc_attr($instance['anchor']); ?>" type="text" />
+                    <span><em><?php _e( 'Anchor element, whose offset will be counted to trigger animation instead of actual elements offset.', 'ra-widgets-animate' ); ?></em></span>
+                </p>
+                <p>
+                    <label for="<?php echo $t->get_field_id('anchor-placement'); ?>"><?php _e( 'Anchor Placement:', 'ra-widgets-animate' ); ?></label>
+                    <select class="widefat" id="<?php echo $t->get_field_id('anchor-placement'); ?>" name="<?php echo $t->get_field_name('anchor-placement'); ?>">
                         <?php foreach( $placements as $key => $value ) { ?>
-                            <option <?php selected( $instance['anchor'], $key ); ?>value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                            <option <?php selected( $instance['anchor-placement'], $key ); ?>value="<?php echo $key; ?>"><?php echo $value; ?></option>
                         <?php } ?>
                     </select>
                     <span><em><?php _e( 'Select which position of element on the screen should trigger animation.', 'ra-widgets-animate' ); ?></em></span>
@@ -93,13 +102,25 @@ class RA_Widgets_Animate {
                     <span><em><?php _e( 'Choose timing function to ease elements in different ways.', 'ra-widgets-animate' ); ?></em></span>
                 </p>
                 <p>
+                    <label for="<?php echo $t->get_field_id('offset'); ?>"><?php _e( 'Offset:', 'ra-widgets-animate' ); ?></label>
+                    <input class="widefat" id="<?php echo $t->get_field_id('offset'); ?>" name="<?php echo $t->get_field_name('offset'); ?>" value="<?php echo esc_attr($instance['offset']); ?>" type="number" />
+                    <span><em><?php _e( 'Change offset to trigger animations sooner or later (px).', 'ra-widgets-animate' ); ?></em></span>
+                </p>
+                <p>
                     <label for="<?php echo $t->get_field_id('duration'); ?>"><?php _e( 'Duration:', 'ra-widgets-animate' ); ?></label>
-                    <select class="widefat" id="<?php echo $t->get_field_id('duration'); ?>" name="<?php echo $t->get_field_name('duration'); ?>">
-                        <?php foreach( range(0, 2000, 100) as $number ) { ?>
-                            <option <?php selected( $instance['duration'], $number ); ?>value="<?php echo $number; ?>"><?php echo $number; ?></option>
-                        <?php } ?>
-                    </select>
-                    <span><em><?php _e( 'Duration of animation in milliseconds.', 'ra-widgets-animate' ); ?></em></span>
+                    <input class="widefat" id="<?php echo $t->get_field_id('duration'); ?>" name="<?php echo $t->get_field_name('duration'); ?>" value="<?php echo esc_attr($instance['duration']); ?>" type="number" />
+                    <span><em><?php _e( 'Duration of animation (ms).', 'ra-widgets-animate' ); ?></em></span>
+                </p>
+                <p>
+                    <label for="<?php echo $t->get_field_id('delay'); ?>"><?php _e( 'Delay:', 'ra-widgets-animate' ); ?></label>
+                    <input class="widefat" id="<?php echo $t->get_field_id('delay'); ?>" name="<?php echo $t->get_field_name('delay'); ?>" value="<?php echo esc_attr($instance['delay']); ?>" type="number" />
+                    <span><em><?php _e( 'Delay animation (ms).', 'ra-widgets-animate' ); ?></em></span>
+                </p>
+                <p>
+                    <label for="<?php echo $t->get_field_id('once'); ?>"><?php _e( 'Once:', 'ra-widgets-animate' ); ?>
+                    <input id="<?php echo $t->get_field_id('once'); ?>" name="<?php echo $t->get_field_name('once'); ?>" type="checkbox"<?php checked($instance['once']); ?> />
+                    <span><em><?php _e( 'Choose wheter animation should fire once, or every time you scroll up/down to element.', 'ra-widgets-animate' ); ?></em></span>
+                    </label>
                 </p>
             </div>
             
@@ -114,8 +135,12 @@ class RA_Widgets_Animate {
     public function rawa_in_widget_form_update( $instance, $new_instance, $old_instance ) {
         $instance['animation'] = $new_instance['animation'];
         $instance['anchor'] = $new_instance['anchor'];
+        $instance['anchor-placement'] = $new_instance['anchor-placement'];
         $instance['easing'] = $new_instance['easing'];
+        $instance['offset'] = $new_instance['offset'];
         $instance['duration'] = $new_instance['duration'];
+        $instance['delay'] = $new_instance['delay'];
+        $instance['once'] = $new_instance['once'] ? 1 : 0;
         
         return $instance;
     }
@@ -129,14 +154,22 @@ class RA_Widgets_Animate {
         $widget_num = $widget_obj['params'][0]['number'];
 
         $attrs = array();
+
+        if ( isset( $widget_opt[$widget_num]['anchor'] ) && !empty( $widget_opt[$widget_num]['anchor'] ) ) $attrs['data-aos-anchor'] = $widget_opt[$widget_num]['anchor'];
         
-        if ( isset( $widget_opt[$widget_num]['anchor'] ) && !empty( $widget_opt[$widget_num]['anchor'] ) ) $attrs['data-aos-anchor-placement'] = $widget_opt[$widget_num]['anchor'];
+        if ( isset( $widget_opt[$widget_num]['anchor-placement'] ) && !empty( $widget_opt[$widget_num]['anchor-placement'] ) ) $attrs['data-aos-anchor-placement'] = $widget_opt[$widget_num]['anchor-placement'];
         
         if ( isset( $widget_opt[$widget_num]['animation'] ) && !empty( $widget_opt[$widget_num]['animation'] ) ) $attrs['data-aos'] = $widget_opt[$widget_num]['animation'];
         
         if ( isset( $widget_opt[$widget_num]['easing'] ) && !empty( $widget_opt[$widget_num]['easing'] ) ) $attrs['data-aos-easing'] = $widget_opt[$widget_num]['easing'];
 
+        if ( isset( $widget_opt[$widget_num]['offset'] ) && !empty( $widget_opt[$widget_num]['offset'] ) ) $attrs['data-aos-offset'] = $widget_opt[$widget_num]['offset'];
+
         if ( isset( $widget_opt[$widget_num]['duration'] ) && !empty( $widget_opt[$widget_num]['duration'] ) ) $attrs['data-aos-duration'] = $widget_opt[$widget_num]['duration'];
+
+        if ( isset( $widget_opt[$widget_num]['delay'] ) && !empty( $widget_opt[$widget_num]['delay'] ) ) $attrs['data-aos-delay'] = $widget_opt[$widget_num]['delay'];
+
+        if ( isset( $widget_opt[$widget_num]['once'] ) && !empty( $widget_opt[$widget_num]['once'] ) ) $attrs['data-aos-once'] = 'true';
 
         $attr = '';
         foreach( $attrs as $key => $value ) {
