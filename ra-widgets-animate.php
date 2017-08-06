@@ -119,7 +119,7 @@ class RA_Widgets_Animate {
                 <p>
                     <label for="<?php echo $t->get_field_id('once'); ?>"><?php _e( 'Once:', 'ra-widgets-animate' ); ?>
                     <input id="<?php echo $t->get_field_id('once'); ?>" name="<?php echo $t->get_field_name('once'); ?>" type="checkbox"<?php checked($instance['once']); ?> />
-                    <span><em><?php _e( 'Choose wheter animation should fire once, or every time you scroll up/down to element.', 'ra-widgets-animate' ); ?></em></span>
+                    <span><em><?php _e( 'Choose whether animation should fire once, or every time you scroll up/down to element.', 'ra-widgets-animate' ); ?></em></span>
                     </label>
                 </p>
             </div>
