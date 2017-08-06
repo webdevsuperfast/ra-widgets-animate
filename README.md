@@ -12,9 +12,12 @@ RA Widgets Animate is a WordPress plugin that adds additional widget fields into
 * Supports SiteOrigin Panels Widget Styles
 * Ability to choose animation type
 * Ability to choose anchor placement
-* Ability to choose animation easing
-* Ability to choose animation duration
-* More to come...
+* Ability to change anchor element
+* Ability to change easing time
+* Ability to change animation offset
+* Ability to change animation duration
+* Ability to change animation delay
+* Ability to set animation once
 
 ## Installation
 
@@ -34,6 +37,9 @@ A: No, the fields will attached itself to existing widgets on 'Widgets' screen i
 3. 'Animation' tab settings when opened in SiteOrigin Panels.
 
 ## Changelog
+1.0.5
+* Added additional fields, fixed bug with widgets with no css selectors, updated npm packages
+
 1.0.4
 * Code cleanup, moved siteorigin related js, css/markup changes, translation related changes
 
@@ -50,6 +56,9 @@ A: No, the fields will attached itself to existing widgets on 'Widgets' screen i
 * First release
 
 ## Upgrade Notice
+1.0.5
+* Added additional fields, fixed bug with widgets with no css selectors, updated npm packages
+
 1.0.4
 * Code cleanup, moved siteorigin related js, css/markup changes, translation related changes
 
