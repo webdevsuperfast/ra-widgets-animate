@@ -171,7 +171,7 @@ class RA_Widgets_Animate {
 
         if ( isset( $widget_opt[$widget_num]['once'] ) && !empty( $widget_opt[$widget_num]['once'] ) ) $attrs['data-aos-once'] = 'true';
 
-        $attr = '';
+        $attr = ' ';
         foreach( $attrs as $key => $value ) {
             $attr .= $key . '="' . $value .'" ';
         }
