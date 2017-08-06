@@ -49,14 +49,14 @@ class RA_Widgets_Animate {
 
         // Animation
         $animations = $this->rawa_animations();
-        
+
         // Placement
         $placements = $this->rawa_placements();
-        
+
         // Easing
         $easing = $this->rawa_easing();
-        
-        if ( !isset( $instance['animation'] ) ) $instance['animation'] = null; 
+
+        if ( !isset( $instance['animation'] ) ) $instance['animation'] = null;
         if ( !isset( $instance['anchor'] ) ) $instance['anchor'] = null;
         if ( !isset( $instance['anchor-placement'] ) ) $instance['anchor-placement'] = null;
         if ( !isset( $instance['easing'] ) ) $instance['easing'] = null;
@@ -123,12 +123,12 @@ class RA_Widgets_Animate {
                     </label>
                 </p>
             </div>
-            
+
         </div>
         <?php
-        
+
         $return = null;
-        
+
         return array( $t, $return, $instance );
     }
 
@@ -141,7 +141,7 @@ class RA_Widgets_Animate {
         $instance['duration'] = $new_instance['duration'];
         $instance['delay'] = $new_instance['delay'];
         $instance['once'] = $new_instance['once'] ? 1 : 0;
-        
+
         return $instance;
     }
 
@@ -156,11 +156,11 @@ class RA_Widgets_Animate {
         $attrs = array();
 
         if ( isset( $widget_opt[$widget_num]['anchor'] ) && !empty( $widget_opt[$widget_num]['anchor'] ) ) $attrs['data-aos-anchor'] = $widget_opt[$widget_num]['anchor'];
-        
+
         if ( isset( $widget_opt[$widget_num]['anchor-placement'] ) && !empty( $widget_opt[$widget_num]['anchor-placement'] ) ) $attrs['data-aos-anchor-placement'] = $widget_opt[$widget_num]['anchor-placement'];
-        
+
         if ( isset( $widget_opt[$widget_num]['animation'] ) && !empty( $widget_opt[$widget_num]['animation'] ) ) $attrs['data-aos'] = $widget_opt[$widget_num]['animation'];
-        
+
         if ( isset( $widget_opt[$widget_num]['easing'] ) && !empty( $widget_opt[$widget_num]['easing'] ) ) $attrs['data-aos-easing'] = $widget_opt[$widget_num]['easing'];
 
         if ( isset( $widget_opt[$widget_num]['offset'] ) && !empty( $widget_opt[$widget_num]['offset'] ) ) $attrs['data-aos-offset'] = $widget_opt[$widget_num]['offset'];
@@ -178,7 +178,7 @@ class RA_Widgets_Animate {
         $attr .= '>';
 
         $params[0]['before_widget'] = preg_replace( '/>/', $attr,  $params[0]['before_widget'], 1 );
-        
+
         return $params;
     }
 
@@ -194,10 +194,10 @@ class RA_Widgets_Animate {
     public function rawa_siteorigin_style_fields( $fields ) {
         // Animation
         $animations = $this->rawa_animations();
-        
+
         // Placement
         $placements = $this->rawa_placements();
-        
+
         // Easing
         $easing = $this->rawa_easing();
 
@@ -216,13 +216,21 @@ class RA_Widgets_Animate {
             'priority' => 5
         );
 
+        $fields['animation_anchor'] = array(
+            'name' => __( 'Anchor', 'ra-widgets-animate' ),
+            'type' => 'text',
+            'group' => 'animation',
+            'description' => __( 'Anchor element, whose offset will be counted to trigger animation instead of actual elements offset.', 'ra-widgets-animate' ),
+            'priority' => 10
+        );
+
         $fields['anchor_placement'] = array(
             'name' => __( 'Anchor Placement', 'ra-widgets-animate' ),
             'type' => 'select',
             'options' => (array) $placements,
             'group' => 'animation',
             'description' => __( 'Select which position of element on the screen should trigger animation.', 'ra-widgets-animate' ),
-            'priority' => 10
+            'priority' => 15
         );
 
         $fields['animation_easing'] = array(
@@ -234,13 +242,36 @@ class RA_Widgets_Animate {
             'priority' => 15
         );
 
+        $fields['animation_offset'] = array(
+            'name' => __( 'Offset', 'ra-widgets-animate' ),
+            'type' => 'text',
+            'group' => 'animation',
+            'description' => __( 'Change offset to trigger animations sooner or later (px).', 'ra-widgets-animate' ),
+            'priority' => 20
+        );
+
         $fields['animation_duration'] = array(
             'name' => __( 'Duration', 'ra-widgets-animate' ),
-            'type' => 'select',
-            'options' => (array) $duration,
+            'type' => 'text',
             'group' => 'animation',
             'description' => __( 'Duration of animation in milliseconds.', 'ra-widgets-animate' ),
-            'priority' => 15
+            'priority' => 25
+        );
+
+        $fields['animation_delay'] = array(
+            'name' => __( 'Delay', 'ra-widgets-animate' ),
+            'type' => 'text',
+            'group' => 'animation',
+            'description' => __( 'Delay animation (ms).', 'ra-widgets-animate' ),
+            'priority' => 30
+        );
+
+        $fields['animation_once'] = array(
+            'name' => __( 'Once', 'ra-widgets-animate' ),
+            'type' => 'checkbox',
+            'group' => 'animation',
+            'description' => __( 'Choose wheter animation should fire once, or every time you scroll up/down to element.', 'ra-widgets-animate' ),
+            'priority' => 35
         );
 
         return $fields;
@@ -251,21 +282,21 @@ class RA_Widgets_Animate {
             return $atts;
         }
 
-        if ( !empty( $value['animation_type'] ) ) {
-            $atts['data-aos'] = $value['animation_type'];
-        }
+        if ( !empty( $value['animation_type'] ) ) $atts['data-aos'] = $value['animation_type'];
 
-        if ( !empty( $value['anchor_placement'] ) ) {
-            $atts['data-aos-anchor-placement'] = $value['anchor_placement'];
-        }
+        if ( !empty( $value['animation_anchor'] ) ) $atts['data-aos-anchor'] = $value['animation_anchor'];
 
-        if ( !empty( $value['animation_easing'] ) ) {
-            $atts['data-aos-easing'] = $value['animation_easing'];
-        }
+        if ( !empty( $value['anchor_placement'] ) ) $atts['data-aos-anchor-placement'] = $value['anchor_placement'];
 
-        if ( !empty( $value['animation_duration'] ) && '0' != $value['animation_duration'] ) {
-            $atts['data-aos-duration'] = $value['animation_duration'];
-        }
+        if ( !empty( $value['animation_easing'] ) ) $atts['data-aos-easing'] = $value['animation_easing'];
+
+        if ( !empty( $value['animation_offset'] ) ) $atts['data-aos-offset'] = (int) $value['animation_offset'];
+
+        if ( !empty( $value['animation_duration'] ) && '0' != $value['animation_duration'] ) $atts['data-aos-duration'] = (int) $value['animation_duration'];
+
+        if ( !empty( $value['animation_delay'] ) ) $atts['data-aos-delay'] = (int) $value['animation_delay'];
+
+        if ( !empty( $value['animation_once'] ) ) $atts['data-aos-once'] = $value['animation_once'];
 
         return $atts;
     }
@@ -278,7 +309,7 @@ class RA_Widgets_Animate {
             // AOS JS
             wp_register_script( 'rawa-aos-js', plugin_dir_url( __FILE__ ) . 'public/js/aos.min.js', array(), null, true );
             wp_enqueue_script( 'rawa-aos-js' );
-            
+
             // Initialize AOS
             wp_add_inline_script( 'rawa-aos-js', 'AOS.init()' );
         }
