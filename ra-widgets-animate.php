@@ -177,7 +177,7 @@ class RA_Widgets_Animate {
         }
         $attr .= '>';
 
-        $params[0]['before_widget'] = preg_replace( '/>/', $attr,  $params[0]['before_widget'], 1 );
+        $params[0]['before_widget'] = preg_replace( '/>$/', $attr,  $params[0]['before_widget'], 1 );
 
         return $params;
     }
