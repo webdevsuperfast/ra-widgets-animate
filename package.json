@@ -4,7 +4,10 @@
   "description": "Animate widgets using Animate on Scroll library.",
   "keywords": [
     "animate",
-    "widgets"
+    "animation",
+    "aos",
+    "widgets",
+    "siteorigin-panels"
   ],
   "author": "Rotsen Mark Acob",
   "license": "GPL-2.0",
@@ -26,5 +29,11 @@
     "gulp-uglify": "^3.0.0",
     "merge-stream": "^1.0.1",
     "vinyl-paths": "^2.1.0"
+  },
+  "main": "index.js",
+  "repository": "git@github.com:webdevsuperfast/ra-widgets-animate.git",
+  "private": true,
+  "dependencies": {
+    "aos": "^2.2.0"
   }
 }
