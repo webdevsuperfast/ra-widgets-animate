@@ -3,8 +3,8 @@ Contributors: frodoBean
 Donate link: https://rotsenacob.com/
 Tags: aos, animate-on-scroll, animation, widgets, siteorigin-panels
 Requires at least: 4.7
-Tested up to: 4.8
-Stable tag: 1.0.4
+Tested up to: 4.9.1
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,12 @@ No, the fields will attached itself to existing widgets on 'Widgets' screen in W
 3. 'Animation' tab settings when opened in SiteOrigin Panels.
 
 == Changelog ==
+= 1.0.7 =
+* Prevent `.rawa-fields` from closing on widgets save, added back deleted files, migrate to Yarn from Bower.
+
+= 1.0.6 =
+* Regex fix, removed unneeded files.
+
 = 1.0.5 =
 * Added additional fields, fixed bug with widgets with no css selectors, updated npm packages
 
@@ -64,6 +70,12 @@ No, the fields will attached itself to existing widgets on 'Widgets' screen in W
 * First release
 
 == Upgrade Notice ==
+= 1.0.7 =
+Prevent `.rawa-fields` from closing on widgets save, added back deleted files, migrate to Yarn from Bower.
+
+= 1.0.6 =
+Regex fix, removed unneeded files.
+
 = 1.0.5 =
 Added additional fields, fixed bug with widgets with no css selectors, updated npm packages
 

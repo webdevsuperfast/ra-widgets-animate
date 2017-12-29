@@ -37,6 +37,12 @@ A: No, the fields will attached itself to existing widgets on 'Widgets' screen i
 3. 'Animation' tab settings when opened in SiteOrigin Panels.
 
 ## Changelog
+1.0.7
+* Prevent `.rawa-fields` from closing on widgets save, added back deleted files, migrate to Yarn from Bower.
+
+1.0.6
+* Regex fix, removed unneeded files.
+
 1.0.5
 * Added additional fields, fixed bug with widgets with no css selectors, updated npm packages
 
@@ -56,6 +62,12 @@ A: No, the fields will attached itself to existing widgets on 'Widgets' screen i
 * First release
 
 ## Upgrade Notice
+1.0.7
+* Prevent `.rawa-fields` from closing on widgets save, added back deleted files, migrate to Yarn from Bower.
+
+1.0.6
+* Regex fix, removed unneeded files.
+
 1.0.5
 * Added additional fields, fixed bug with widgets with no css selectors, updated npm packages
 
