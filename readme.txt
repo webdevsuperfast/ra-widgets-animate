@@ -1,7 +1,7 @@
 === RA Widgets Animate ===
 Contributors: frodoBean
 Donate link: https://rotsenacob.com/
-Tags: aos, animate, widgets, siteorigin-panels
+Tags: aos, animate-on-scroll, animation, widgets, siteorigin-panels
 Requires at least: 4.7
 Tested up to: 4.8
 Stable tag: 1.0.4
