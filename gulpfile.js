@@ -19,7 +19,7 @@ var gulp = require('gulp'),
 
 // CSS
 gulp.task('styles', function(){
-    var cssStream = gulp.src('bower_components/aos/dist/aos.css')
+    var cssStream = gulp.src('node_modules/aos/dist/aos.css')
         .pipe(concat('aos.css'))
     
     var mergeStream = merge(cssStream)
@@ -38,7 +38,7 @@ gulp.task('styles', function(){
 // Vendor JS
 gulp.task('scripts', function(){
     return gulp.src([
-        'bower_components/aos/dist/aos.js'
+        'node_modules/aos/dist/aos.js'
     ])
     .pipe(foreach(function(stream, file){
         return stream
