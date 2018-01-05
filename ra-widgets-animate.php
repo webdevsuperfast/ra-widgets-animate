@@ -49,6 +49,17 @@ class RA_Widgets_Animate {
 
         // Enqueue SiteOrigin Panels Admin scripts
         add_action( 'siteorigin_panel_enqueue_admin_scripts', array( $this, 'rawa_siteorigin_panels_admin_scripts' ) );
+
+        //* Add settings link in plugins directory
+        add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'rawa_plugin_action_links' ) );
+    }
+
+    public function rawa_plugin_action_links( $links ) {
+        $links = array_merge( array(
+            '<a href="'.esc_url( admin_url( '/options-general.php?page=rawa_settings' ) ).'">'.__( 'Settings', 'ra-widgets-animate' ).'</a>'
+        ), $links );
+
+        return $links;
     }
 
     public function rawa_create_settings_page() {
