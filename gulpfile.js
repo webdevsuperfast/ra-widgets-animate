@@ -29,7 +29,7 @@ gulp.task('styles', function(){
         .pipe(gulp.dest('temp/css'))
         .pipe(rename('app.css'))
         .pipe(cleancss())
-        .pipe(gulp.dest('assets/css'))
+        .pipe(gulp.dest('public/css'))
         .pipe(notify({ message: 'Styles task complete' }));
     
     return mergeStream;
@@ -38,7 +38,8 @@ gulp.task('styles', function(){
 // Vendor JS
 gulp.task('scripts', function(){
     return gulp.src([
-        'node_modules/aos/dist/aos.js'
+        'node_modules/aos/dist/aos.js',
+        'public/js/source/app.js'
     ])
     .pipe(foreach(function(stream, file){
         return stream
