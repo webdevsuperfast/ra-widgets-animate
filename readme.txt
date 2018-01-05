@@ -26,6 +26,8 @@ RA Widgets Animate is a WordPress plugin that adds additional widget fields into
 * Ability to change animation duration
 * Ability to change animation delay
 * Ability to set animation once
+* Set global Animate on Scroll Settings via plugin settings
+* Enable/disable plugin scripts and styles via plugin settings
 
 == Installation ==
 
@@ -37,6 +39,14 @@ RA Widgets Animate is a WordPress plugin that adds additional widget fields into
 = Do I need to install SiteOrigin Panels to be able to use the animation? =
 
 No, the fields will attached itself to existing widgets on 'Widgets' screen in WordPress. If you have SiteOrigin Panels installed, the 'Animation' tab will be added to SiteOrigin Panels 'Widget Styles'.
+
+= How can I set Animate on Scroll settings globally without having to edit each widgets?
+
+You can set the global settings through `Settings > RA Widgets Animate > AoS Global Settings`.
+
+= I have Animate on Scroll already, how can I disable the AOS script on your plugin to prevent conflict?
+
+You can disable Animate on Scroll scripts and styles through `Settings > RA Widgets Animate > AoS Scripts Settings`.
 
 == Screenshots ==
 
