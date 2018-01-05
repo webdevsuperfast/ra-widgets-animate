@@ -4,7 +4,7 @@ Donate link: https://rotsenacob.com/
 Tags: aos, animate on scroll, Siteorigion page builder, animation, widgets, siteorigin panels
 Requires at least: 4.7
 Tested up to: 4.9.1
-Stable tag: 1.0.7
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,8 @@ You can disable Animate on Scroll scripts and styles through `Settings > RA Widg
 3. 'Animation' tab settings when opened in SiteOrigin Panels.
 
 == Changelog ==
+= 1.1 =
+* Added settings page, added app.js script, modify css build path, grammar fixes, code cleanup, updated translation.
 = 1.0.7 =
 * Prevent `.rawa-fields` from closing on widgets save, added back deleted files, migrate to Yarn from Bower.
 
@@ -80,6 +82,9 @@ You can disable Animate on Scroll scripts and styles through `Settings > RA Widg
 * First release
 
 == Upgrade Notice ==
+= 1.1 =
+Added settings page, added app.js script, modify css build path, grammar fixes, code cleanup, updated translation.
+
 = 1.0.7 =
 Prevent `.rawa-fields` from closing on widgets save, added back deleted files, migrate to Yarn from Bower.
 
