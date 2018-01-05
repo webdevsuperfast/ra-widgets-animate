@@ -42,11 +42,11 @@ No, the fields will attached itself to existing widgets on 'Widgets' screen in W
 
 = How can I set Animate on Scroll settings globally without having to edit each widgets?
 
-You can set the global settings through `Settings > RA Widgets Animate > AoS Global Settings`.
+You can set the global settings through `Settings > RA Widgets Animate > Global Settings`.
 
 = I have Animate on Scroll already, how can I disable the AOS script on your plugin to prevent conflict?
 
-You can disable Animate on Scroll scripts and styles through `Settings > RA Widgets Animate > AoS Scripts Settings`.
+You can disable Animate on Scroll scripts and styles through `Settings > RA Widgets Animate > Script Settings`.
 
 == Screenshots ==
 
