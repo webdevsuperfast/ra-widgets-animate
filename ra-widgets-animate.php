@@ -78,7 +78,6 @@ class RA_Widgets_Animate {
     public function rawa_section_callback( $arguments ) {
         switch( $arguments['id'] ) {
             case 'aos_settings':
-                _e( '', 'ra-widgets-animate' );
                 break;
         }
     }
