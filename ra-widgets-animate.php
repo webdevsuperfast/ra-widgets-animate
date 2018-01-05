@@ -81,15 +81,15 @@ class RA_Widgets_Animate {
         // Global Settings
         add_settings_section( 
             'aos_settings', 
-            __( 'Global AoS Settings', 'ra-widgets-animate' ),
+            __( 'Global Settings', 'ra-widgets-animate' ),
             array( $this, 'rawa_section_callback' ),
             'rawa_settings' 
         );
 
-        // Scripts Settings
+        // Script Settings
         add_settings_section(
             'aos_scripts',
-            __( 'AoS Scripts Settings', 'ra-widgets-animate' ),
+            __( 'Script Settings', 'ra-widgets-animate' ),
             array( $this, 'rawa_section_callback' ),
             'rawa_settings'
         );
