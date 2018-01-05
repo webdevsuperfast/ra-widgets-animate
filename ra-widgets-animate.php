@@ -562,7 +562,7 @@ class RA_Widgets_Animate {
             }
 
             // Initialize AOS
-            wp_register_script( 'rawa-app-js', plugin_dir_url( __FILE__ ) . 'public/js/app.min.js', array( 'jquery' ), null, true );
+            wp_register_script( 'rawa-app-js', plugin_dir_url( __FILE__ ) . 'public/js/rawa.min.js', array( 'jquery' ), null, true );
             wp_enqueue_script( 'rawa-app-js' );
 
             $offset = get_option( 'rawa_aos_offset', '120' );
