@@ -39,7 +39,7 @@ gulp.task('styles', function(){
 gulp.task('scripts', function(){
     return gulp.src([
         'node_modules/aos/dist/aos.js',
-        'public/js/sources/app.js'
+        'public/js/sources/rawa.js'
     ])
     .pipe(foreach(function(stream, file){
         return stream
