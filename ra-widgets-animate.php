@@ -221,7 +221,8 @@ class RA_Widgets_Animate {
         ?>
 
         <div class="wrap">
-            <h2><?php _e( 'RA Widgets Animate Settings', 'ra-widgets-animate' ); ?></h2>
+            <h2><?php _e( 'Widgets Animate Settings', 'ra-widgets-animate' ); ?></h2>
+            <hr>
             <form action="options.php" method="post">
                 <?php 
                 settings_fields( 'rawa_settings' ); 
