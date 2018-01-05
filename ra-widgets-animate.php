@@ -128,7 +128,7 @@ class RA_Widgets_Animate {
                 'section' => 'aos_settings',
                 'label' => __( 'Easing', 'ra-widgets-animate' ),
                 'type' => 'select',
-                'supplimental' => __( 'Choose timing function to ease elements in different ways	', 'ra-widgets-animate' ),
+                'supplimental' => __( 'Choose timing function to ease elements in different ways', 'ra-widgets-animate' ),
                 'default' => array( 'ease' ),
                 'options' => $this->rawa_easing()
             ),
