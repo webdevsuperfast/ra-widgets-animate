@@ -137,7 +137,7 @@ class RA_Widgets_Animate {
                 'section' => 'aos_settings',
                 'label' => __( 'Once', 'ra-widgets-animate' ),
                 'type' => 'checkbox',
-                'supplimental' => __( 'Choose wheter animation should fire once, or every time you scroll up/down to element', 'ra-widgets-animate' ),
+                'supplimental' => __( 'Choose whether animation should fire once, or every time you scroll up/down to element', 'ra-widgets-animate' ),
                 'default' => array(),
                 'options' => array(
                     'enabled' => __( 'Yes' )
