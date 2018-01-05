@@ -39,7 +39,7 @@ gulp.task('styles', function(){
 gulp.task('scripts', function(){
     return gulp.src([
         'node_modules/aos/dist/aos.js',
-        'public/js/source/app.js'
+        'public/js/sources/app.js'
     ])
     .pipe(foreach(function(stream, file){
         return stream
@@ -68,5 +68,5 @@ gulp.task('default', ['clean:temp'], function() {
 gulp.task('watch', function() {
     // Watch .scss files
     gulp.watch(['public/scss/*.scss', 'public/sass/**/*.scss'], ['styles']);
-    gulp.watch(['public/js/source/*.js'], ['scripts']);
+    gulp.watch(['public/js/sources/*.js'], ['scripts']);
 });
