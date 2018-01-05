@@ -55,6 +55,9 @@ You can disable Animate on Scroll scripts and styles through `Settings > RA Widg
 3. 'Animation' tab settings when opened in SiteOrigin Panels.
 
 == Changelog ==
+= 1.1.2 =
+* Renamed app.js to rawa.js, trying to fixed missing js files on SVN commit
+
 = 1.1.1 = 
 * Fixing missing js files
 
@@ -86,6 +89,9 @@ You can disable Animate on Scroll scripts and styles through `Settings > RA Widg
 * First release
 
 == Upgrade Notice ==
+= 1.1.2 =
+Renamed app.js to rawa.js, trying to fixed missing js files on SVN commit
+
 = 1.1.1 =
 Fixing missing js files
 
