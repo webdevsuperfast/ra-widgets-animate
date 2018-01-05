@@ -16,6 +16,13 @@ defined( 'ABSPATH' ) or die( esc_html_e( 'With great power comes great responsib
 
 class RA_Widgets_Animate {
     public function __construct() {
+        // Add settings page
+        add_action( 'admin_menu', array( $this, 'rawa_create_settings_page' ) );
+
+        // Add settings and fields
+        add_action( 'admin_init', array( $this, 'rawa_setup_sections' ) );
+        add_action( 'admin_init', array( $this, 'rawa_setup_fields' ) );
+
         // Add input fields
         add_action( 'in_widget_form', array( $this, 'rawa_in_widget_form' ), 5, 3 );
 
@@ -43,6 +50,195 @@ class RA_Widgets_Animate {
         // Enqueue SiteOrigin Panels Admin scripts
         add_action( 'siteorigin_panel_enqueue_admin_scripts', array( $this, 'rawa_siteorigin_panels_admin_scripts' ) );
     }
+
+    public function rawa_create_settings_page() {
+        $page_title = __( 'RA Widgets Animate', 'ra-widgets-animate' );
+        $menu_title = __( 'RA Widgets Animate', 'ra-widgets-animate' );
+        $capability = 'manage_options';
+        $slug = 'rawa_settings';
+        $callback = array(
+            $this, 
+            'rawa_settings_content'
+        );
+        $icon = 'dashicons-admin-plugins';
+        $position = 100;
+
+        add_submenu_page( 'options-general.php', $page_title, $menu_title, $capability, $slug, $callback );
+    }
+
+    public function rawa_setup_sections() {
+        add_settings_section( 
+            'aos_settings', 
+            __( 'Global Settings', 'ra-widgets-animate' ),
+            array( $this, 'rawa_section_callback' ),
+            'rawa_settings' 
+        );
+    }
+
+    public function rawa_section_callback( $arguments ) {
+        switch( $arguments['id'] ) {
+            case 'aos_settings':
+                _e( '', 'ra-widgets-animate' );
+                break;
+        }
+    }
+
+    public function rawa_setup_fields() {
+        $fields = array(
+            array(
+                'uid' => 'rawa_aos_offset',
+                'section' => 'aos_settings',
+                'label' => __( 'Offset', 'ra-widgets-animate' ),
+                'type' => 'number',
+                'supplimental' => __( 'Change offset to trigger animations sooner or later (px)', 'ra-widgets-animate' ),
+                'default' => 120,
+            ),
+            array(
+                'uid' => 'rawa_aos_duration',
+                'section' => 'aos_settings',
+                'label' => __( 'Duration', 'ra-widgets-animate' ),
+                'type' => 'number',
+                'supplimental' => __( '*Duration of animation (ms)', 'ra-widgets-animate' ),
+                'default' => 400,
+            ),
+            array(
+                'uid' => 'rawa_aos_easing',
+                'section' => 'aos_settings',
+                'label' => __( 'Easing', 'ra-widgets-animate' ),
+                'type' => 'select',
+                'supplimental' => __( 'Choose timing function to ease elements in different ways	', 'ra-widgets-animate' ),
+                'default' => array( 'ease' ),
+                'options' => $this->rawa_easing()
+            ),
+            array(
+                'uid' => 'rawa_aos_delay',
+                'section' => 'aos_settings',
+                'label' => __( 'Delay', 'ra-widgets-animate' ),
+                'type' => 'number',
+                'supplimental' => __( 'Delay animation (ms)', 'ra-widgets-animate' ),
+                'default' => 0,
+            ),
+            array(
+                'uid' => 'rawa_aos_disable',
+                'section' => 'aos_settings',
+                'label' => __( 'Disable', 'ra-widgets-animate' ),
+                'type' => 'select',
+                'supplimental' => __( 'Disable AOS on those certains devices.', 'ra-widgets-animate' ),
+                'options' => array(
+                    '' => __( 'None' ),
+                    'mobile' => __( 'Mobile(Phones/Tablets)', 'ra-widgets-animate' ),
+                    'phone' => __( 'Phone', 'ra-widgets-animate' ),
+                    'tablet' => __( 'Tablet', 'ra-widgets-animate' )
+                ),
+                'default' => array()
+            ),
+            array(
+                'uid' => 'rawa_aos_once',
+                'section' => 'aos_settings',
+                'label' => __( 'Once', 'ra-widgets-animate' ),
+                'type' => 'checkbox',
+                'supplimental' => __( 'Choose wheter animation should fire once, or every time you scroll up/down to element', 'ra-widgets-animate' ),
+                'default' => array(),
+                'options' => array(
+                    'enabled' => __( 'Yes' )
+                )
+            ),
+        );
+
+        foreach( $fields as $field ) {
+            add_settings_field( 
+                $field['uid'], 
+                $field['label'], 
+                array( 
+                    $this, 
+                    'rawa_fields_callback' 
+                ), 
+                'rawa_settings', 
+                $field['section'], 
+                $field 
+            );
+            register_setting( 
+                'rawa_settings', 
+                $field['uid'] 
+            );
+        }
+    }
+
+    public function rawa_fields_callback( $arguments ) {
+        $value = get_option( $arguments['uid'] );
+        
+        if( ! $value ) {
+            $value = $arguments['default'];
+        }
+        
+        switch( $arguments['type'] ){
+            case 'text':
+            case 'password':
+            case 'number':
+                printf( '<input name="%1$s" id="%1$s" type="%2$s" placeholder="%3$s" value="%4$s" />', $arguments['uid'], $arguments['type'], $arguments['placeholder'], $value );
+                break;
+            case 'textarea':
+                printf( '<textarea name="%1$s" id="%1$s" placeholder="%2$s" rows="5" cols="50">%3$s</textarea>', $arguments['uid'], $arguments['placeholder'], $value );
+                break;
+            case 'select':
+            case 'multiselect':
+                if( ! empty ( $arguments['options'] ) && is_array( $arguments['options'] ) ){
+                    $attributes = '';
+                    $options_markup = '';
+                    foreach( $arguments['options'] as $key => $label ){
+                        $options_markup .= sprintf( '<option value="%s" %s>%s</option>', $key, selected( $value[ array_search( $key, $value, true ) ], $key, false ), $label );
+                    }
+                    if( $arguments['type'] === 'multiselect' ){
+                        $attributes = ' multiple="multiple" ';
+                    }
+                    printf( '<select name="%1$s[]" id="%1$s" %2$s>%3$s</select>', $arguments['uid'], $attributes, $options_markup );
+                }
+                break;
+            case 'radio':
+            case 'checkbox':
+                if( ! empty ( $arguments['options'] ) && is_array( $arguments['options'] ) ){
+                    $options_markup = '';
+                    $iterator = 0;
+                    foreach( $arguments['options'] as $key => $label ){
+                        $iterator++;
+                        $options_markup .= sprintf( '<label for="%1$s_%6$s"><input id="%1$s_%6$s" name="%1$s[]" type="%2$s" value="%3$s" %4$s /> %5$s</label><br/>', $arguments['uid'], $arguments['type'], $key, checked( $value[ array_search( $key, $value, true ) ], $key, false ), $label, $iterator );
+                    }
+                    printf( '<fieldset>%s</fieldset>', $options_markup );
+                }
+                break;
+        }
+        if( $helper = $arguments['helper'] ){
+            printf( '<span class="helper"> %s</span>', $helper );
+        }
+        if( $supplimental = $arguments['supplimental'] ){
+            printf( '<p class="description">%s</p>', $supplimental );
+        }
+    }
+
+    public function rawa_settings_content() { ?>
+        <?php 
+        if ( ! current_user_can( 'manage_options' ) ) return; 
+        ?>
+
+        <div class="wrap">
+            <h2><?php _e( 'RA Widgets Animate Settings', 'ra-widgets-animate' ); ?></h2>
+            <form action="options.php" method="post">
+                <?php 
+                settings_fields( 'rawa_settings' ); 
+                do_settings_sections( 'rawa_settings' );
+                submit_button();
+                // submit_button( __( 'Reset Settings' ), 'secondary', 'reset', true );
+                ?>
+            </form>
+        </div>
+        
+    <?php }
+
+    public function rawa_admin_notice() { ?>
+        <div class="notice notice-success is-dismissible">
+            <p><?php _e( 'Your settings have been reverted to defaults!', 'ra-widgets-animate' ); ?></p>
+        </div>
+    <?php }
 
     public function rawa_in_widget_form( $t, $return, $instance ) {
         $instance = wp_parse_args( (array) $instance, array( 'title' => '', 'text' => '', 'animation' => '', 'anchor' => '', 'anchor-placement' => '', 'easing' => '', 'offset' => '', 'duration' => '', 'delay' => '', 'once' => '' ) );
@@ -146,6 +342,7 @@ class RA_Widgets_Animate {
     }
 
     public function rawa_dynamic_sidebar_params( $params ) {
+        // var_dump( get_option( 'rawa_enable_cb' ) );
         global $wp_registered_widgets;
 
         $widget_id = $params[0]['widget_id'];
@@ -270,7 +467,7 @@ class RA_Widgets_Animate {
             'name' => __( 'Once', 'ra-widgets-animate' ),
             'type' => 'checkbox',
             'group' => 'animation',
-            'description' => __( 'Choose wheter animation should fire once, or every time you scroll up/down to element.', 'ra-widgets-animate' ),
+            'description' => __( 'Choose whether animation should fire once, or every time you scroll up/down to element.', 'ra-widgets-animate' ),
             'priority' => 35
         );
 
@@ -311,7 +508,24 @@ class RA_Widgets_Animate {
             wp_enqueue_script( 'rawa-aos-js' );
 
             // Initialize AOS
-            wp_add_inline_script( 'rawa-aos-js', 'AOS.init()' );
+            wp_register_script( 'rawa-app-js', plugin_dir_url( __FILE__ ) . 'public/js/app.min.js', array( 'rawa-aos-js' ), null, true );
+            wp_enqueue_script( 'rawa-app-js' );
+
+            $offset = get_option( 'rawa_aos_offset', '120' );
+            $duration = get_option( 'rawa_aos_duration', '400' );
+            $easing = get_option( 'rawa_aos_easing', ease );
+            $delay = get_option( 'rawa_aos_delay', 0 );
+            $disable = get_option( 'rawa_aos_disable', false );
+            $once = get_option( 'rawa_aos_once' );
+
+            wp_localize_script( 'rawa-app-js', 'rawa_aos', array(
+                'offset' => (int) $offset,
+                'duration' => (int) $duration,
+                'easing' => $easing,
+                'delay' => (int) $delay,
+                'disable' => $disable[0] ? $disable : "false",
+                'once' => $once[0] == 'enabled' ? "true" : "false"
+            ) );
         }
     }
 
