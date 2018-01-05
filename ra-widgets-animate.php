@@ -67,11 +67,20 @@ class RA_Widgets_Animate {
     }
 
     public function rawa_setup_sections() {
+        // Global Settings
         add_settings_section( 
             'aos_settings', 
-            __( 'Global Settings', 'ra-widgets-animate' ),
+            __( 'Global AoS Settings', 'ra-widgets-animate' ),
             array( $this, 'rawa_section_callback' ),
             'rawa_settings' 
+        );
+
+        // Scripts Settings
+        add_settings_section(
+            'aos_scripts',
+            __( 'AoS Scripts Settings', 'ra-widgets-animate' ),
+            array( $this, 'rawa_section_callback' ),
+            'rawa_settings'
         );
     }
 
@@ -79,11 +88,14 @@ class RA_Widgets_Animate {
         switch( $arguments['id'] ) {
             case 'aos_settings':
                 break;
+            case 'aos_scripts':
+                break;
         }
     }
 
     public function rawa_setup_fields() {
         $fields = array(
+            // Global Settings
             array(
                 'uid' => 'rawa_aos_offset',
                 'section' => 'aos_settings',
@@ -141,6 +153,30 @@ class RA_Widgets_Animate {
                 'options' => array(
                     'enabled' => __( 'Yes' )
                 )
+            ),
+
+            // AoS scripts
+            array(
+                'uid' => 'rawa_aos_css',
+                'label' => __( 'Disable AoS Styles', 'ra-widgets-animate' ),
+                'section' => 'aos_scripts',
+                'type' => 'checkbox',
+                'supplimental' => __( 'Disable Animate on Scroll stylesheet, e.g. already present on your theme or plugin', 'ra-widgets-animate' ),
+                'options' => array(
+                    'enabled' => __( 'Yes', 'ra-widgets-animate' )
+                ),
+                'default' => array()
+            ),
+            array(
+                'uid' => 'rawa_aos_js',
+                'label' => __( 'Disable AoS Script', 'ra-widgets-animate' ),
+                'section' => 'aos_scripts',
+                'type' => 'checkbox',
+                'supplimental' => __( 'Disable Animate on Scroll script, e.g. already present on your theme or plugin', 'ra-widgets-animate' ),
+                'options' => array(
+                    'enabled' => __( 'Yes', 'ra-widgets-animate' )
+                ),
+                'default' => array()
             ),
         );
 
@@ -499,16 +535,23 @@ class RA_Widgets_Animate {
     }
 
     public function rawa_enqueue_scripts() {
+        $scripts = get_option( 'rawa_aos_js' );
+        $styles = get_option( 'rawa_aos_css' );
+
         if ( !is_admin() ) {
             // AOS CSS
-            wp_enqueue_style( 'rawa-aos-css', plugin_dir_url( __FILE__ ) . 'public/css/app.css' );
+            if ( $styles[0] != 'enabled' ) {
+                wp_enqueue_style( 'rawa-aos-css', plugin_dir_url( __FILE__ ) . 'public/css/app.css' );
+            }
 
             // AOS JS
             wp_register_script( 'rawa-aos-js', plugin_dir_url( __FILE__ ) . 'public/js/aos.min.js', array(), null, true );
-            wp_enqueue_script( 'rawa-aos-js' );
+            if ( $scripts[0] != 'enabled' ) {
+                wp_enqueue_script( 'rawa-aos-js' );
+            }
 
             // Initialize AOS
-            wp_register_script( 'rawa-app-js', plugin_dir_url( __FILE__ ) . 'public/js/app.min.js', array( 'rawa-aos-js' ), null, true );
+            wp_register_script( 'rawa-app-js', plugin_dir_url( __FILE__ ) . 'public/js/app.min.js', array( 'jquery' ), null, true );
             wp_enqueue_script( 'rawa-app-js' );
 
             $offset = get_option( 'rawa_aos_offset', '120' );
