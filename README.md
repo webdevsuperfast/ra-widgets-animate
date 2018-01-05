@@ -48,6 +48,9 @@ A: You can disable Animate on Scroll scripts and styles through `Settings > RA W
 3. 'Animation' tab settings when opened in SiteOrigin Panels.
 
 ## Changelog
+1.1.1
+* Fixing missing js files
+
 1.1
 * Added settings page, added app.js script, modify css build path, grammar fixes, code cleanup, updated translation.
 
@@ -76,6 +79,9 @@ A: You can disable Animate on Scroll scripts and styles through `Settings > RA W
 * First release
 
 ## Upgrade Notice
+1.1.1
+* Fixing missing js files
+
 1.1
 * Added settings page, added app.js script, modify css build path, grammar fixes, code cleanup, updated translation.
 
