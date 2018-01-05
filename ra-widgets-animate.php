@@ -123,7 +123,7 @@ class RA_Widgets_Animate {
                 'section' => 'aos_settings',
                 'label' => __( 'Disable', 'ra-widgets-animate' ),
                 'type' => 'select',
-                'supplimental' => __( 'Disable AOS on those certains devices.', 'ra-widgets-animate' ),
+                'supplimental' => __( 'Disable AOS on certain devices.', 'ra-widgets-animate' ),
                 'options' => array(
                     '' => __( 'None' ),
                     'mobile' => __( 'Mobile(Phones/Tablets)', 'ra-widgets-animate' ),
