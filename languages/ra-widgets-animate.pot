@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: RA Widgets Animate\n"
-"POT-Creation-Date: 2018-01-05 18:33+0800\n"
-"PO-Revision-Date: 2018-01-05 18:32+0800\n"
+"POT-Creation-Date: 2018-01-05 21:04+0800\n"
+"PO-Revision-Date: 2018-01-05 21:04+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -35,11 +35,11 @@ msgid "RA Widgets Animate"
 msgstr ""
 
 #: ra-widgets-animate.php:84
-msgid "Global AoS Settings"
+msgid "Global Settings"
 msgstr ""
 
 #: ra-widgets-animate.php:92
-msgid "AoS Scripts Settings"
+msgid "Script Settings"
 msgstr ""
 
 #: ra-widgets-animate.php:113 ra-widgets-animate.php:490
@@ -63,7 +63,7 @@ msgid "Easing"
 msgstr ""
 
 #: ra-widgets-animate.php:131
-msgid "Choose timing function to ease elements in different ways\t"
+msgid "Choose timing function to ease elements in different ways"
 msgstr ""
 
 #: ra-widgets-animate.php:138 ra-widgets-animate.php:506
