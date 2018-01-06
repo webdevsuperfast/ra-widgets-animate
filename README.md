@@ -46,6 +46,7 @@ A: You can disable Animate on Scroll scripts and styles through `Settings > RA W
 1. 'Animation' fields inside 'Widgets' screen in WordPress.
 2. 'Animation' tab settings in SiteOrigin Panels.
 3. 'Animation' tab settings when opened in SiteOrigin Panels.
+4. 'RA Widgets Animate' settings page.
 
 ## Changelog
 1.1.2
