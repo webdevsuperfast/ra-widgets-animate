@@ -33,6 +33,11 @@
     margin: 0;
     background: #f1f1f1;
     border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.rawa-fields .rawa-toggle:hover {
+    cursor: pointer;
 }
 
 .rawa-fields .rawa-toggle::before {
