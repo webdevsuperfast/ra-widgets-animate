@@ -11,10 +11,6 @@
 		localStorage.setItem('rawaDisplay', toggler.next().is(':visible'));
 	});
 
-	if (localStorage.getItem('rawaDisplay') == 'true') {
-		$('.rawa-field').show();
-	}
-
 	$(document).on('widget-updated widget-added', function(event, widget){
 		$(widget).each(function(){
 			var toggler = $(this).find('.rawa-toggle');
