@@ -56,6 +56,13 @@ You can disable Animate on Scroll scripts and styles through `Settings > RA Widg
 4. 'RA Widgets Animate' settings page.
 
 == Changelog ==
+
+= 1.1.4 =
+* Changed donate link, added settings page screenshot.
+
+= 1.1.3 =
+* Added missing js files, removed unneeded files.
+
 = 1.1.2 =
 * Renamed app.js to rawa.js, trying to fixed missing js files on SVN commit
 
@@ -90,6 +97,13 @@ You can disable Animate on Scroll scripts and styles through `Settings > RA Widg
 * First release
 
 == Upgrade Notice ==
+
+= 1.1.4 =
+Changed donate link, added settings page screenshot.
+
+= 1.1.3 =
+Added missing js files, removed unneeded files.
+
 = 1.1.2 =
 Renamed app.js to rawa.js, trying to fixed missing js files on SVN commit
 
