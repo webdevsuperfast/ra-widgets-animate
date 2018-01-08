@@ -1,6 +1,6 @@
 === RA Widgets Animate ===
 Contributors: frodoBean
-Donate link: https://rotsenacob.com/
+Donate link: https://paypal.me/webdevsuperfast
 Tags: aos, animate on scroll, Siteorigion page builder, animation, widgets, siteorigin panels
 Requires at least: 4.7
 Tested up to: 4.9.1
@@ -56,6 +56,12 @@ You can disable Animate on Scroll scripts and styles through `Settings > RA Widg
 4. 'RA Widgets Animate' settings page.
 
 == Changelog ==
+= 1.1.5 =
+* Changed style and script filenames and paths.
+* Fixed `.rawa-fields` from closing on `widgets update`.
+* Added admin script and style to `Customizer` screen.
+* Fixed `disable` object name returning array instead of string.  
+* Admin style changes.
 
 = 1.1.4 =
 * Changed donate link, added settings page screenshot.
@@ -97,6 +103,9 @@ You can disable Animate on Scroll scripts and styles through `Settings > RA Widg
 * First release
 
 == Upgrade Notice ==
+
+= 1.1.5 =
+Filepath, filename changes, bug fixes, customizer implementation.
 
 = 1.1.4 =
 Changed donate link, added settings page screenshot.
