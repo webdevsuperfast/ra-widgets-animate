@@ -551,7 +551,7 @@ class RA_Widgets_Animate {
         if ( !is_admin() ) {
             // AOS CSS
             if ( $styles[0] != 'enabled' ) {
-                wp_enqueue_style( 'rawa-aos-css', plugin_dir_url( __FILE__ ) . 'public/css/rawa.css' );
+                wp_enqueue_style( 'rawa-aos-css', plugin_dir_url( __FILE__ ) . 'public/css/aos.min.css' );
             }
 
             // AOS JS

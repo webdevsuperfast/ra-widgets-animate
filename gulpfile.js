@@ -19,27 +19,22 @@ var gulp = require('gulp'),
 
 // CSS
 gulp.task('styles', function(){
-    var cssStream = gulp.src('node_modules/aos/dist/aos.css')
-        .pipe(concat('aos.css'))
-    
-    var mergeStream = merge(cssStream)
-        .pipe(concat('rawa.css'))
-        .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-        .pipe(cmq())
-        .pipe(gulp.dest('temp/css'))
-        .pipe(rename('rawa.css'))
-        .pipe(cleancss())
-        .pipe(gulp.dest('public/css'))
-        .pipe(notify({ message: 'Styles task complete' }));
-    
-    return mergeStream;
+    return gulp.src('node_modules/aos/dist/aos.css')
+    .pipe(concat('aos.css'))
+    .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+    .pipe(cmq())
+    .pipe(gulp.dest('temp/css'))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(cleancss())
+    .pipe(gulp.dest('public/css'))
+    .pipe(notify({ message: 'Styles task complete' }));
 } );
 
 // Vendor JS
 gulp.task('scripts', function(){
     return gulp.src([
         'node_modules/aos/dist/aos.js',
-        'public/js/sources/rawa.js'
+        'public/js/rawa.js'
     ])
     .pipe(foreach(function(stream, file){
         return stream
