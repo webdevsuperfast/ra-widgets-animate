@@ -590,7 +590,7 @@ class RA_Widgets_Animate {
         if ( $current_page->id === 'widgets' ){
             wp_enqueue_style( 'rawa-admin-css', plugin_dir_url( __FILE__ ) . 'admin/css/admin.css' );
 
-            wp_register_script( 'rawa-admin-js', plugin_dir_url( __FILE__ ) . 'admin/js/admin.js', array( 'jquery' ), null, true );
+            wp_register_script( 'rawa-admin-js', plugin_dir_url( __FILE__ ) . 'admin/js/rawa-admin.js', array( 'jquery' ), null, true );
             wp_enqueue_script( 'rawa-admin-js' );
         }
     }
