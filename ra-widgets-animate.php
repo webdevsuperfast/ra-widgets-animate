@@ -587,7 +587,7 @@ class RA_Widgets_Animate {
         $current_page = get_current_screen();
 
         //Only load if we are not on the widget page - where some of our scripts seem to be conflicting
-        if ( $current_page->id === 'widgets' ){
+        if ( $current_page->id === 'widgets' || is_customize_preview() ){
             wp_enqueue_style( 'rawa-admin-css', plugin_dir_url( __FILE__ ) . 'admin/css/admin.css' );
 
             wp_register_script( 'rawa-admin-js', plugin_dir_url( __FILE__ ) . 'admin/js/rawa-admin.js', array( 'jquery' ), null, true );
