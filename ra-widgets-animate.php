@@ -274,7 +274,6 @@ class RA_Widgets_Animate {
                 settings_fields( 'rawa_settings' ); 
                 do_settings_sections( 'rawa_settings' );
                 submit_button();
-                // submit_button( __( 'Reset Settings' ), 'secondary', 'reset', true );
                 ?>
             </form>
         </div>
@@ -577,7 +576,7 @@ class RA_Widgets_Animate {
                 'duration' => (int) $duration,
                 'easing' => $easing,
                 'delay' => (int) $delay,
-                'disable' => $disable[0] ? $disable : "false",
+                'disable' => $disable[0] ? $disable[0] : "false",
                 'once' => $once[0] == 'enabled' ? "true" : "false"
             ) );
         }
