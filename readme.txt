@@ -4,7 +4,7 @@ Donate link: https://paypal.me/webdevsuperfast
 Tags: aos, animate on scroll, Siteorigion page builder, animation, widgets, siteorigin panels
 Requires at least: 4.7
 Tested up to: 4.9.1
-Stable tag: 1.1.2
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
