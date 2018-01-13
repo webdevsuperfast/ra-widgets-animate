@@ -161,7 +161,7 @@ class RA_Widgets_Animate {
                 'label' => __( 'Custom Width', 'ra-widgets-animate' ),
                 'type' => 'number',
                 'supplimental' => __( 'Enter the viewport width to which AOS will be disabled', 'ra-widgets-animate' ),
-                'default' => 0
+                'default' => 768
             ),
             array(
                 'uid' => 'rawa_aos_once',
@@ -572,6 +572,7 @@ class RA_Widgets_Animate {
             $easing = get_option( 'rawa_aos_easing', ease );
             $delay = get_option( 'rawa_aos_delay', 0 );
             $disable = get_option( 'rawa_aos_disable', false );
+            $custom = get_option( 'rawa_aos_custom', '768' );
             $once = get_option( 'rawa_aos_once' );
 
             wp_localize_script( 'rawa-app-js', 'rawa_aos', array(
@@ -580,6 +581,7 @@ class RA_Widgets_Animate {
                 'easing' => $easing,
                 'delay' => (int) $delay,
                 'disable' => $disable[0] ? $disable[0] : "false",
+                'custom' => (int) $custom,
                 'once' => $once[0] == 'enabled' ? "true" : "false"
             ) );
         }
