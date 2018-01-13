@@ -150,9 +150,18 @@ class RA_Widgets_Animate {
                     '' => __( 'None' ),
                     'mobile' => __( 'Mobile(Phones/Tablets)', 'ra-widgets-animate' ),
                     'phone' => __( 'Phone', 'ra-widgets-animate' ),
-                    'tablet' => __( 'Tablet', 'ra-widgets-animate' )
+                    'tablet' => __( 'Tablet', 'ra-widgets-animate' ),
+                    'custom' => __( 'Custom', 'ra-widgets-animate' )
                 ),
                 'default' => array()
+            ),
+            array(
+                'uid' => 'rawa_aos_custom',
+                'section' => 'aos_settings',
+                'label' => __( 'Custom Width', 'ra-widgets-animate' ),
+                'type' => 'number',
+                'supplimental' => __( 'Enter the viewport width to which AOS will be disabled', 'ra-widgets-animate' ),
+                'default' => 0
             ),
             array(
                 'uid' => 'rawa_aos_once',
@@ -586,6 +595,11 @@ class RA_Widgets_Animate {
 
             wp_register_script( 'rawa-admin-js', plugin_dir_url( __FILE__ ) . 'admin/js/rawa-admin.js', array( 'jquery' ), null, true );
             wp_enqueue_script( 'rawa-admin-js' );
+        }
+
+        if ( $current_page->id === 'settings_page_rawa_settings' ) {
+            wp_register_script( 'rawa-settings-js', plugin_dir_url( __FILE__ ) . 'admin/js/rawa-settings.js', array( 'jquery' ), null, true );
+            wp_enqueue_script( 'rawa-settings-js' );
         }
     }
 
