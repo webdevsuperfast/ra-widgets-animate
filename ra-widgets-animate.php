@@ -120,7 +120,7 @@ class RA_Widgets_Animate {
                 'section' => 'aos_settings',
                 'label' => __( 'Duration', 'ra-widgets-animate' ),
                 'type' => 'number',
-                'supplimental' => __( '*Duration of animation (ms)', 'ra-widgets-animate' ),
+                'supplimental' => __( 'Duration of animation (ms)', 'ra-widgets-animate' ),
                 'default' => 400,
             ),
             array(
@@ -178,7 +178,7 @@ class RA_Widgets_Animate {
             // AoS scripts
             array(
                 'uid' => 'rawa_aos_css',
-                'label' => __( 'Disable AoS Styles', 'ra-widgets-animate' ),
+                'label' => __( 'Disable style', 'ra-widgets-animate' ),
                 'section' => 'aos_scripts',
                 'type' => 'checkbox',
                 'supplimental' => __( 'Disable Animate on Scroll stylesheet, e.g. already present on your theme or plugin', 'ra-widgets-animate' ),
@@ -189,7 +189,7 @@ class RA_Widgets_Animate {
             ),
             array(
                 'uid' => 'rawa_aos_js',
-                'label' => __( 'Disable AoS Script', 'ra-widgets-animate' ),
+                'label' => __( 'Disable script', 'ra-widgets-animate' ),
                 'section' => 'aos_scripts',
                 'type' => 'checkbox',
                 'supplimental' => __( 'Disable Animate on Scroll script, e.g. already present on your theme or plugin', 'ra-widgets-animate' ),
@@ -276,7 +276,7 @@ class RA_Widgets_Animate {
         ?>
 
         <div class="wrap">
-            <h2><?php _e( 'Widgets Animate Settings', 'ra-widgets-animate' ); ?></h2>
+            <h2><?php _e( 'RA Widgets Animate Settings', 'ra-widgets-animate' ); ?></h2>
             <hr>
             <form action="options.php" method="post">
                 <?php 
@@ -500,7 +500,7 @@ class RA_Widgets_Animate {
             'name' => __( 'Duration', 'ra-widgets-animate' ),
             'type' => 'text',
             'group' => 'animation',
-            'description' => __( 'Duration of animation in milliseconds.', 'ra-widgets-animate' ),
+            'description' => __( 'Duration of animation (ms).', 'ra-widgets-animate' ),
             'priority' => 25
         );
 
