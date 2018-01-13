@@ -4,7 +4,7 @@ Donate link: https://paypal.me/webdevsuperfast
 Tags: aos, animate-on-scroll, siteorigin-page-builder, page-builder-animation, animation, animate, siteorigin-panels-animate
 Requires at least: 4.7
 Tested up to: 4.9.1
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -56,6 +56,11 @@ You can disable Animate on Scroll scripts and styles through `Settings > RA Widg
 4. 'RA Widgets Animate' settings page.
 
 == Changelog ==
+
+= 1.1.6 =
+* Added custom viewport selection in plugin settings.
+* Modified plugin tags.
+
 = 1.1.5 =
 * Changed style and script filenames and paths.
 * Fixed `.rawa-fields` from closing on `widgets update`.
@@ -103,6 +108,9 @@ You can disable Animate on Scroll scripts and styles through `Settings > RA Widg
 * First release
 
 == Upgrade Notice ==
+
+= 1.1.6 =
+Added custom viewport selection in plugin settings, modified plugin tags.
 
 = 1.1.5 =
 Filepath, filename changes, bug fixes, customizer implementation.
