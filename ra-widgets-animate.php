@@ -280,12 +280,6 @@ class RA_Widgets_Animate {
         
     <?php }
 
-    public function rawa_admin_notice() { ?>
-        <div class="notice notice-success is-dismissible">
-            <p><?php _e( 'Your settings have been reverted to defaults!', 'ra-widgets-animate' ); ?></p>
-        </div>
-    <?php }
-
     public function rawa_in_widget_form( $t, $return, $instance ) {
         $instance = wp_parse_args( (array) $instance, array( 'title' => '', 'text' => '', 'animation' => '', 'anchor' => '', 'anchor-placement' => '', 'easing' => '', 'offset' => '', 'duration' => '', 'delay' => '', 'once' => '' ) );
 
