@@ -6,7 +6,6 @@
         switch(selectThis.val()) {
             case 'custom':
                 tableBody.show();
-                console.log('custom');
                 break;
             default: 
                 tableBody.hide();
@@ -19,7 +18,6 @@
             switch(selection) {
                 case 'custom':
                     tableBody.show();
-                    console.log('custom');
                     break;
                 default: 
                     tableBody.hide();
