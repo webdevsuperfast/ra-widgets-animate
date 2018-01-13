@@ -1,7 +1,7 @@
 === RA Widgets Animate ===
 Contributors: frodoBean
 Donate link: https://paypal.me/webdevsuperfast
-Tags: aos, animate on scroll, Siteorigion page builder, animation, widgets, siteorigin panels
+Tags: aos, animate-on-scroll, siteorigin-page-builder, page-builder-animation, animation, animate, siteorigin-panels-animate
 Requires at least: 4.7
 Tested up to: 4.9.1
 Stable tag: 1.1.5
