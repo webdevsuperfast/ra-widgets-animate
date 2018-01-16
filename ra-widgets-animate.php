@@ -647,7 +647,7 @@ class RA_Widgets_Animate {
             'zoom-out-right' => __( 'Zoom In Right' ),
         );
 
-        return $animations;
+        return apply_filters( 'rawa_animations', $animations );
     }
 
     function rawa_placements() {
