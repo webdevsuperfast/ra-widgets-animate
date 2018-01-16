@@ -17,8 +17,10 @@ RA Widgets Animate is a WordPress plugin that adds additional widget fields into
 <h3>Features</h3>
 
 * Animate almost all of your widgets
+* [Animate On Scroll](https://michalsnik.github.io/aos/) support
 * Supports SiteOrigin Panels Widget Styles
 * Ability to choose animation type
+* Add additional animation type using the built-in `rawa_animations` filter
 * Ability to choose anchor placement
 * Ability to change anchor element
 * Ability to change easing time
@@ -26,6 +28,7 @@ RA Widgets Animate is a WordPress plugin that adds additional widget fields into
 * Ability to change animation duration
 * Ability to change animation delay
 * Ability to set animation once
+* Ability to disable animation on certain devices and viewports
 * Set global Animate on Scroll Settings via plugin settings
 * Enable/disable plugin scripts and styles via plugin settings
 
@@ -47,6 +50,33 @@ You can set the global settings through `Settings > RA Widgets Animate > Global 
 = I have Animate on Scroll already, how can I disable the AOS script on your plugin to prevent conflict?
 
 You can disable Animate on Scroll scripts and styles through `Settings > RA Widgets Animate > Script Settings`.
+
+= I want to add additional animation values, how can I do that?
+
+As of version `1.1.7`, you can now add custom animation values using the built-in `rawa_animations` filter. Add the following code in your functions.php file.
+
+`<?php
+add_filter( 'rawa_animations', function( $animation ) {
+    new_animation = array(
+        'custom-animation' => __( 'Custom Animation' ),
+    );
+
+    return array_merge( $animation, $new_animation );
+} );`
+
+Then, add the following to your css file:
+
+`[data-aos="custom-animation"] {
+    transform: skewX(45deg);
+    opacity: 0;
+    transition-property: transform, opacity;
+}
+[data-aos="custom-animation"].aos-animate {
+    transform: skewX(0);
+    opacity: 1;
+}`
+
+To learn more about setting custom animation values check out this [pen](https://codepen.io/michalsnik/pen/WxvNvE) from the [Animate on Scroll](https://michalsnik.github.io/aos/) author.
 
 == Screenshots ==
 
