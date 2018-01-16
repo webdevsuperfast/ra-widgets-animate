@@ -1,5 +1,5 @@
 === RA Widgets Animate ===
-Contributors: frodoBean
+Contributors: FrodoBean
 Donate link: https://paypal.me/webdevsuperfast
 Tags: aos, animate-on-scroll, siteorigin-page-builder, page-builder-animation, animation, animate, siteorigin-panels-animate
 Requires at least: 4.7
