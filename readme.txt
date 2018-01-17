@@ -3,7 +3,7 @@ Contributors: FrodoBean
 Donate link: https://paypal.me/webdevsuperfast
 Tags: aos, animate-on-scroll, siteorigin-page-builder, page-builder-animation, animation, animate, siteorigin-panels-animate
 Requires at least: 4.7
-Tested up to: 4.9.1
+Tested up to: 4.9.2
 Stable tag: 1.1.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
