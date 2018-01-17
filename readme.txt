@@ -4,7 +4,7 @@ Donate link: https://paypal.me/webdevsuperfast
 Tags: aos, animate-on-scroll, siteorigin-page-builder, page-builder-animation, animation, animate, siteorigin-panels-animate
 Requires at least: 4.7
 Tested up to: 4.9.2
-Stable tag: 1.1.6
+Stable tag: 1.1.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -87,6 +87,9 @@ To learn more about setting custom animation values check out this [pen](https:/
 
 == Changelog ==
 
+= 1.1.7 =
+* Added custom animation filter to allow additional animation values.
+
 = 1.1.6 =
 * Added custom viewport selection in plugin settings.
 * Modified plugin tags.
@@ -138,6 +141,9 @@ To learn more about setting custom animation values check out this [pen](https:/
 * First release
 
 == Upgrade Notice ==
+
+= 1.1.7 =
+Added custom animation filter to allow additional animation values.
 
 = 1.1.6 =
 Added custom viewport selection in plugin settings, modified plugin tags.

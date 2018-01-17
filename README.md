@@ -49,6 +49,10 @@ A: You can disable Animate on Scroll scripts and styles through `Settings > RA W
 4. 'RA Widgets Animate' settings page.
 
 ## Changelog
+
+1.1.7
+* Added custom animation filter to allow additional animation values.
+
 1.1.6
 * Added custom viewport selection in plugin settings.
 * Modified plugin tags.
