@@ -30,7 +30,7 @@
     "merge-stream": "^1.0.1",
     "vinyl-paths": "^2.1.0"
   },
-  "main": "index.js",
+  "main": "gulpfile.js",
   "repository": "git@github.com:webdevsuperfast/ra-widgets-animate.git",
   "private": true,
   "dependencies": {
