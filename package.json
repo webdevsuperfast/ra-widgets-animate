@@ -14,26 +14,36 @@
   "devDependencies": {
     "del": "^3.0.0",
     "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.1.0",
+    "gulp-autoprefixer": "^5.0.0",
     "gulp-cache": "^1.0.2",
     "gulp-changed": "^3.2.0",
-    "gulp-clean-css": "^3.9.2",
+    "gulp-clean-css": "^3.9.4",
     "gulp-combine-mq": "^0.4.0",
     "gulp-concat": "^2.6.1",
-    "gulp-concat-css": "^3.0.0",
+    "gulp-concat-css": "^3.1.0",
     "gulp-flatmap": "^1.0.2",
     "gulp-jsbeautifier": "^2.1.2",
     "gulp-notify": "^3.2.0",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
+    "gulp-sass": "^4.0.1",
     "gulp-uglify": "^3.0.0",
     "merge-stream": "^1.0.1",
     "vinyl-paths": "^2.1.0"
   },
   "main": "gulpfile.js",
-  "repository": "git@github.com:webdevsuperfast/ra-widgets-animate.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/webdevsuperfast/ra-widgets-animate.git"
+  },
   "private": true,
   "dependencies": {
     "aos": "^2.2.0"
+  },
+  "bugs": {
+    "url": "https://github.com/webdevsuperfast/ra-widgets-animate/issues"
+  },
+  "homepage": "https://github.com/webdevsuperfast/ra-widgets-animate#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
