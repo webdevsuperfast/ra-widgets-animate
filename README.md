@@ -108,13 +108,13 @@ A: You can disable Animate on Scroll scripts and styles through `Settings > RA W
 * First release
 
 ## Upgrade Notice
-= 1.1.8 =
+1.1.8
 * Updated Animate on Scroll to version 2.3.0, author URI and updated translation file.
 
-= 1.1.7 =
+1.1.7
 * Added custom animation filter to allow additional animation values.
 
-= 1.1.6 =
+1.1.6
 * Added custom viewport selection in plugin settings, modified plugin tags.
 
 1.1.5
