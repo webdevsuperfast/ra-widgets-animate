@@ -156,7 +156,6 @@ class RA_Widgets_Animate {
     }
 
     public function rawa_dynamic_sidebar_params( $params ) {
-        // var_dump( get_option( 'rawa_enable_cb' ) );
         global $wp_registered_widgets;
 
         $widget_id = $params[0]['widget_id'];
