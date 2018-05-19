@@ -11,7 +11,7 @@
   ],
   "author": "Rotsen Mark Acob",
   "license": "GPL-2.0",
-  "devDependencies": {
+  "dependencies": {
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
@@ -28,7 +28,8 @@
     "gulp-sass": "^4.0.1",
     "gulp-uglify": "^3.0.0",
     "merge-stream": "^1.0.1",
-    "vinyl-paths": "^2.1.0"
+    "vinyl-paths": "^2.1.0",
+    "aos": "^2.3.0"
   },
   "main": "gulpfile.js",
   "repository": {
@@ -36,9 +37,6 @@
     "url": "git+ssh://git@github.com/webdevsuperfast/ra-widgets-animate.git"
   },
   "private": true,
-  "dependencies": {
-    "aos": "^2.3.0"
-  },
   "bugs": {
     "url": "https://github.com/webdevsuperfast/ra-widgets-animate/issues"
   },
