@@ -335,7 +335,7 @@ class RA_Widgets_Animate {
 
             $offset = get_option( 'rawa_aos_offset', '120' );
             $duration = get_option( 'rawa_aos_duration', '400' );
-            $easing = get_option( 'rawa_aos_easing', ease );
+            $easing = get_option( 'rawa_aos_easing', 'ease' );
             $delay = get_option( 'rawa_aos_delay', 0 );
             $disable = get_option( 'rawa_aos_disable', false );
             $custom = get_option( 'rawa_aos_custom', '768' );
