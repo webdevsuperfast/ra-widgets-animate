@@ -146,6 +146,8 @@ To learn more about setting custom animation values check out this [pen](https:/
 * First release
 
 == Upgrade Notice ==
+
+= 1.1.8 =
 Updated Animate on Scroll to version 2.3.0, author URI and updated translation file.
 
 = 1.1.7 =
