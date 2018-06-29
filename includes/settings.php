@@ -1,4 +1,7 @@
 <?php
+/**
+ * Class for Widget Admin Settings
+ */
 if ( !class_exists( 'RA_Widgets_Animation' ) ) {
     include_once( plugin_dir_path( __FILE__ ) . 'aos.php' );
 }

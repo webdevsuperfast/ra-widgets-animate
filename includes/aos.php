@@ -1,4 +1,7 @@
 <?php
+/**
+ * Class for Animate on Scroll options
+ */
 if ( !class_exists( 'RA_Widgets_Animation' ) ) {
     class RA_Widgets_Animation {
         public function __construct() {}
