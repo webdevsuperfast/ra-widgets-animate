@@ -12,15 +12,15 @@ Animate widgets using Animate on Scroll library.
 
 == Description ==
 
-RA Widgets Animate is a WordPress plugin that adds additional widget fields into existing widget forms and uses [Animate On Scroll](https://michalsnik.github.io/aos/) to render animation. This plugin also adds 'Animation' tab to Widget Styles when use with SiteOrigin Panels.
+RA Widgets Animate is a WordPress plugin that adds additional widget fields into existing widget forms using the latest [Animate On Scroll](https://michalsnik.github.io/aos/) script to render animation. If you're using SiteOrigin Panels, the plugin also adds 'Animation' tab to Widget Styles.
 
 <h3>Features</h3>
 
 * Animate almost all of your widgets
-* [Animate On Scroll](https://michalsnik.github.io/aos/) support
+* Animate On Scroll support
 * Supports SiteOrigin Panels Widget Styles
 * Ability to choose animation type
-* Add additional animation type using the built-in `rawa_animations` filter
+* Ability to add additional animation values using the built-in `rawa_animations` filter
 * Ability to choose anchor placement
 * Ability to change anchor element
 * Ability to change easing time
@@ -29,7 +29,7 @@ RA Widgets Animate is a WordPress plugin that adds additional widget fields into
 * Ability to change animation delay
 * Ability to set animation once
 * Ability to disable animation on certain devices and viewports
-* Set global Animate on Scroll Settings via plugin settings
+* Set global settings via plugin settings
 * Enable/disable plugin scripts and styles via plugin settings
 
 == Installation ==
