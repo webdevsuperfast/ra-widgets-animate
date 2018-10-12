@@ -1,478 +1,214 @@
-#, fuzzy
+# Copyright (C) 2018 RA Widgets Animate 1.1.8
+# This file is distributed under the same license as the RA Widgets Animate 1.1.8 package.
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"Project-Id-Version: RA Widgets Animate\n"
-"POT-Creation-Date: 2018-05-19 10:12+0800\n"
-"PO-Revision-Date: 2018-05-19 10:11+0800\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"Project-Id-Version: RA Widgets Animate 1.1.8\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.7\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
-"X-Poedit-WPHeader: ra-widgets-animate.php\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ra-widgets-animate.php:15
 msgid "With great power comes great responsibility."
-msgstr "With great power comes great responsibility."
+msgstr ""
 
-#: ra-widgets-animate.php:59
-msgid "Settings"
-msgstr "Settings"
+#: ra-widgets-animate.php:80
+msgid "Animation Settings"
+msgstr ""
 
-#. Plugin Name of the plugin/theme
-#: ra-widgets-animate.php:66 ra-widgets-animate.php:67
-msgid "RA Widgets Animate"
-msgstr "RA Widgets Animate"
+#: ra-widgets-animate.php:83
+msgid "Animation:"
+msgstr ""
 
-#: ra-widgets-animate.php:84
-msgid "Global Settings"
-msgstr "Global Settings"
+#: ra-widgets-animate.php:89, ra-widgets-animate.php:227
+msgid "Choose from several predefined animations."
+msgstr ""
 
 #: ra-widgets-animate.php:92
-msgid "Script Settings"
-msgstr "Script Settings"
+msgid "Anchor:"
+msgstr ""
 
-#: ra-widgets-animate.php:113 ra-widgets-animate.php:492
-msgid "Offset"
-msgstr "Offset"
+#: ra-widgets-animate.php:94, ra-widgets-animate.php:235
+msgid "Anchor element, whose offset will be counted to trigger animation instead of actual elements offset."
+msgstr ""
+
+#: ra-widgets-animate.php:97
+msgid "Anchor Placement:"
+msgstr ""
+
+#: ra-widgets-animate.php:103, ra-widgets-animate.php:244
+msgid "Select which position of element on the screen should trigger animation."
+msgstr ""
+
+#: ra-widgets-animate.php:106
+msgid "Easing:"
+msgstr ""
+
+#: ra-widgets-animate.php:112, ra-widgets-animate.php:253
+msgid "Choose timing function to ease elements in different ways."
+msgstr ""
 
 #: ra-widgets-animate.php:115
-msgid "Change offset to trigger animations sooner or later (px)"
-msgstr "Change offset to trigger animations sooner or later (px)"
-
-#: ra-widgets-animate.php:121 ra-widgets-animate.php:500
-msgid "Duration"
-msgstr "Duration"
-
-#: ra-widgets-animate.php:123
-msgid "Duration of animation (ms)"
-msgstr "Duration of animation (ms)"
-
-#: ra-widgets-animate.php:129 ra-widgets-animate.php:483
-msgid "Easing"
-msgstr "Easing"
-
-#: ra-widgets-animate.php:131
-msgid "Choose timing function to ease elements in different ways"
-msgstr "Choose timing function to ease elements in different ways"
-
-#: ra-widgets-animate.php:138 ra-widgets-animate.php:508
-msgid "Delay"
-msgstr "Delay"
-
-#: ra-widgets-animate.php:140
-msgid "Delay animation (ms)"
-msgstr "Delay animation (ms)"
-
-#: ra-widgets-animate.php:146
-msgid "Disable"
-msgstr "Disable"
-
-#: ra-widgets-animate.php:148
-msgid "Disable AOS on certain devices."
-msgstr "Disable AOS on certain devices."
-
-#: ra-widgets-animate.php:150
-msgid "None"
-msgstr "None"
-
-#: ra-widgets-animate.php:151
-msgid "Mobile(Phones/Tablets)"
-msgstr "Mobile(Phones/Tablets)"
-
-#: ra-widgets-animate.php:152
-msgid "Phone"
-msgstr "Phone"
-
-#: ra-widgets-animate.php:153
-msgid "Tablet"
-msgstr "Tablet"
-
-#: ra-widgets-animate.php:154
-msgid "Custom"
-msgstr "Custom"
-
-#: ra-widgets-animate.php:161
-msgid "Custom Width"
-msgstr "Custom Width"
-
-#: ra-widgets-animate.php:163
-msgid "Enter the viewport width to which AOS will be disabled"
-msgstr "Enter the viewport width to which AOS will be disabled"
-
-#: ra-widgets-animate.php:169 ra-widgets-animate.php:516
-msgid "Once"
-msgstr "Once"
-
-#: ra-widgets-animate.php:171
-msgid ""
-"Choose whether animation should fire once, or every time you scroll up/down "
-"to element"
-msgstr ""
-"Choose whether animation should fire once, or every time you scroll up/down "
-"to element"
-
-#: ra-widgets-animate.php:174 ra-widgets-animate.php:186
-#: ra-widgets-animate.php:197
-msgid "Yes"
-msgstr "Yes"
-
-#: ra-widgets-animate.php:181
-msgid "Disable style"
-msgstr "Disable style"
-
-#: ra-widgets-animate.php:184
-msgid ""
-"Disable Animate on Scroll stylesheet, e.g. already present on your theme or "
-"plugin"
-msgstr ""
-"Disable Animate on Scroll stylesheet, e.g. already present on your theme or "
-"plugin"
-
-#: ra-widgets-animate.php:192
-msgid "Disable script"
-msgstr "Disable script"
-
-#: ra-widgets-animate.php:195
-msgid ""
-"Disable Animate on Scroll script, e.g. already present on your theme or "
-"plugin"
-msgstr ""
-"Disable Animate on Scroll script, e.g. already present on your theme or "
-"plugin"
-
-#: ra-widgets-animate.php:279
-msgid "RA Widgets Animate Settings"
-msgstr "RA Widgets Animate Settings"
-
-#: ra-widgets-animate.php:315
-msgid "Animation Settings"
-msgstr "Animation Settings"
-
-#: ra-widgets-animate.php:318
-msgid "Animation:"
-msgstr "Animation:"
-
-#: ra-widgets-animate.php:324 ra-widgets-animate.php:461
-msgid "Choose from several predefined animations."
-msgstr "Choose from several predefined animations."
-
-#: ra-widgets-animate.php:327
-msgid "Anchor:"
-msgstr "Anchor:"
-
-#: ra-widgets-animate.php:329 ra-widgets-animate.php:469
-msgid ""
-"Anchor element, whose offset will be counted to trigger animation instead of "
-"actual elements offset."
-msgstr ""
-"Anchor element, whose offset will be counted to trigger animation instead of "
-"actual elements offset."
-
-#: ra-widgets-animate.php:332
-msgid "Anchor Placement:"
-msgstr "Anchor Placement:"
-
-#: ra-widgets-animate.php:338 ra-widgets-animate.php:478
-msgid ""
-"Select which position of element on the screen should trigger animation."
-msgstr ""
-"Select which position of element on the screen should trigger animation."
-
-#: ra-widgets-animate.php:341
-msgid "Easing:"
-msgstr "Easing:"
-
-#: ra-widgets-animate.php:347 ra-widgets-animate.php:487
-msgid "Choose timing function to ease elements in different ways."
-msgstr "Choose timing function to ease elements in different ways."
-
-#: ra-widgets-animate.php:350
 msgid "Offset:"
-msgstr "Offset:"
-
-#: ra-widgets-animate.php:352 ra-widgets-animate.php:495
-msgid "Change offset to trigger animations sooner or later (px)."
-msgstr "Change offset to trigger animations sooner or later (px)."
-
-#: ra-widgets-animate.php:355
-msgid "Duration:"
-msgstr "Duration:"
-
-#: ra-widgets-animate.php:357 ra-widgets-animate.php:503
-msgid "Duration of animation (ms)."
-msgstr "Duration of animation (ms)."
-
-#: ra-widgets-animate.php:360
-msgid "Delay:"
-msgstr "Delay:"
-
-#: ra-widgets-animate.php:362 ra-widgets-animate.php:511
-msgid "Delay animation (ms)."
-msgstr "Delay animation (ms)."
-
-#: ra-widgets-animate.php:365
-msgid "Once:"
-msgstr "Once:"
-
-#: ra-widgets-animate.php:367 ra-widgets-animate.php:519
-msgid ""
-"Choose whether animation should fire once, or every time you scroll up/down "
-"to element."
 msgstr ""
-"Choose whether animation should fire once, or every time you scroll up/down "
-"to element."
 
-#: ra-widgets-animate.php:433
+#: ra-widgets-animate.php:117, ra-widgets-animate.php:261
+msgid "Change offset to trigger animations sooner or later (px)."
+msgstr ""
+
+#: ra-widgets-animate.php:120
+msgid "Duration:"
+msgstr ""
+
+#: ra-widgets-animate.php:122, ra-widgets-animate.php:269
+msgid "Duration of animation (ms)."
+msgstr ""
+
+#: ra-widgets-animate.php:125
+msgid "Delay:"
+msgstr ""
+
+#: ra-widgets-animate.php:127, ra-widgets-animate.php:277
+msgid "Delay animation (ms)."
+msgstr ""
+
+#: ra-widgets-animate.php:130
+msgid "Once:"
+msgstr ""
+
+#: ra-widgets-animate.php:132, ra-widgets-animate.php:285
+msgid "Choose whether animation should fire once, or every time you scroll up/down to element."
+msgstr ""
+
+#: ra-widgets-animate.php:197
 msgid "Animation"
-msgstr "Animation"
+msgstr ""
 
-#: ra-widgets-animate.php:457
+#: ra-widgets-animate.php:223
 msgid "Type"
-msgstr "Type"
+msgstr ""
 
-#: ra-widgets-animate.php:466
+#: ra-widgets-animate.php:232
 msgid "Anchor"
-msgstr "Anchor"
+msgstr ""
 
-#: ra-widgets-animate.php:474
+#: ra-widgets-animate.php:240
 msgid "Anchor Placement"
-msgstr "Anchor Placement"
+msgstr ""
 
-#: ra-widgets-animate.php:616
-msgid "No Animation"
-msgstr "No Animation"
+#: ra-widgets-animate.php:249, includes/settings.php:96
+msgid "Easing"
+msgstr ""
 
-#: ra-widgets-animate.php:618
-msgid "Fade"
-msgstr "Fade"
+#: ra-widgets-animate.php:258, includes/settings.php:80
+msgid "Offset"
+msgstr ""
 
-#: ra-widgets-animate.php:619
-msgid "Fade Up"
-msgstr "Fade Up"
+#: ra-widgets-animate.php:266, includes/settings.php:88
+msgid "Duration"
+msgstr ""
 
-#: ra-widgets-animate.php:620
-msgid "Fade Down"
-msgstr "Fade Down"
+#: ra-widgets-animate.php:274, includes/settings.php:105
+msgid "Delay"
+msgstr ""
 
-#: ra-widgets-animate.php:621
-msgid "Fade Left"
-msgstr "Fade Left"
+#: ra-widgets-animate.php:282, includes/settings.php:136
+msgid "Once"
+msgstr ""
 
-#: ra-widgets-animate.php:622
-msgid "Fade Right"
-msgstr "Fade Right"
+#: includes/settings.php:24
+msgid "Settings"
+msgstr ""
 
-#: ra-widgets-animate.php:623
-msgid "Fade Up Right"
-msgstr "Fade Up Right"
+#: includes/settings.php:31, includes/settings.php:32
+msgid "RA Widgets Animate"
+msgstr ""
 
-#: ra-widgets-animate.php:624
-msgid "Fade Up Left"
-msgstr "Fade Up Left"
+#: includes/settings.php:49
+msgid "Global Settings"
+msgstr ""
 
-#: ra-widgets-animate.php:625
-msgid "Fade Down Right"
-msgstr "Fade Down Right"
+#: includes/settings.php:57
+msgid "Script Settings"
+msgstr ""
 
-#: ra-widgets-animate.php:626
-msgid "Fade Down Left"
-msgstr "Fade Down Left"
+#: includes/settings.php:82
+msgid "Change offset to trigger animations sooner or later (px)"
+msgstr ""
 
-#: ra-widgets-animate.php:628
-msgid "Flip Up"
-msgstr "Flip Up"
+#: includes/settings.php:90
+msgid "Duration of animation (ms)"
+msgstr ""
 
-#: ra-widgets-animate.php:629
-msgid "Flip Down"
-msgstr "Flip Down"
+#: includes/settings.php:98
+msgid "Choose timing function to ease elements in different ways"
+msgstr ""
 
-#: ra-widgets-animate.php:630
-msgid "Flip Left"
-msgstr "Flip Left"
+#: includes/settings.php:107
+msgid "Delay animation (ms)"
+msgstr ""
 
-#: ra-widgets-animate.php:631
-msgid "Flip Right"
-msgstr "Flip Right"
+#: includes/settings.php:113
+msgid "Disable"
+msgstr ""
 
-#: ra-widgets-animate.php:633
-msgid "Slide Up"
-msgstr "Slide Up"
+#: includes/settings.php:115
+msgid "Disable AOS on certain devices."
+msgstr ""
 
-#: ra-widgets-animate.php:634
-msgid "Slide Down"
-msgstr "Slide Down"
+#: includes/settings.php:118
+msgid "Mobile(Phones/Tablets)"
+msgstr ""
 
-#: ra-widgets-animate.php:635
-msgid "Slide Left"
-msgstr "Slide Left"
+#: includes/settings.php:119
+msgid "Phone"
+msgstr ""
 
-#: ra-widgets-animate.php:636
-msgid "Slide Right"
-msgstr "Slide Right"
+#: includes/settings.php:120
+msgid "Tablet"
+msgstr ""
 
-#: ra-widgets-animate.php:638 ra-widgets-animate.php:643
-msgid "Zoom In"
-msgstr "Zoom In"
+#: includes/settings.php:121
+msgid "Custom"
+msgstr ""
 
-#: ra-widgets-animate.php:639 ra-widgets-animate.php:644
-msgid "Zoom In Up"
-msgstr "Zoom In Up"
+#: includes/settings.php:128
+msgid "Custom Width"
+msgstr ""
 
-#: ra-widgets-animate.php:640 ra-widgets-animate.php:645
-msgid "Zoom In Down"
-msgstr "Zoom In Down"
+#: includes/settings.php:130
+msgid "Enter the viewport width to which AOS will be disabled"
+msgstr ""
 
-#: ra-widgets-animate.php:641 ra-widgets-animate.php:646
-msgid "Zoom In Left"
-msgstr "Zoom In Left"
+#: includes/settings.php:138
+msgid "Choose whether animation should fire once, or every time you scroll up/down to element"
+msgstr ""
 
-#: ra-widgets-animate.php:642 ra-widgets-animate.php:647
-msgid "Zoom In Right"
-msgstr "Zoom In Right"
+#: includes/settings.php:148
+msgid "Disable style"
+msgstr ""
 
-#: ra-widgets-animate.php:656 ra-widgets-animate.php:674
-msgid "Default"
-msgstr "Default"
+#: includes/settings.php:151
+msgid "Disable Animate on Scroll stylesheet, e.g. already present on your theme or plugin"
+msgstr ""
 
-#: ra-widgets-animate.php:657
-msgid "Top Bottom"
-msgstr "Top Bottom"
+#: includes/settings.php:153, includes/settings.php:164
+msgid "Yes"
+msgstr ""
 
-#: ra-widgets-animate.php:658
-msgid "Top Center"
-msgstr "Top Center"
+#: includes/settings.php:159
+msgid "Disable script"
+msgstr ""
 
-#: ra-widgets-animate.php:659
-msgid "Top Top"
-msgstr "Top Top"
+#: includes/settings.php:162
+msgid "Disable Animate on Scroll script, e.g. already present on your theme or plugin"
+msgstr ""
 
-#: ra-widgets-animate.php:660
-msgid "Center Bottom"
-msgstr "Center Bottom"
-
-#: ra-widgets-animate.php:661
-msgid "Center Center"
-msgstr "Center Center"
-
-#: ra-widgets-animate.php:662
-msgid "Center Top"
-msgstr "Center Top"
-
-#: ra-widgets-animate.php:663
-msgid "Bottom Bottom"
-msgstr "Bottom Bottom"
-
-#: ra-widgets-animate.php:664
-msgid "Bottom Center"
-msgstr "Bottom Center"
-
-#: ra-widgets-animate.php:665
-msgid "Bottom Top"
-msgstr "Bottom Top"
-
-#: ra-widgets-animate.php:675
-msgid "Linear"
-msgstr "Linear"
-
-#: ra-widgets-animate.php:676
-msgid "Ease"
-msgstr "Ease"
-
-#: ra-widgets-animate.php:677
-msgid "Ease In"
-msgstr "Ease In"
-
-#: ra-widgets-animate.php:678
-msgid "Ease Out"
-msgstr "Ease Out"
-
-#: ra-widgets-animate.php:679
-msgid "Ease In Out"
-msgstr "Ease In Out"
-
-#: ra-widgets-animate.php:680
-msgid "Ease In Back"
-msgstr "Ease In Back"
-
-#: ra-widgets-animate.php:681
-msgid "Ease Out Back"
-msgstr "Ease Out Back"
-
-#: ra-widgets-animate.php:682
-msgid "Ease In Out Back"
-msgstr "Ease In Out Back"
-
-#: ra-widgets-animate.php:683
-msgid "Ease In Sine"
-msgstr "Ease In Sine"
-
-#: ra-widgets-animate.php:684
-msgid "Ease Out Sine"
-msgstr "Ease Out Sine"
-
-#: ra-widgets-animate.php:685
-msgid "Ease In Out Sine"
-msgstr "Ease In Out Sine"
-
-#: ra-widgets-animate.php:686
-msgid "Ease In Quad"
-msgstr "Ease In Quad"
-
-#: ra-widgets-animate.php:687
-msgid "Ease Out Quad"
-msgstr "Ease Out Quad"
-
-#: ra-widgets-animate.php:688
-msgid "Ease In Out Quad"
-msgstr "Ease In Out Quad"
-
-#: ra-widgets-animate.php:689
-msgid "Ease In Cubic"
-msgstr "Ease In Cubic"
-
-#: ra-widgets-animate.php:690
-msgid "Ease Out Cubic"
-msgstr "Ease Out Cubic"
-
-#: ra-widgets-animate.php:691
-msgid "Ease In Out Cubic"
-msgstr "Ease In Out Cubic"
-
-#: ra-widgets-animate.php:692
-msgid "Ease In Quart"
-msgstr "Ease In Quart"
-
-#: ra-widgets-animate.php:693
-msgid "Ease Out Quart"
-msgstr "Ease Out Quart"
-
-#: ra-widgets-animate.php:694
-msgid "Ease In Out Quart"
-msgstr "Ease In Out Quart"
-
-#. Plugin URI of the plugin/theme
-msgid "https://github.com/webdevsuperfast/ra-widgets-animate"
-msgstr "https://github.com/webdevsuperfast/ra-widgets-animate"
-
-#. Description of the plugin/theme
-msgid "Animate widgets using Animate on Scroll library."
-msgstr "Animate widgets using Animate on Scroll library."
-
-#. Author of the plugin/theme
-msgid "Rotsen Mark Acob"
-msgstr "Rotsen Mark Acob"
-
-#. Author URI of the plugin/theme
-msgid "https://rotsenacob.com/"
-msgstr "https://rotsenacob.com/"
+#: includes/settings.php:246
+msgid "RA Widgets Animate Settings"
+msgstr ""
