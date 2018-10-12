@@ -31,7 +31,7 @@ toolkit.extendConfig({
             dest: 'public/css/',
             outputStyle: 'compressed'
         },
-        'admin': {
+        'rawa-admin': {
             src: 'develop/admin/css/rawa-admin.css',
             dest: 'admin/css/',
             outputStyle: 'compressed'
