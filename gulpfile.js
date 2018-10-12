@@ -1,66 +1,66 @@
+'use strict';
+
 var gulp = require('gulp'),
-    sass = require('gulp-sass'),
-    autoprefixer = require('gulp-autoprefixer'),
-    rename = require('gulp-rename'),
-    concat = require('gulp-concat'),
-    notify = require('gulp-notify'),
-    cache = require('gulp-cache'),
-    vinylpaths = require('vinyl-paths'),
-    cleancss = require('gulp-clean-css'),
-    cmq = require('gulp-combine-mq'),
-    prettify = require('gulp-jsbeautifier'),
-    concatcss = require('gulp-concat-css'),
-    uglify = require('gulp-uglify'),
-    foreach = require('gulp-flatmap'),
-    changed = require('gulp-changed'),
-    vinylpaths = require('vinyl-paths'),
-    merge = require('merge-stream'),
-    del = require('del');
+    pkg = require('./package.json'),
+    toolkit = require('gulp-wp-plugin-toolkit');
 
-// CSS
-gulp.task('styles', function(){
-    return gulp.src('node_modules/aos/dist/aos.css')
-    .pipe(concat('aos.css'))
-    .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-    .pipe(cmq())
-    .pipe(gulp.dest('temp/css'))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(cleancss())
-    .pipe(gulp.dest('public/css'))
-    .pipe(notify({ message: 'Styles task complete' }));
-} );
-
-// Vendor JS
-gulp.task('scripts', function(){
-    return gulp.src([
-        'node_modules/aos/dist/aos.js',
-        'public/js/rawa.js'
-    ])
-    .pipe(foreach(function(stream, file){
-        return stream
-            .pipe(changed('temp/js'))
-            .pipe(uglify())
-            .pipe(rename({suffix: '.min'}))
-            .pipe(gulp.dest('temp/js'))
-    }))
-    .pipe(gulp.dest('public/js'))
-    .pipe(notify({ message: 'Scripts task complete' }));
+toolkit.extendConfig({
+    project: {
+        name: 'RA Widgets Animate',
+        version: pkg.version,
+        textdomain: pkg.name,
+        watch: {
+            php: [
+                '**/*.php'
+            ],
+            scss: [
+                'develop/admin/css/**/*.css', 
+                'develop/public/css/*.css',
+                '!node_modules/**'
+            ],
+            js: [
+                'develop/admin/js/**/*.js', 
+                'develop/public/js/*.js',
+                '!node_modules/**'
+            ]
+        }
+    },
+    scss: {
+        'aos': {
+            src: 'node_modules/aos/dist/aos.css',
+            dest: 'public/css/',
+            outputStyle: 'compressed'
+        },
+        'admin': {
+            src: 'develop/admin/css/rawa-admin.css',
+            dest: 'admin/css/',
+            outputStyle: 'compressed'
+        }
+    },
+    js: {
+        'aos': {
+            src: 'node_modules/aos/dist/aos.js',
+            dest: 'public/js/'
+        },
+        'rawa': {
+            src: 'develop/public/js/*.js',
+            dest: 'public/js/'
+        },
+        'rawa-admin': {
+            src: 'develop/admin/js/rawa-admin.js',
+            dest: 'admin/js/'
+        },
+        'rawa-settings': {
+            src: 'develop/admin/js/rawa-settings.js',
+            dest: 'admin/js/'
+        },
+        'siteorigin-admin': {
+            src: 'develop/admin/js/siteorigin-admin.js',
+            dest: 'admin/js/'
+        }
+    }
 });
 
-// Clean temp folder
-gulp.task('clean:temp', function(){
-    return gulp.src('temp/*')
-    .pipe(vinylpaths(del))
-});
+toolkit.extendTasks(gulp, {
 
-// Default task
-gulp.task('default', ['clean:temp'], function() {
-    gulp.start('styles', 'watch');
-    gulp.start('scripts', 'watch');
-});
-
-// Watch
-gulp.task('watch', function() {
-    // Watch .scss files
-    gulp.watch(['public/js/*.js'], ['scripts']);
 });
