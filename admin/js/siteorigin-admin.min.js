@@ -1,0 +1,1 @@
+!function(n){n(document).on("panelsopen",function(e){n(e.target).has(".so-panels-dialog-wrapper")&&n(".rawa-fields").hide()})}(jQuery);
