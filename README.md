@@ -49,6 +49,11 @@ A: You can disable Animate on Scroll scripts and styles through `Settings > RA W
 4. 'RA Widgets Animate' settings page.
 
 ## Changelog
+1.1.9
+* Updated Animate on Scroll to version 2.3.4.
+* Fixed Animate on Scroll disable on devices implementation.
+* Updated translation.
+
 1.1.8
 * Updated Animate on Scroll to version 2.3.0.
 * Updated translation.
@@ -108,6 +113,9 @@ A: You can disable Animate on Scroll scripts and styles through `Settings > RA W
 * First release
 
 ## Upgrade Notice
+1.1.9
+* Updated Animate on Scroll, fixed Disable on Devices and updated translation.
+
 1.1.8
 * Updated Animate on Scroll to version 2.3.0, author URI and updated translation file.
 
