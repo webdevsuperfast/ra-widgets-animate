@@ -4,7 +4,7 @@ Donate link: https://paypal.me/webdevsuperfast
 Tags: aos, animate-on-scroll, siteorigin-page-builder, page-builder-animation, animation, animate, siteorigin-panels-animate
 Requires at least: 4.7
 Tested up to: 4.9.8
-Stable tag: 1.1.9
+Stable tag: 1.1.9.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -87,6 +87,10 @@ To learn more about setting custom animation values check out this [pen](https:/
 
 == Changelog ==
 
+= 1.1.9.1 = 
+* Fixed undefined constant
+* Added missing js, css files
+
 = 1.1.9 =
 * Updated Animate on Scroll to version 2.3.4.
 * Fixed Animate on Scroll disable on devices implementation.
@@ -151,6 +155,9 @@ To learn more about setting custom animation values check out this [pen](https:/
 * First release
 
 == Upgrade Notice ==
+
+= 1.1.9.1
+Fixed undefined constant, added missing js and css files.
 
 = 1.1.9 =
 Updated Animate on Scroll, fixed Disable on Devices and updated translation.
