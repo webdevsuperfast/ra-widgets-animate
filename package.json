@@ -15,7 +15,7 @@
     "aos": "^2.3.4"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-wp-plugin-toolkit": "^1.1.0"
   },
   "main": "gulpfile.js",
