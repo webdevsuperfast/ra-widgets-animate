@@ -69,6 +69,23 @@ const builds = [
     outfile: "admin/js/siteorigin-admin.min.js",
     minify: true,
   },
+  // Gutenberg Admin JS
+  {
+    entryPoints: ["develop/admin/js/gutenberg-admin.js"],
+    outfile: "admin/js/gutenberg-admin.js",
+    minify: false,
+    loader: {
+      ".js": "jsx",
+    },
+  },
+  {
+    entryPoints: ["develop/admin/js/gutenberg-admin.js"],
+    outfile: "admin/js/gutenberg-admin.min.js",
+    minify: true,
+    loader: {
+      ".js": "jsx",
+    },
+  },
 ];
 
 async function build() {
@@ -78,18 +95,12 @@ async function build() {
   console.log("Build completed");
 }
 
-async function watch() {
-  const contexts = [];
-  for (const config of builds) {
-    const ctx = await esbuild.context(config);
-    await ctx.watch();
-    contexts.push(ctx);
-  }
-  console.log("Watching for changes...");
+function watch() {
+  console.log("Watch mode not implemented");
 }
 
 if (isWatch) {
   watch();
 } else {
-  build();
+  build().catch(console.error);
 }

@@ -1,7 +1,7 @@
 {
   "name": "ra-widgets-animate",
-  "version": "1.1.8",
-  "description": "Animate widgets using Animate on Scroll library.",
+  "version": "1.1.9",
+  "description": "Animate widgets and Gutenberg blocks using USAL.js library.",
   "keywords": [
     "animate",
     "animation",

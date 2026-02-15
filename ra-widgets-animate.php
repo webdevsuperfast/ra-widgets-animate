@@ -2,8 +2,8 @@
 /*
 Plugin Name: Widgets Animate
 Plugin URI:  https://github.com/webdevsuperfast/ra-widgets-animate
-Description: Animate widgets using USAL.js library.
-Version:     1.1.9.1
+Description: Animate widgets and Gutenberg blocks using USAL.js library.
+Version:     1.1.9
 Author:      Rotsen Mark Acob
 Author URI:  https://www.rotsenacob.com
 License:     GPL2
@@ -49,6 +49,9 @@ class RA_Widgets_Animate {
 
         // Enqueue SiteOrigin Panels Admin scripts
         add_action( 'siteorigin_panel_enqueue_admin_scripts', array( $this, 'rawa_siteorigin_panels_admin_scripts' ) );
+
+        // Enqueue Gutenberg Block Editor scripts
+        add_action( 'admin_enqueue_scripts', array( $this, 'rawa_gutenberg_enqueue_scripts' ) );
 
         //* Add settings link in plugins directory
         add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'rawa_plugin_action_links' ) );
@@ -356,7 +359,7 @@ class RA_Widgets_Animate {
     <?php }
 
     public function rawa_in_widget_form( $t, $return, $instance ) {
-        $instance = wp_parse_args( (array) $instance, array( 'title' => '', 'text' => '', 'animation' => '', 'anchor' => '', 'anchor-placement' => '', 'easing' => '', 'offset' => '', 'duration' => '', 'delay' => '', 'once' => '' ) );
+        $instance = wp_parse_args( (array) $instance, array( 'title' => '', 'text' => '', 'animation' => '', 'easing' => '', 'offset' => '', 'duration' => '', 'delay' => '', 'once' => '' ) );
 
         // Animation
         $animations = $this->rawa_animations();
@@ -368,8 +371,6 @@ class RA_Widgets_Animate {
         $easing = $this->rawa_easing();
 
         if ( !isset( $instance['animation'] ) ) $instance['animation'] = null;
-        if ( !isset( $instance['anchor'] ) ) $instance['anchor'] = null;
-        if ( !isset( $instance['anchor-placement'] ) ) $instance['anchor-placement'] = null;
         if ( !isset( $instance['easing'] ) ) $instance['easing'] = null;
         if ( !isset( $instance['offset'] ) ) $instance['offset'] = null;
         if ( !isset( $instance['duration'] ) ) $instance['duration'] = null;
@@ -388,20 +389,6 @@ class RA_Widgets_Animate {
                         <?php } ?>
                     </select>
                     <span><em><?php _e( 'Choose from several predefined animations.', 'ra-widgets-animate' ); ?></em></span>
-                </p>
-                <p>
-                    <label for="<?php echo $t->get_field_id('anchor'); ?>"><?php _e( 'Anchor:', 'ra-widgets-animate' ); ?></label>
-                    <input class="widefat" id="<?php echo $t->get_field_id('anchor'); ?>" name="<?php echo $t->get_field_name('anchor'); ?>" value="<?php echo esc_attr($instance['anchor']); ?>" type="text" />
-                    <span><em><?php _e( 'Anchor element, whose offset will be counted to trigger animation instead of actual elements offset.', 'ra-widgets-animate' ); ?></em></span>
-                </p>
-                <p>
-                    <label for="<?php echo $t->get_field_id('anchor-placement'); ?>"><?php _e( 'Anchor Placement:', 'ra-widgets-animate' ); ?></label>
-                    <select class="widefat" id="<?php echo $t->get_field_id('anchor-placement'); ?>" name="<?php echo $t->get_field_name('anchor-placement'); ?>">
-                        <?php foreach( $placements as $key => $value ) { ?>
-                            <option <?php selected( $instance['anchor-placement'], $key ); ?>value="<?php echo $key; ?>"><?php echo $value; ?></option>
-                        <?php } ?>
-                    </select>
-                    <span><em><?php _e( 'Select which position of element on the screen should trigger animation.', 'ra-widgets-animate' ); ?></em></span>
                 </p>
                 <p>
                     <label for="<?php echo $t->get_field_id('easing'); ?>"><?php _e( 'Easing:', 'ra-widgets-animate' ); ?></label>
@@ -445,8 +432,6 @@ class RA_Widgets_Animate {
 
     public function rawa_in_widget_form_update( $instance, $new_instance, $old_instance ) {
         $instance['animation'] = sanitize_text_field( $new_instance['animation'] );
-        $instance['anchor'] = sanitize_text_field( $new_instance['anchor'] );
-        $instance['anchor-placement'] = sanitize_text_field( $new_instance['anchor-placement'] );
         $instance['easing'] = sanitize_text_field( $new_instance['easing'] );
         $instance['offset'] = (int) $new_instance['offset'];
         $instance['duration'] = (int) $new_instance['duration'];
@@ -530,23 +515,6 @@ class RA_Widgets_Animate {
             'group' => 'animation',
             'description' => __( 'Choose from several predefined animations.', 'ra-widgets-animate' ),
             'priority' => 5
-        );
-
-        $fields['animation_anchor'] = array(
-            'name' => __( 'Anchor', 'ra-widgets-animate' ),
-            'type' => 'text',
-            'group' => 'animation',
-            'description' => __( 'Anchor element, whose offset will be counted to trigger animation instead of actual elements offset.', 'ra-widgets-animate' ),
-            'priority' => 10
-        );
-
-        $fields['anchor_placement'] = array(
-            'name' => __( 'Anchor Placement', 'ra-widgets-animate' ),
-            'type' => 'select',
-            'options' => (array) $placements,
-            'group' => 'animation',
-            'description' => __( 'Select which position of element on the screen should trigger animation.', 'ra-widgets-animate' ),
-            'priority' => 15
         );
 
         $fields['animation_easing'] = array(
@@ -688,6 +656,18 @@ class RA_Widgets_Animate {
     public function rawa_siteorigin_panels_admin_scripts() {
         wp_register_script( 'rawa-siteorigin-panels-js', plugin_dir_url( __FILE__ ) . 'admin/js/siteorigin-admin.min.js', array( 'jquery' ), null, true );
         wp_enqueue_script( 'rawa-siteorigin-panels-js' );
+    }
+
+    public function rawa_gutenberg_enqueue_scripts() {
+        $current_screen = get_current_screen();
+
+        // Only enqueue in post editor screens where block editor is active
+        if ( !$current_screen || $current_screen->base !== 'post' || $current_screen->id === 'widgets' ) {
+            return;
+        }
+
+        wp_register_script( 'rawa-gutenberg-admin-js', plugin_dir_url( __FILE__ ) . 'admin/js/gutenberg-admin.min.js', array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-i18n', 'wp-compose', 'wp-hooks' ), null, true );
+        wp_enqueue_script( 'rawa-gutenberg-admin-js' );
     }
 
     function rawa_animations() {
