@@ -1,38 +1,18 @@
-(function($){
-    function foundIt() {
-        var selectThis = $('#rawa_aos_disable');
-        var tableBody = $('.form-table tbody tr:nth-child(6)');
+(function ($) {
+  const $select = $("#rawa_aos_disable");
+  const $tableRow = $(".form-table tbody tr:nth-child(6)");
 
-        switch(selectThis.val()) {
-            case 'custom':
-                tableBody.show();
-                break;
-            default: 
-                tableBody.hide();
-                break;
-        }
+  function updateVisibility() {
+    const value = $select.val();
+    $tableRow.toggle(value === "custom");
+  }
 
-        selectThis.on('change', function(){
-            var selection = $(this).val();
-            console.log(selection);
-            switch(selection) {
-                case 'custom':
-                    tableBody.show();
-                    break;
-                default: 
-                    tableBody.hide();
-                    break;
-            }
-        });
-    }
-    $(document).ready(function(){
-        foundIt();
-    });
+  // Initial state
+  updateVisibility();
 
-    $(document).ajaxStop(function(){
-        foundIt();
-    });
-    $(document).on('widget-added widget-updated', function(){
-        foundIt();
-    });
+  // Bind change event once
+  $select.on("change", updateVisibility);
+
+  // Re-check on dynamic updates
+  $(document).on("ajaxStop widget-added widget-updated", updateVisibility);
 })(jQuery);
