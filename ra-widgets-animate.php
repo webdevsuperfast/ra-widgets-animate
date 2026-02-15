@@ -2,7 +2,7 @@
 /*
 Plugin Name: Widgets Animate
 Plugin URI:  https://github.com/webdevsuperfast/ra-widgets-animate
-Description: Animate widgets using Animate on Scroll library.
+Description: Animate widgets using USAL.js library.
 Version:     1.1.9.1
 Author:      Rotsen Mark Acob
 Author URI:  https://www.rotsenacob.com
@@ -52,6 +52,69 @@ class RA_Widgets_Animate {
 
         //* Add settings link in plugins directory
         add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'rawa_plugin_action_links' ) );
+
+        // Migrate old settings
+        $this->rawa_migrate_settings();
+    }
+
+    public function rawa_migrate_settings() {
+        // Migrate AOS settings to USAL
+        $old_options = array(
+            'rawa_aos_offset' => 'rawa_usal_threshold',
+            'rawa_aos_duration' => 'rawa_usal_duration',
+            'rawa_aos_easing' => 'rawa_usal_easing',
+            'rawa_aos_delay' => 'rawa_usal_delay',
+            'rawa_aos_disable' => 'rawa_usal_disable',
+            'rawa_aos_custom' => 'rawa_usal_custom',
+            'rawa_aos_once' => 'rawa_usal_once',
+            'rawa_aos_js' => 'rawa_usal_js',
+        );
+
+        foreach ( $old_options as $old => $new ) {
+            $old_value = get_option( $old );
+            if ( $old_value !== false && get_option( $new ) === false ) {
+                // Handle array values
+                if ( is_array( $old_value ) ) {
+                    $old_value = $old_value[0] ?? '';
+                }
+                // Migrate value
+                if ( $old === 'rawa_aos_offset' ) {
+                    // Convert offset to threshold, roughly
+                    $threshold = min( 100, max( 0, (int) $old_value / 10 ) ); // rough conversion
+                    update_option( $new, $threshold );
+                } elseif ( $old === 'rawa_aos_easing' ) {
+                    // Map AOS easings to CSS
+                    $easing_map = array(
+                        'linear' => 'linear',
+                        'ease' => 'ease',
+                        'ease-in' => 'ease-in',
+                        'ease-out' => 'ease-out',
+                        'ease-in-out' => 'ease-in-out',
+                        'ease-in-back' => 'cubic-bezier(0.6, -0.28, 0.735, 0.045)',
+                        'ease-out-back' => 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                        'ease-in-out-back' => 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+                        'ease-in-sine' => 'cubic-bezier(0.47, 0, 0.745, 0.715)',
+                        'ease-out-sine' => 'cubic-bezier(0.39, 0.575, 0.565, 1)',
+                        'ease-in-out-sine' => 'cubic-bezier(0.445, 0.05, 0.55, 0.95)',
+                        'ease-in-quad' => 'cubic-bezier(0.55, 0.085, 0.68, 0.53)',
+                        'ease-out-quad' => 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                        'ease-in-out-quad' => 'cubic-bezier(0.455, 0.03, 0.515, 0.955)',
+                        'ease-in-cubic' => 'cubic-bezier(0.55, 0.055, 0.675, 0.19)',
+                        'ease-out-cubic' => 'cubic-bezier(0.215, 0.61, 0.355, 1)',
+                        'ease-in-out-cubic' => 'cubic-bezier(0.645, 0.045, 0.355, 1)',
+                        'ease-in-quart' => 'cubic-bezier(0.895, 0.03, 0.685, 0.22)',
+                        'ease-out-quart' => 'cubic-bezier(0.165, 0.84, 0.44, 1)',
+                        'ease-in-out-quart' => 'cubic-bezier(0.77, 0, 0.175, 1)',
+                    );
+                    $new_value = isset( $easing_map[$old_value] ) ? $easing_map[$old_value] : 'ease-out';
+                    update_option( $new, $new_value );
+                } else {
+                    update_option( $new, $old_value );
+                }
+                // Optionally delete old option
+                // delete_option( $old );
+            }
+        }
     }
 
     public function rawa_plugin_action_links( $links ) {
@@ -80,7 +143,7 @@ class RA_Widgets_Animate {
     public function rawa_setup_sections() {
         // Global Settings
         add_settings_section( 
-            'aos_settings', 
+            'usal_settings', 
             __( 'Global Settings', 'ra-widgets-animate' ),
             array( $this, 'rawa_section_callback' ),
             'rawa_settings' 
@@ -88,7 +151,7 @@ class RA_Widgets_Animate {
 
         // Script Settings
         add_settings_section(
-            'aos_scripts',
+            'usal_scripts',
             __( 'Script Settings', 'ra-widgets-animate' ),
             array( $this, 'rawa_section_callback' ),
             'rawa_settings'
@@ -97,9 +160,9 @@ class RA_Widgets_Animate {
 
     public function rawa_section_callback( $arguments ) {
         switch( $arguments['id'] ) {
-            case 'aos_settings':
+            case 'usal_settings':
                 break;
-            case 'aos_scripts':
+            case 'usal_scripts':
                 break;
         }
     }
@@ -108,44 +171,54 @@ class RA_Widgets_Animate {
         $fields = array(
             // Global Settings
             array(
-                'uid' => 'rawa_aos_offset',
-                'section' => 'aos_settings',
-                'label' => __( 'Offset', 'ra-widgets-animate' ),
+                'uid' => 'rawa_usal_threshold',
+                'section' => 'usal_settings',
+                'label' => __( 'Threshold', 'ra-widgets-animate' ),
                 'type' => 'number',
-                'supplimental' => __( 'Change offset to trigger animations sooner or later (px)', 'ra-widgets-animate' ),
-                'default' => 120,
+                'supplimental' => __( 'Percentage of element visible to trigger animation (0-100)', 'ra-widgets-animate' ),
+                'default' => 10,
             ),
             array(
-                'uid' => 'rawa_aos_duration',
-                'section' => 'aos_settings',
+                'uid' => 'rawa_usal_duration',
+                'section' => 'usal_settings',
                 'label' => __( 'Duration', 'ra-widgets-animate' ),
                 'type' => 'number',
                 'supplimental' => __( 'Duration of animation (ms)', 'ra-widgets-animate' ),
-                'default' => 400,
+                'default' => 1000,
             ),
             array(
-                'uid' => 'rawa_aos_easing',
-                'section' => 'aos_settings',
+                'uid' => 'rawa_usal_easing',
+                'section' => 'usal_settings',
                 'label' => __( 'Easing', 'ra-widgets-animate' ),
                 'type' => 'select',
                 'supplimental' => __( 'Choose timing function to ease elements in different ways', 'ra-widgets-animate' ),
-                'default' => array( 'ease' ),
-                'options' => $this->rawa_easing()
+                'default' => array( 'ease-out' ),
+                'options' => array(
+                    'ease' => 'ease',
+                    'ease-in' => 'ease-in',
+                    'ease-out' => 'ease-out',
+                    'ease-in-out' => 'ease-in-out',
+                    'linear' => 'linear',
+                    'cubic-bezier(0.4, 0, 0.2, 1)' => 'ease-in-out-sine',
+                    'cubic-bezier(0.25, 0.46, 0.45, 0.94)' => 'ease-out-back',
+                    'cubic-bezier(0.55, 0.055, 0.675, 0.19)' => 'ease-in-cubic',
+                    'cubic-bezier(0.895, 0.03, 0.685, 0.22)' => 'ease-out-circ',
+                )
             ),
             array(
-                'uid' => 'rawa_aos_delay',
-                'section' => 'aos_settings',
+                'uid' => 'rawa_usal_delay',
+                'section' => 'usal_settings',
                 'label' => __( 'Delay', 'ra-widgets-animate' ),
                 'type' => 'number',
                 'supplimental' => __( 'Delay animation (ms)', 'ra-widgets-animate' ),
                 'default' => 0,
             ),
             array(
-                'uid' => 'rawa_aos_disable',
-                'section' => 'aos_settings',
+                'uid' => 'rawa_usal_disable',
+                'section' => 'usal_settings',
                 'label' => __( 'Disable', 'ra-widgets-animate' ),
                 'type' => 'select',
-                'supplimental' => __( 'Disable AOS on certain devices.', 'ra-widgets-animate' ),
+                'supplimental' => __( 'Disable USAL on certain devices.', 'ra-widgets-animate' ),
                 'options' => array(
                     '' => __( 'None' ),
                     'mobile' => __( 'Mobile(Phones/Tablets)', 'ra-widgets-animate' ),
@@ -156,16 +229,16 @@ class RA_Widgets_Animate {
                 'default' => array()
             ),
             array(
-                'uid' => 'rawa_aos_custom',
-                'section' => 'aos_settings',
+                'uid' => 'rawa_usal_custom',
+                'section' => 'usal_settings',
                 'label' => __( 'Custom Width', 'ra-widgets-animate' ),
                 'type' => 'number',
-                'supplimental' => __( 'Enter the viewport width to which AOS will be disabled', 'ra-widgets-animate' ),
+                'supplimental' => __( 'Enter the viewport width to which USAL will be disabled', 'ra-widgets-animate' ),
                 'default' => 768
             ),
             array(
-                'uid' => 'rawa_aos_once',
-                'section' => 'aos_settings',
+                'uid' => 'rawa_usal_once',
+                'section' => 'usal_settings',
                 'label' => __( 'Once', 'ra-widgets-animate' ),
                 'type' => 'checkbox',
                 'supplimental' => __( 'Choose whether animation should fire once, or every time you scroll up/down to element', 'ra-widgets-animate' ),
@@ -175,24 +248,13 @@ class RA_Widgets_Animate {
                 )
             ),
 
-            // AoS scripts
+            // USAL scripts
             array(
-                'uid' => 'rawa_aos_css',
-                'label' => __( 'Disable style', 'ra-widgets-animate' ),
-                'section' => 'aos_scripts',
-                'type' => 'checkbox',
-                'supplimental' => __( 'Disable Animate on Scroll stylesheet, e.g. already present on your theme or plugin', 'ra-widgets-animate' ),
-                'options' => array(
-                    'enabled' => __( 'Yes', 'ra-widgets-animate' )
-                ),
-                'default' => array()
-            ),
-            array(
-                'uid' => 'rawa_aos_js',
+                'uid' => 'rawa_usal_js',
                 'label' => __( 'Disable script', 'ra-widgets-animate' ),
-                'section' => 'aos_scripts',
+                'section' => 'usal_scripts',
                 'type' => 'checkbox',
-                'supplimental' => __( 'Disable Animate on Scroll script, e.g. already present on your theme or plugin', 'ra-widgets-animate' ),
+                'supplimental' => __( 'Disable USAL script, e.g. already present on your theme or plugin', 'ra-widgets-animate' ),
                 'options' => array(
                     'enabled' => __( 'Yes', 'ra-widgets-animate' )
                 ),
@@ -402,37 +464,33 @@ class RA_Widgets_Animate {
         $widget_opt = get_option( $widget_obj['callback'][0]->option_name );
         $widget_num = $widget_obj['params'][0]['number'];
 
-        $field_mappings = array(
-            'anchor' => 'data-aos-anchor',
-            'anchor-placement' => 'data-aos-anchor-placement',
-            'animation' => 'data-aos',
-            'easing' => 'data-aos-easing',
-            'offset' => 'data-aos-offset',
-            'duration' => 'data-aos-duration',
-            'delay' => 'data-aos-delay',
-            'once' => 'data-aos-once',
-        );
+        $usal_parts = array();
 
-        $attrs = array();
-
-        foreach ( $field_mappings as $field => $data_attr ) {
-            if ( isset( $widget_opt[$widget_num][$field] ) && !empty( $widget_opt[$widget_num][$field] ) ) {
-                $value = $widget_opt[$widget_num][$field];
-                if ( in_array( $field, array( 'offset', 'duration', 'delay' ) ) ) {
-                    $value = (int) $value;
-                } elseif ( $field === 'once' ) {
-                    $value = 'true';
-                } else {
-                    $value = esc_attr( $value );
-                }
-                $attrs[$data_attr] = $value;
-            }
+        if ( isset( $widget_opt[$widget_num]['animation'] ) && !empty( $widget_opt[$widget_num]['animation'] ) ) {
+            $animation = $widget_opt[$widget_num]['animation'];
+            $usal_animation = $this->rawa_map_animation( $animation );
+            $usal_parts[] = $usal_animation;
         }
 
-        if ( !empty( $attrs ) ) {
-            $attr_string = ' ' . implode( ' ', array_map( function( $key, $value ) {
-                return $key . '="' . $value . '"';
-            }, array_keys( $attrs ), $attrs ) ) . '>';
+        if ( isset( $widget_opt[$widget_num]['duration'] ) && !empty( $widget_opt[$widget_num]['duration'] ) ) {
+            $usal_parts[] = 'duration-' . (int) $widget_opt[$widget_num]['duration'];
+        }
+
+        if ( isset( $widget_opt[$widget_num]['delay'] ) && !empty( $widget_opt[$widget_num]['delay'] ) ) {
+            $usal_parts[] = 'delay-' . (int) $widget_opt[$widget_num]['delay'];
+        }
+
+        if ( isset( $widget_opt[$widget_num]['easing'] ) && !empty( $widget_opt[$widget_num]['easing'] ) ) {
+            $usal_parts[] = 'easing-' . esc_attr( $widget_opt[$widget_num]['easing'] );
+        }
+
+        if ( isset( $widget_opt[$widget_num]['once'] ) && $widget_opt[$widget_num]['once'] == 'true' ) {
+            $usal_parts[] = 'once';
+        }
+
+        if ( !empty( $usal_parts ) ) {
+            $usal_value = implode( ' ', $usal_parts );
+            $attr_string = ' data-usal="' . esc_attr( $usal_value ) . '">';
 
             $params[0]['before_widget'] = preg_replace( '/>$/', $attr_string, $params[0]['before_widget'], 1 );
         }
@@ -501,10 +559,10 @@ class RA_Widgets_Animate {
         );
 
         $fields['animation_offset'] = array(
-            'name' => __( 'Offset', 'ra-widgets-animate' ),
+            'name' => __( 'Threshold', 'ra-widgets-animate' ),
             'type' => 'text',
             'group' => 'animation',
-            'description' => __( 'Change offset to trigger animations sooner or later (px).', 'ra-widgets-animate' ),
+            'description' => __( 'Percentage of element visible to trigger animation (0-100).', 'ra-widgets-animate' ),
             'priority' => 20
         );
 
@@ -540,67 +598,71 @@ class RA_Widgets_Animate {
             return $atts;
         }
 
-        if ( !empty( $value['animation_type'] ) ) $atts['data-aos'] = $value['animation_type'];
+        $usal_parts = array();
 
-        if ( !empty( $value['animation_anchor'] ) ) $atts['data-aos-anchor'] = $value['animation_anchor'];
+        if ( !empty( $value['animation_type'] ) ) {
+            $usal_animation = $this->rawa_map_animation( $value['animation_type'] );
+            $usal_parts[] = $usal_animation;
+        }
 
-        if ( !empty( $value['anchor_placement'] ) ) $atts['data-aos-anchor-placement'] = $value['anchor_placement'];
+        if ( !empty( $value['animation_duration'] ) && '0' != $value['animation_duration'] ) {
+            $usal_parts[] = 'duration-' . (int) $value['animation_duration'];
+        }
 
-        if ( !empty( $value['animation_easing'] ) ) $atts['data-aos-easing'] = $value['animation_easing'];
+        if ( !empty( $value['animation_delay'] ) ) {
+            $usal_parts[] = 'delay-' . (int) $value['animation_delay'];
+        }
 
-        if ( !empty( $value['animation_offset'] ) ) $atts['data-aos-offset'] = (int) $value['animation_offset'];
+        if ( !empty( $value['animation_easing'] ) ) {
+            $usal_parts[] = 'easing-' . esc_attr( $value['animation_easing'] );
+        }
 
-        if ( !empty( $value['animation_duration'] ) && '0' != $value['animation_duration'] ) $atts['data-aos-duration'] = (int) $value['animation_duration'];
+        if ( !empty( $value['animation_once'] ) ) {
+            $usal_parts[] = 'once';
+        }
 
-        if ( !empty( $value['animation_delay'] ) ) $atts['data-aos-delay'] = (int) $value['animation_delay'];
-
-        if ( !empty( $value['animation_once'] ) ) $atts['data-aos-once'] = $value['animation_once'];
+        if ( !empty( $usal_parts ) ) {
+            $atts['data-usal'] = implode( ' ', $usal_parts );
+        }
 
         return $atts;
     }
 
     public function rawa_enqueue_scripts() {
-        $scripts = get_option( 'rawa_aos_js' );
-        $styles = get_option( 'rawa_aos_css' );
+        $scripts = get_option( 'rawa_usal_js' );
 
         if (!is_array($scripts)) $scripts = array();
-        if (!is_array($styles)) $styles = array();
 
         if ( !is_admin() ) {
-            // AOS CSS
-            if ( !isset($styles[0]) || $styles[0] != 'enabled' ) {
-                wp_enqueue_style( 'rawa-aos-css', plugin_dir_url( __FILE__ ) . 'public/css/aos.css' );
-            }
-
-            // AOS JS
-            wp_register_script( 'rawa-aos-js', plugin_dir_url( __FILE__ ) . 'public/js/aos.min.js', array(), null, true );
+            // USAL JS
+            wp_register_script( 'rawa-usal-js', 'https://cdn.usal.dev/latest', array(), null, true );
             if ( !isset($scripts[0]) || $scripts[0] != 'enabled' ) {
-                wp_enqueue_script( 'rawa-aos-js' );
+                wp_enqueue_script( 'rawa-usal-js' );
             }
 
-            // Initialize AOS
+            // Initialize USAL
             wp_register_script( 'rawa-app-js', plugin_dir_url( __FILE__ ) . 'public/js/rawa.min.js', array( 'jquery' ), null, true );
             wp_enqueue_script( 'rawa-app-js' );
 
-            $offset = get_option( 'rawa_aos_offset', '120' );
-            $duration = get_option( 'rawa_aos_duration', '400' );
-            $easing = get_option( 'rawa_aos_easing', 'ease' );
-            $delay = get_option( 'rawa_aos_delay', 0 );
-            $disable = get_option( 'rawa_aos_disable', false );
-            $custom = get_option( 'rawa_aos_custom', '768' );
-            $once = get_option( 'rawa_aos_once' );
+            $threshold = get_option( 'rawa_usal_threshold', '10' );
+            $duration = get_option( 'rawa_usal_duration', '1000' );
+            $easing = get_option( 'rawa_usal_easing', 'ease-out' );
+            $delay = get_option( 'rawa_usal_delay', 0 );
+            $disable = get_option( 'rawa_usal_disable', false );
+            $custom = get_option( 'rawa_usal_custom', '768' );
+            $once = get_option( 'rawa_usal_once' );
 
             if (!is_array($disable)) $disable = array();
             if (!is_array($once)) $once = array();
 
-            wp_localize_script( 'rawa-app-js', 'rawa_aos', array(
-                'offset' => (int) $offset,
+            wp_localize_script( 'rawa-app-js', 'rawa_usal', array(
+                'threshold' => (int) $threshold,
                 'duration' => (int) $duration,
                 'easing' => $easing,
                 'delay' => (int) $delay,
                 'disable' => isset($disable[0]) && $disable[0] ? $disable[0] : "false",
                 'custom' => (int) $custom,
-                'once' => isset($once[0]) && $once[0] == 'enabled' ? "true" : "false"
+                'once' => isset($once[0]) && $once[0] == 'enabled' ? true : false
             ) );
         }
     }
@@ -666,6 +728,39 @@ class RA_Widgets_Animate {
         );
 
         return apply_filters( 'rawa_animations', $animations );
+    }
+
+    function rawa_map_animation( $aos_animation ) {
+        $map = array(
+            'fade' => 'fade',
+            'fade-up' => 'fade-u',
+            'fade-down' => 'fade-d',
+            'fade-left' => 'fade-l',
+            'fade-right' => 'fade-r',
+            'fade-up-right' => 'fade-ur',
+            'fade-up-left' => 'fade-ul',
+            'fade-down-right' => 'fade-dr',
+            'fade-down-left' => 'fade-dl',
+            'flip-up' => 'flip-u',
+            'flip-down' => 'flip-d',
+            'flip-left' => 'flip-l',
+            'flip-right' => 'flip-r',
+            'slide-up' => 'slide-u',
+            'slide-down' => 'slide-d',
+            'slide-left' => 'slide-l',
+            'slide-right' => 'slide-r',
+            'zoom-in' => 'zoomin',
+            'zoom-in-up' => 'zoomin-u',
+            'zoom-in-down' => 'zoomin-d',
+            'zoom-in-left' => 'zoomin-l',
+            'zoom-in-right' => 'zoomin-r',
+            'zoom-out' => 'zoomout',
+            'zoom-out-up' => 'zoomout-u',
+            'zoom-out-down' => 'zoomout-d',
+            'zoom-out-left' => 'zoomout-l',
+            'zoom-out-right' => 'zoomout-r',
+        );
+        return isset( $map[$aos_animation] ) ? $map[$aos_animation] : $aos_animation;
     }
 
     function rawa_placements() {
