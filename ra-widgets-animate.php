@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: RA Widgets Animate
+Plugin Name: Widgets Animate
 Plugin URI:  https://github.com/webdevsuperfast/ra-widgets-animate
 Description: Animate widgets using Animate on Scroll library.
 Version:     1.1.9.1
