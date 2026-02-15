@@ -1,1 +1,7 @@
-(function(a){a(document).on("panelsopen",function(e){var n=a(e.target);n.has(".so-panels-dialog-wrapper")&&a(".rawa-fields").hide()})})(jQuery);
+(function($) {
+  $(document).on("panelsopen", function(e) {
+    var dialog = $(e.target);
+    if (!dialog.has(".so-panels-dialog-wrapper")) return;
+    $(".rawa-fields").hide();
+  });
+})(jQuery);

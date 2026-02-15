@@ -1,1 +1,11 @@
-(function(t){const o=t("#rawa_aos_disable"),a=t(".form-table tbody tr:nth-child(6)");function e(){const d=o.val();a.toggle(d==="custom")}e(),o.on("change",e),t(document).on("ajaxStop widget-added widget-updated",e)})(jQuery);
+(function($) {
+  const $select = $("#rawa_aos_disable");
+  const $tableRow = $(".form-table tbody tr:nth-child(6)");
+  function updateVisibility() {
+    const value = $select.val();
+    $tableRow.toggle(value === "custom");
+  }
+  updateVisibility();
+  $select.on("change", updateVisibility);
+  $(document).on("ajaxStop widget-added widget-updated", updateVisibility);
+})(jQuery);

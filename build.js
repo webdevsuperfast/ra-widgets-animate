@@ -6,6 +6,11 @@ const builds = [
   // USAL JS
   {
     entryPoints: ["node_modules/usal/usal.min.js"],
+    outfile: "public/js/usal.js",
+    minify: false,
+  },
+  {
+    entryPoints: ["node_modules/usal/usal.min.js"],
     outfile: "public/js/usal.min.js",
     minify: true,
   },
@@ -13,13 +18,18 @@ const builds = [
   {
     entryPoints: ["develop/admin/css/rawa-admin.css"],
     outfile: "admin/css/rawa-admin.css",
+    minify: false,
+  },
+  {
+    entryPoints: ["develop/admin/css/rawa-admin.css"],
+    outfile: "admin/css/rawa-admin.min.css",
     minify: true,
   },
   // RAWA Public JS
   {
     entryPoints: ["develop/public/js/rawa.js"],
     outfile: "public/js/rawa.js",
-    minify: true,
+    minify: false,
   },
   {
     entryPoints: ["develop/public/js/rawa.js"],
@@ -30,7 +40,7 @@ const builds = [
   {
     entryPoints: ["develop/admin/js/rawa-admin.js"],
     outfile: "admin/js/rawa-admin.js",
-    minify: true,
+    minify: false,
   },
   {
     entryPoints: ["develop/admin/js/rawa-admin.js"],
@@ -41,7 +51,7 @@ const builds = [
   {
     entryPoints: ["develop/admin/js/rawa-settings.js"],
     outfile: "admin/js/rawa-settings.js",
-    minify: true,
+    minify: false,
   },
   {
     entryPoints: ["develop/admin/js/rawa-settings.js"],
@@ -52,7 +62,7 @@ const builds = [
   {
     entryPoints: ["develop/admin/js/siteorigin-admin.js"],
     outfile: "admin/js/siteorigin-admin.js",
-    minify: true,
+    minify: false,
   },
   {
     entryPoints: ["develop/admin/js/siteorigin-admin.js"],

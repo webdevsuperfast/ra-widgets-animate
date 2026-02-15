@@ -1,1 +1,18 @@
-(function(e){e(document).on("click",".rawa-toggle",function(a){a.preventDefault();const o=e(this),t=o.next();o.toggleClass("open"),t.toggle(),localStorage.setItem("rawaDisplay",t.is(":visible"))}),e(document).on("widget-updated widget-added",function(a,o){const t=e(o).find(".rawa-toggle");localStorage.getItem("rawaDisplay")==="true"&&(t.addClass("open"),t.next().show())})})(jQuery);
+(function($) {
+  $(document).on("click", ".rawa-toggle", function(e) {
+    e.preventDefault();
+    const $toggler = $(this);
+    const $next = $toggler.next();
+    $toggler.toggleClass("open");
+    $next.toggle();
+    localStorage.setItem("rawaDisplay", $next.is(":visible"));
+  });
+  $(document).on("widget-updated widget-added", function(event, widget) {
+    const $toggler = $(widget).find(".rawa-toggle");
+    const display = localStorage.getItem("rawaDisplay");
+    if (display === "true") {
+      $toggler.addClass("open");
+      $toggler.next().show();
+    }
+  });
+})(jQuery);
