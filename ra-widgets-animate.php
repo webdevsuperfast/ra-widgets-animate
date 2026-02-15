@@ -230,10 +230,10 @@ class RA_Widgets_Animate {
             case 'text':
             case 'password':
             case 'number':
-                printf( '<input name="%1$s" id="%1$s" type="%2$s" placeholder="%3$s" value="%4$s" />', $arguments['uid'], $arguments['type'], $arguments['placeholder'], $value );
+                printf( '<input name="%1$s" id="%1$s" type="%2$s" placeholder="%3$s" value="%4$s" />', esc_attr( $arguments['uid'] ), esc_attr( $arguments['type'] ), esc_attr( $arguments['placeholder'] ), esc_attr( $value ) );
                 break;
             case 'textarea':
-                printf( '<textarea name="%1$s" id="%1$s" placeholder="%2$s" rows="5" cols="50">%3$s</textarea>', $arguments['uid'], $arguments['placeholder'], $value );
+                printf( '<textarea name="%1$s" id="%1$s" placeholder="%2$s" rows="5" cols="50">%3$s</textarea>', esc_attr( $arguments['uid'] ), esc_attr( $arguments['placeholder'] ), esc_textarea( $value ) );
                 break;
             case 'select':
             case 'multiselect':
@@ -241,12 +241,12 @@ class RA_Widgets_Animate {
                     $attributes = '';
                     $options_markup = '';
                     foreach( $arguments['options'] as $key => $label ){
-                        $options_markup .= sprintf( '<option value="%s" %s>%s</option>', $key, selected( $value[ array_search( $key, $value, true ) ], $key, false ), $label );
+                        $options_markup .= sprintf( '<option value="%s" %s>%s</option>', esc_attr( $key ), selected( $value[ array_search( $key, $value, true ) ], $key, false ), esc_html( $label ) );
                     }
                     if( $arguments['type'] === 'multiselect' ){
                         $attributes = ' multiple="multiple" ';
                     }
-                    printf( '<select name="%1$s[]" id="%1$s" %2$s>%3$s</select>', $arguments['uid'], $attributes, $options_markup );
+                    printf( '<select name="%1$s[]" id="%1$s" %2$s>%3$s</select>', esc_attr( $arguments['uid'] ), $attributes, $options_markup );
                 }
                 break;
             case 'radio':
@@ -256,17 +256,17 @@ class RA_Widgets_Animate {
                     $iterator = 0;
                     foreach( $arguments['options'] as $key => $label ){
                         $iterator++;
-                        $options_markup .= sprintf( '<label for="%1$s_%6$s"><input id="%1$s_%6$s" name="%1$s[]" type="%2$s" value="%3$s" %4$s /> %5$s</label><br/>', $arguments['uid'], $arguments['type'], $key, checked( $value[ array_search( $key, $value, true ) ], $key, false ), $label, $iterator );
+                        $options_markup .= sprintf( '<label for="%1$s_%6$s"><input id="%1$s_%6$s" name="%1$s[]" type="%2$s" value="%3$s" %4$s /> %5$s</label><br/>', esc_attr( $arguments['uid'] ), esc_attr( $arguments['type'] ), esc_attr( $key ), checked( $value[ array_search( $key, $value, true ) ], $key, false ), esc_html( $label ), $iterator );
                     }
                     printf( '<fieldset>%s</fieldset>', $options_markup );
                 }
                 break;
         }
         if( $helper = $arguments['helper'] ){
-            printf( '<span class="helper"> %s</span>', $helper );
+            printf( '<span class="helper"> %s</span>', esc_html( $helper ) );
         }
         if( $supplimental = $arguments['supplimental'] ){
-            printf( '<p class="description">%s</p>', $supplimental );
+            printf( '<p class="description">%s</p>', esc_html( $supplimental ) );
         }
     }
 
@@ -378,20 +378,19 @@ class RA_Widgets_Animate {
     }
 
     public function rawa_in_widget_form_update( $instance, $new_instance, $old_instance ) {
-        $instance['animation'] = $new_instance['animation'];
-        $instance['anchor'] = $new_instance['anchor'];
-        $instance['anchor-placement'] = $new_instance['anchor-placement'];
-        $instance['easing'] = $new_instance['easing'];
-        $instance['offset'] = $new_instance['offset'];
-        $instance['duration'] = $new_instance['duration'];
-        $instance['delay'] = $new_instance['delay'];
+        $instance['animation'] = sanitize_text_field( $new_instance['animation'] );
+        $instance['anchor'] = sanitize_text_field( $new_instance['anchor'] );
+        $instance['anchor-placement'] = sanitize_text_field( $new_instance['anchor-placement'] );
+        $instance['easing'] = sanitize_text_field( $new_instance['easing'] );
+        $instance['offset'] = (int) $new_instance['offset'];
+        $instance['duration'] = (int) $new_instance['duration'];
+        $instance['delay'] = (int) $new_instance['delay'];
         $instance['once'] = $new_instance['once'] ? 1 : 0;
 
         return $instance;
     }
 
     public function rawa_dynamic_sidebar_params( $params ) {
-        // var_dump( get_option( 'rawa_enable_cb' ) );
         global $wp_registered_widgets;
 
         $widget_id = $params[0]['widget_id'];
@@ -399,31 +398,40 @@ class RA_Widgets_Animate {
         $widget_opt = get_option( $widget_obj['callback'][0]->option_name );
         $widget_num = $widget_obj['params'][0]['number'];
 
+        $field_mappings = array(
+            'anchor' => 'data-aos-anchor',
+            'anchor-placement' => 'data-aos-anchor-placement',
+            'animation' => 'data-aos',
+            'easing' => 'data-aos-easing',
+            'offset' => 'data-aos-offset',
+            'duration' => 'data-aos-duration',
+            'delay' => 'data-aos-delay',
+            'once' => 'data-aos-once',
+        );
+
         $attrs = array();
 
-        if ( isset( $widget_opt[$widget_num]['anchor'] ) && !empty( $widget_opt[$widget_num]['anchor'] ) ) $attrs['data-aos-anchor'] = $widget_opt[$widget_num]['anchor'];
-
-        if ( isset( $widget_opt[$widget_num]['anchor-placement'] ) && !empty( $widget_opt[$widget_num]['anchor-placement'] ) ) $attrs['data-aos-anchor-placement'] = $widget_opt[$widget_num]['anchor-placement'];
-
-        if ( isset( $widget_opt[$widget_num]['animation'] ) && !empty( $widget_opt[$widget_num]['animation'] ) ) $attrs['data-aos'] = $widget_opt[$widget_num]['animation'];
-
-        if ( isset( $widget_opt[$widget_num]['easing'] ) && !empty( $widget_opt[$widget_num]['easing'] ) ) $attrs['data-aos-easing'] = $widget_opt[$widget_num]['easing'];
-
-        if ( isset( $widget_opt[$widget_num]['offset'] ) && !empty( $widget_opt[$widget_num]['offset'] ) ) $attrs['data-aos-offset'] = $widget_opt[$widget_num]['offset'];
-
-        if ( isset( $widget_opt[$widget_num]['duration'] ) && !empty( $widget_opt[$widget_num]['duration'] ) ) $attrs['data-aos-duration'] = $widget_opt[$widget_num]['duration'];
-
-        if ( isset( $widget_opt[$widget_num]['delay'] ) && !empty( $widget_opt[$widget_num]['delay'] ) ) $attrs['data-aos-delay'] = $widget_opt[$widget_num]['delay'];
-
-        if ( isset( $widget_opt[$widget_num]['once'] ) && !empty( $widget_opt[$widget_num]['once'] ) ) $attrs['data-aos-once'] = 'true';
-
-        $attr = ' ';
-        foreach( $attrs as $key => $value ) {
-            $attr .= $key . '="' . $value .'" ';
+        foreach ( $field_mappings as $field => $data_attr ) {
+            if ( isset( $widget_opt[$widget_num][$field] ) && !empty( $widget_opt[$widget_num][$field] ) ) {
+                $value = $widget_opt[$widget_num][$field];
+                if ( in_array( $field, array( 'offset', 'duration', 'delay' ) ) ) {
+                    $value = (int) $value;
+                } elseif ( $field === 'once' ) {
+                    $value = 'true';
+                } else {
+                    $value = esc_attr( $value );
+                }
+                $attrs[$data_attr] = $value;
+            }
         }
-        $attr .= '>';
 
-        $params[0]['before_widget'] = preg_replace( '/>$/', $attr,  $params[0]['before_widget'], 1 );
+        if ( !empty( $attrs ) ) {
+            $attr_string = ' ' . implode( ' ', array_map( function( $key, $value ) {
+                return $key . '="' . $value . '"';
+            }, array_keys( $attrs ), $attrs ) ) . '>';
+
+            $params[0]['before_widget'] = preg_replace( '/>$/', $attr_string, $params[0]['before_widget'], 1 );
+        }
 
         return $params;
     }
