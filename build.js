@@ -3,21 +3,10 @@ const esbuild = require("esbuild");
 const isWatch = process.argv.includes("--watch");
 
 const builds = [
-  // AOS CSS
+  // USAL JS
   {
-    entryPoints: ["node_modules/aos/dist/aos.css"],
-    outfile: "public/css/aos.css",
-    minify: true,
-  },
-  // AOS JS
-  {
-    entryPoints: ["node_modules/aos/dist/aos.js"],
-    outfile: "public/js/aos.js",
-    minify: true,
-  },
-  {
-    entryPoints: ["node_modules/aos/dist/aos.js"],
-    outfile: "public/js/aos.min.js",
+    entryPoints: ["node_modules/usal/usal.min.js"],
+    outfile: "public/js/usal.min.js",
     minify: true,
   },
   // RAWA Admin CSS
