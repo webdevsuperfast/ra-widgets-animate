@@ -1,4 +1,4 @@
-=== RA Widgets Animate ===
+=== Widgets Animate ===
 Contributors: FrodoBean
 Donate link: https://paypal.me/webdevsuperfast
 Tags: aos, animate-on-scroll, siteorigin-page-builder, page-builder-animation, animation, animate, siteorigin-panels-animate
@@ -12,7 +12,7 @@ Animate widgets using Animate on Scroll library.
 
 == Description ==
 
-RA Widgets Animate is a WordPress plugin that adds additional widget fields into existing widget forms using the latest [Animate On Scroll](https://michalsnik.github.io/aos/) script to render animation. If you're using SiteOrigin Panels, the plugin also adds 'Animation' tab to Widget Styles.
+Widgets Animate is a WordPress plugin that adds additional widget fields into existing widget forms using the latest [Animate On Scroll](https://michalsnik.github.io/aos/) script to render animation. If you're using SiteOrigin Panels, the plugin also adds 'Animation' tab to Widget Styles.
 
 <h3>Features</h3>
 
