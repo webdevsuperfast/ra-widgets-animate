@@ -389,7 +389,7 @@ class RA_Widgets_Animate {
         $instance['offset'] = (int) $new_instance['offset'];
         $instance['duration'] = (int) $new_instance['duration'];
         $instance['delay'] = (int) $new_instance['delay'];
-        $instance['once'] = $new_instance['once'] ? 1 : 0;
+        $instance['once'] = isset($new_instance['once']) && $new_instance['once'] ? 1 : 0;
 
         return $instance;
     }
