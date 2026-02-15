@@ -230,10 +230,10 @@ class RA_Widgets_Animate {
             case 'text':
             case 'password':
             case 'number':
-                printf( '<input name="%1$s" id="%1$s" type="%2$s" placeholder="%3$s" value="%4$s" />', esc_attr( $arguments['uid'] ), esc_attr( $arguments['type'] ), esc_attr( $arguments['placeholder'] ), esc_attr( $value ) );
+                printf( '<input name="%1$s" id="%1$s" type="%2$s" placeholder="%3$s" value="%4$s" />', esc_attr( $arguments['uid'] ), esc_attr( $arguments['type'] ), esc_attr( isset($arguments['placeholder']) ? $arguments['placeholder'] : '' ), esc_attr( $value ) );
                 break;
             case 'textarea':
-                printf( '<textarea name="%1$s" id="%1$s" placeholder="%2$s" rows="5" cols="50">%3$s</textarea>', esc_attr( $arguments['uid'] ), esc_attr( $arguments['placeholder'] ), esc_textarea( $value ) );
+                printf( '<textarea name="%1$s" id="%1$s" placeholder="%2$s" rows="5" cols="50">%3$s</textarea>', esc_attr( $arguments['uid'] ), esc_attr( isset($arguments['placeholder']) ? $arguments['placeholder'] : '' ), esc_textarea( $value ) );
                 break;
             case 'select':
             case 'multiselect':
@@ -241,7 +241,8 @@ class RA_Widgets_Animate {
                     $attributes = '';
                     $options_markup = '';
                     foreach( $arguments['options'] as $key => $label ){
-                        $options_markup .= sprintf( '<option value="%s" %s>%s</option>', esc_attr( $key ), selected( $value[ array_search( $key, $value, true ) ], $key, false ), esc_html( $label ) );
+                        $selected = in_array( $key, (array) $value ) ? 'selected' : '';
+                        $options_markup .= sprintf( '<option value="%s" %s>%s</option>', esc_attr( $key ), $selected, esc_html( $label ) );
                     }
                     if( $arguments['type'] === 'multiselect' ){
                         $attributes = ' multiple="multiple" ';
@@ -256,16 +257,19 @@ class RA_Widgets_Animate {
                     $iterator = 0;
                     foreach( $arguments['options'] as $key => $label ){
                         $iterator++;
-                        $options_markup .= sprintf( '<label for="%1$s_%6$s"><input id="%1$s_%6$s" name="%1$s[]" type="%2$s" value="%3$s" %4$s /> %5$s</label><br/>', esc_attr( $arguments['uid'] ), esc_attr( $arguments['type'] ), esc_attr( $key ), checked( $value[ array_search( $key, $value, true ) ], $key, false ), esc_html( $label ), $iterator );
+                        $checked = in_array( $key, (array) $value ) ? 'checked' : '';
+                        $options_markup .= sprintf( '<label for="%1$s_%6$s"><input id="%1$s_%6$s" name="%1$s[]" type="%2$s" value="%3$s" %4$s /> %5$s</label><br/>', esc_attr( $arguments['uid'] ), esc_attr( $arguments['type'] ), esc_attr( $key ), $checked, esc_html( $label ), $iterator );
                     }
                     printf( '<fieldset>%s</fieldset>', $options_markup );
                 }
                 break;
         }
-        if( $helper = $arguments['helper'] ){
+        $helper = isset($arguments['helper']) ? $arguments['helper'] : '';
+        if( $helper ){
             printf( '<span class="helper"> %s</span>', esc_html( $helper ) );
         }
-        if( $supplimental = $arguments['supplimental'] ){
+        $supplimental = isset($arguments['supplimental']) ? $arguments['supplimental'] : '';
+        if( $supplimental ){
             printf( '<p class="description">%s</p>', esc_html( $supplimental ) );
         }
     }
@@ -559,15 +563,18 @@ class RA_Widgets_Animate {
         $scripts = get_option( 'rawa_aos_js' );
         $styles = get_option( 'rawa_aos_css' );
 
+        if (!is_array($scripts)) $scripts = array();
+        if (!is_array($styles)) $styles = array();
+
         if ( !is_admin() ) {
             // AOS CSS
-            if ( $styles[0] != 'enabled' ) {
+            if ( !isset($styles[0]) || $styles[0] != 'enabled' ) {
                 wp_enqueue_style( 'rawa-aos-css', plugin_dir_url( __FILE__ ) . 'public/css/aos.css' );
             }
 
             // AOS JS
             wp_register_script( 'rawa-aos-js', plugin_dir_url( __FILE__ ) . 'public/js/aos.min.js', array(), null, true );
-            if ( $scripts[0] != 'enabled' ) {
+            if ( !isset($scripts[0]) || $scripts[0] != 'enabled' ) {
                 wp_enqueue_script( 'rawa-aos-js' );
             }
 
@@ -583,14 +590,17 @@ class RA_Widgets_Animate {
             $custom = get_option( 'rawa_aos_custom', '768' );
             $once = get_option( 'rawa_aos_once' );
 
+            if (!is_array($disable)) $disable = array();
+            if (!is_array($once)) $once = array();
+
             wp_localize_script( 'rawa-app-js', 'rawa_aos', array(
                 'offset' => (int) $offset,
                 'duration' => (int) $duration,
                 'easing' => $easing,
                 'delay' => (int) $delay,
-                'disable' => $disable[0] ? $disable[0] : "false",
+                'disable' => isset($disable[0]) && $disable[0] ? $disable[0] : "false",
                 'custom' => (int) $custom,
-                'once' => $once[0] == 'enabled' ? "true" : "false"
+                'once' => isset($once[0]) && $once[0] == 'enabled' ? "true" : "false"
             ) );
         }
     }
