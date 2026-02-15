@@ -635,7 +635,7 @@ class RA_Widgets_Animate {
 
         if ( !is_admin() ) {
             // USAL JS
-            wp_register_script( 'rawa-usal-js', 'https://cdn.usal.dev/latest', array(), null, true );
+            wp_register_script( 'rawa-usal-js', plugin_dir_url( __FILE__ ) . 'public/js/usal.min.js', array(), null, true );
             if ( !isset($scripts[0]) || $scripts[0] != 'enabled' ) {
                 wp_enqueue_script( 'rawa-usal-js' );
             }
