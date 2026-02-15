@@ -1,18 +1,18 @@
 === Widgets Animate ===
 Contributors: FrodoBean
 Donate link: https://paypal.me/webdevsuperfast
-Tags: aos, animate-on-scroll, siteorigin-page-builder, page-builder-animation, animation, animate, siteorigin-panels-animate
+Tags: usal, aos, animate-on-scroll, siteorigin-page-builder, animation
 Requires at least: 4.7
 Tested up to: 4.9.8
 Stable tag: 1.1.9.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Animate widgets using Animate on Scroll library.
+Animate widgets using Ultimate Scroll Animation Library.
 
 == Description ==
 
-Widgets Animate is a WordPress plugin that adds additional widget fields into existing widget forms using the latest [Animate On Scroll](https://michalsnik.github.io/aos/) script to render animation. If you're using SiteOrigin Panels, the plugin also adds 'Animation' tab to Widget Styles.
+Widgets Animate is a WordPress plugin that adds additional widget fields into existing widget forms using [Ultimate Scroll Animation Library](https://usal.dev) script to render animation. If you're using SiteOrigin Panels, the plugin also adds 'Animation' tab to Widget Styles.
 
 <h3>Features</h3>
 
@@ -43,40 +43,13 @@ Widgets Animate is a WordPress plugin that adds additional widget fields into ex
 
 No, the fields will attached itself to existing widgets on 'Widgets' screen in WordPress. If you have SiteOrigin Panels installed, the 'Animation' tab will be added to SiteOrigin Panels 'Widget Styles'.
 
-= How can I set Animate on Scroll settings globally without having to edit each widgets?
+= How can I set Ultimate Scroll Animation Library settings globally without having to edit each widgets?
 
 You can set the global settings through `Settings > RA Widgets Animate > Global Settings`.
 
-= I have Animate on Scroll already, how can I disable the AOS script on your plugin to prevent conflict?
+= I have Ultimate Scroll Animation Library already, how can I disable the AOS script on your plugin to prevent conflict?
 
-You can disable Animate on Scroll scripts and styles through `Settings > RA Widgets Animate > Script Settings`.
-
-= I want to add additional animation values, how can I do that?
-
-As of version `1.1.7`, you can now add custom animation values using the built-in `rawa_animations` filter. Add the following code in your functions.php file.
-
-`<?php
-add_filter( 'rawa_animations', function( $animation ) {
-    new_animation = array(
-        'custom-animation' => __( 'Custom Animation' ),
-    );
-
-    return array_merge( $animation, $new_animation );
-} );`
-
-Then, add the following to your css file:
-
-`[data-aos="custom-animation"] {
-    transform: skewX(45deg);
-    opacity: 0;
-    transition-property: transform, opacity;
-}
-[data-aos="custom-animation"].aos-animate {
-    transform: skewX(0);
-    opacity: 1;
-}`
-
-To learn more about setting custom animation values check out this [pen](https://codepen.io/michalsnik/pen/WxvNvE) from the [Animate on Scroll](https://michalsnik.github.io/aos/) author.
+You can disable Ultimate Scroll Animation Library scripts and styles through `Settings > RA Widgets Animate > Script Settings`.
 
 == Screenshots ==
 
