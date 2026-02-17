@@ -1,0 +1,38 @@
+      - name: List assets to be deployed
+        run: |
+          echo "Assets in .wordpress-org directory:"
+          ls -lh .wordpress-org || echo "No assets found."
+name: Deploy to WordPress.org
+
+on:
+  push:
+    tags:
+      - '*'
+
+
+        - name: Fetch assets branch
+          uses: actions/checkout@v4
+          with:
+            ref: assets
+            path: assets-branch
+
+        - name: Copy assets to .wordpress-org
+          run: |
+            mkdir -p .wordpress-org
+            cp -r assets-branch/* .wordpress-org/ || true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: WordPress Plugin Deploy
+        uses: 10up/action-wordpress-plugin-deploy@v2
+        with:
+          slug: ra-widgets-animate
+            exclude: 'node_modules, .git, .github, .vscode, develop, build.js, package*.json, psalm.xml, README.md, develop'
+        env:
+          SVN_USERNAME: ${{ secrets.WP_PLUGIN_SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.WP_PLUGIN_SVN_PASSWORD }}
