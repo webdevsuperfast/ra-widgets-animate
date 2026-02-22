@@ -14,7 +14,9 @@
  * @package ra-widgets-animate
  */
 
-defined( 'ABSPATH' ) || die( esc_html_e( 'With great power comes great responsibility.', 'ra-widgets-animate' ) );
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Main class for RA Widgets Animate.
@@ -313,7 +315,15 @@ class RA_Widgets_Animate {
 			);
 			register_setting(
 				'rawa_settings',
-				$field['uid']
+				$field['uid'],
+				array(
+					'type'              => $field['type'],
+					'sanitize_callback' => array(
+						$this,
+						'rawa_sanitize_callback',
+					),
+					'default'           => $field['default'],
+				)
 			);
 		}
 	}
