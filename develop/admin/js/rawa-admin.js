@@ -1,24 +1,31 @@
 (function ($) {
-  $(document).on("click", ".rawa-toggle", function (e) {
-    e.preventDefault();
+	$( document ).on(
+		"click",
+		".rawa-toggle",
+		function (e) {
+			e.preventDefault();
 
-    const $toggler = $(this);
-    const $next = $toggler.next();
+			const $toggler = $( this );
+			const $next    = $toggler.next();
 
-    $toggler.toggleClass("open");
-    $next.toggle();
+			$toggler.toggleClass( "open" );
+			$next.toggle();
 
-    // Store display state in localStorage
-    localStorage.setItem("rawaDisplay", $next.is(":visible"));
-  });
+			// Store display state in localStorage
+			localStorage.setItem( "rawaDisplay", $next.is( ":visible" ) );
+		}
+	);
 
-  $(document).on("widget-updated widget-added", function (event, widget) {
-    const $toggler = $(widget).find(".rawa-toggle");
-    const display = localStorage.getItem("rawaDisplay");
+	$( document ).on(
+		"widget-updated widget-added",
+		function (event, widget) {
+			const $toggler = $( widget ).find( ".rawa-toggle" );
+			const display  = localStorage.getItem( "rawaDisplay" );
 
-    if (display === "true") {
-      $toggler.addClass("open");
-      $toggler.next().show();
-    }
-  });
-})(jQuery);
+			if (display === "true") {
+				$toggler.addClass( "open" );
+				$toggler.next().show();
+			}
+		}
+	);
+})( jQuery );

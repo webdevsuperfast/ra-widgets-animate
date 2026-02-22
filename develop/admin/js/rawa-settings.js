@@ -1,18 +1,18 @@
 (function ($) {
-  const $select = $("#rawa_aos_disable");
-  const $tableRow = $(".form-table tbody tr:nth-child(6)");
+	const $select   = $( "#rawa_aos_disable" );
+	const $tableRow = $( ".form-table tbody tr:nth-child(6)" );
 
-  function updateVisibility() {
-    const value = $select.val();
-    $tableRow.toggle(value === "custom");
-  }
+	function updateVisibility() {
+		const value = $select.val();
+		$tableRow.toggle( value === "custom" );
+	}
 
-  // Initial state
-  updateVisibility();
+	// Initial state
+	updateVisibility();
 
-  // Bind change event once
-  $select.on("change", updateVisibility);
+	// Bind change event once
+	$select.on( "change", updateVisibility );
 
-  // Re-check on dynamic updates
-  $(document).on("ajaxStop widget-added widget-updated", updateVisibility);
-})(jQuery);
+	// Re-check on dynamic updates
+	$( document ).on( "ajaxStop widget-added widget-updated", updateVisibility );
+})( jQuery );
