@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ruleset name="RA Widgets Bundle">
+    <description>Project PHPCS ruleset to enforce security and relax file-name/header rules for plugin header compatibility.</description>
+
+    <!-- Use WordPress standard as base -->
+    <rule ref="WordPress"/>
+
+    <!-- Disable filename and file header sniffs that conflict with WordPress plugin main file and project layout -->
+    <rule ref="WordPress.Files.FileName">
+        <severity>0</severity>
+    </rule>
+
+    <!-- Ignore vendor and node_modules directories -->
+    <exclude-pattern>vendor/*</exclude-pattern>
+    <exclude-pattern>node_modules/*</exclude-pattern>
+</ruleset>
