@@ -512,6 +512,8 @@ class RA_Widgets_Animate {
 		</div>
 		<?php
 
+		$t = null;
+
 		$return = null;
 
 		return array( $t, $return, $instance );
