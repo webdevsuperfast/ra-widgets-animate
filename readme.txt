@@ -1,4 +1,4 @@
-=== Widgets Animate ===
+=== RA Widgets Animate ===
 Contributors: FrodoBean
 Donate link: https://paypal.me/webdevsuperfast
 Tags: usal, aos, animate-on-scroll, siteorigin-page-builder, animation
@@ -12,7 +12,7 @@ Animate widgets using Ultimate Scroll Animation Library.
 
 == Description ==
 
-Widgets Animate is a WordPress plugin that adds additional widget fields into existing widget forms using [Ultimate Scroll Animation Library](https://usal.dev) script to render animation. If you're using SiteOrigin Panels, the plugin also adds 'Animation' tab to Widget Styles.
+RA Widgets Animate is a WordPress plugin that adds additional widget fields into existing widget forms using [Ultimate Scroll Animation Library](https://usal.dev) script to render animation. If you're using SiteOrigin Panels, the plugin also adds 'Animation' tab to Widget Styles. Support for Gutenberg Block Editor is added in V2.
 
 <h3>Features</h3>
 
@@ -20,9 +20,6 @@ Widgets Animate is a WordPress plugin that adds additional widget fields into ex
 * Animate On Scroll support
 * Supports SiteOrigin Panels Widget Styles
 * Ability to choose animation type
-* Ability to add additional animation values using the built-in `rawa_animations` filter
-* Ability to choose anchor placement
-* Ability to change anchor element
 * Ability to change easing time
 * Ability to change animation offset
 * Ability to change animation duration
@@ -59,6 +56,11 @@ You can disable Ultimate Scroll Animation Library scripts and styles through `Se
 4. 'RA Widgets Animate' settings page.
 
 == Changelog ==
+
+= 2.0 =
+* Migrated from Animate On Scroll to Ultimate Scroll Animation Library.
+* Added Gutenberg block editor support.
+* Implemented WordPress coding standards.
 
 = 1.1.9.1 = 
 * Fixed undefined constant
@@ -129,7 +131,10 @@ You can disable Ultimate Scroll Animation Library scripts and styles through `Se
 
 == Upgrade Notice ==
 
-= 1.1.9.1
+= 2.0 =
+Added Gutenberg support, migrated from Animate On Scroll to Ultimate Scroll Animation Library, and applied WordPress coding standards.
+
+= 1.1.9.1 =
 Fixed undefined constant, added missing js and css files.
 
 = 1.1.9 =

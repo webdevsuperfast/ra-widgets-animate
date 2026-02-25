@@ -1,6 +1,6 @@
 # RA Widgets Animate
 
-Animate widgets and Gutenberg blocks using Ultimate Scroll Animation Library.
+Animate widgets and Gutenberg blocks using [Ultimate Scroll Animation Library](https://usal.dev).
 
 ## Description
 
@@ -50,7 +50,13 @@ A: You can disable Ultimate Scroll Animation Library scripts and styles through 
 
 ## Changelog
 
-1.1.9.1
+2.0
+
+- Migrated from [Animate On Scroll](https://michalsnik.github.io/aos/) to [Ultimate Scroll Animation Library](https://usal.dev).
+- Added Gutenberg block editor support.
+- Implemented WordPress coding standards.
+
+  1.1.9.1
 
 - Fixed undefined constant
 
