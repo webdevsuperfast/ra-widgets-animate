@@ -1,10 +1,11 @@
 === RA Widgets Animate ===
 Contributors: FrodoBean
 Donate link: https://paypal.me/webdevsuperfast
-Tags: usal, aos, animate-on-scroll, siteorigin-page-builder, animation
+Tags: usal, animate-on-scroll, siteorigin-page-builder, animation
 Requires at least: 4.7
 Tested up to: 6.9
 Stable tag: 1.1.9.1
+Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,10 +51,11 @@ You can disable Ultimate Scroll Animation Library scripts and styles through `Se
 
 == Screenshots ==
 
-1. 'Animation' fields inside 'Widgets' screen in WordPress.
-2. 'Animation' tab settings in SiteOrigin Panels.
-3. 'Animation' tab settings when opened in SiteOrigin Panels.
-4. 'RA Widgets Animate' settings page.
+1. Animation options within the classic Widgets screen.
+2. Animation settings tab in SiteOrigin Panels.
+3. Animation settings tab when opened in the Customizer.
+4. RA Widgets Animate settings page.
+5. Animation tab inside the block editor.
 
 == Changelog ==
 
