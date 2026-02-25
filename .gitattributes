@@ -5,6 +5,7 @@
 /develop export-ignore
 /node_modules export-ignore
 /vendor export-ignore
+/assets-branch export-ignore
 
 # Files
 /.gitattributes export-ignore
