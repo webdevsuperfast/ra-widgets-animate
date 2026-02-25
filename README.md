@@ -43,10 +43,11 @@ A: You can disable Ultimate Scroll Animation Library scripts and styles through 
 
 ## Screenshots
 
-1. 'Animation' fields inside 'Widgets' screen in WordPress.
-2. 'Animation' tab settings in SiteOrigin Panels.
-3. 'Animation' tab settings when opened in SiteOrigin Panels.
-4. 'Widgets Animate' settings page.
+1. Animation options within the classic Widgets screen.
+2. Animation settings tab in SiteOrigin Panels.
+3. Animation settings tab when opened in the Customizer.
+4. RA Widgets Animate settings page.
+5. Animation tab inside the block editor.
 
 ## Changelog
 
