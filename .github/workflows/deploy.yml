@@ -31,7 +31,7 @@ jobs:
           ls -lh .wordpress-org || echo "No assets found."
 
       - name: WordPress Plugin Deploy
-        uses: 10up/action-wordpress-plugin-deploy@v2
+        uses: 10up/action-wordpress-plugin-deploy@stable
         with:
           slug: ra-widgets-animate
           exclude: "node_modules, .git, .github, .vscode, develop, build.js, package*.json, psalm.xml, README.md, composer.json, composer.lock, .editorconfig, .eslint*, phpcs.xml"
