@@ -32,9 +32,6 @@ jobs:
 
       - name: WordPress Plugin Deploy
         uses: 10up/action-wordpress-plugin-deploy@stable
-        with:
-          slug: ra-widgets-animate
-          exclude: "node_modules, .git, .github, .vscode, develop, build.js, package*.json, psalm.xml, README.md, composer.json, composer.lock, .editorconfig, .eslint*, phpcs.xml"
         env:
           SVN_USERNAME: ${{ secrets.WP_PLUGIN_SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.WP_PLUGIN_SVN_PASSWORD }}
