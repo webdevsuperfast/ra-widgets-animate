@@ -4,7 +4,7 @@ Donate link: https://paypal.me/webdevsuperfast
 Tags: usal, animate-on-scroll, siteorigin-page-builder, animation
 Requires at least: 4.7
 Tested up to: 6.9
-Stable tag: 1.1.9.1
+Stable tag: 2.0
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
