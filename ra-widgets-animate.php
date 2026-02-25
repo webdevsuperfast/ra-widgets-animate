@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Widgets Animate
+ * Plugin Name: RA Widgets Animate
  * Plugin URI:  https://github.com/webdevsuperfast/ra-widgets-animate
  * Description: Animate widgets and Gutenberg blocks using USAL.js library.
  * Version:     1.1.9.1
