@@ -8,32 +8,6 @@ on:
       - "*"
 
 jobs:
-  update-assets:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout assets branch
-        uses: actions/checkout@v4
-        if: startsWith(github.ref, 'refs/tags/')
-        with:
-          ref: assets
-          path: assets-branch
-
-      - name: Copy assets to .wordpress-org
-        run: |
-          mkdir -p .wordpress-org
-          cp -r assets-branch/* .wordpress-org/ || true
-
-      - name: List assets to be deployed
-        run: |
-          echo "Assets in .wordpress-org directory:"
-          ls -lh .wordpress-org || echo "No assets found."
-
-      - name: WordPress Plugin Asset Update
-        uses: 10up/action-wordpress-plugin-asset-update@stable
-        env:
-          SVN_USERNAME: ${{ secrets.WP_PLUGIN_SVN_USERNAME }}
-          SVN_PASSWORD: ${{ secrets.WP_PLUGIN_SVN_PASSWORD }}
-
   deploy:
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/')
