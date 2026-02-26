@@ -13,6 +13,7 @@ jobs:
     steps:
       - name: Checkout assets branch
         uses: actions/checkout@v4
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           ref: assets
           path: assets-branch
@@ -35,6 +36,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
