@@ -439,9 +439,6 @@ class RA_Widgets_Animate {
 		// Animation.
 		$animations = $this->rawa_animations();
 
-		// Placement.
-		$placements = $this->rawa_placements();
-
 		// Easing.
 		$easing = $this->rawa_easing();
 
@@ -610,9 +607,6 @@ class RA_Widgets_Animate {
 	public function rawa_siteorigin_style_fields( $fields ) {
 		// Animation.
 		$animations = $this->rawa_animations();
-
-		// Placement.
-		$placements = $this->rawa_placements();
 
 		// Easing.
 		$easing = $this->rawa_easing();
@@ -895,29 +889,6 @@ class RA_Widgets_Animate {
 			'zoom-out-right'  => 'zoomout-r',
 		);
 		return isset( $map[ $aos_animation ] ) ? $map[ $aos_animation ] : $aos_animation;
-	}
-
-	/**
-	 * Get placements.
-	 *
-	 * @return array
-	 */
-	public function rawa_placements() {
-		// Anchor Placements.
-		$placements = array(
-			''              => __( 'Default', 'ra-widgets-animate' ),
-			'top-bottom'    => __( 'Top Bottom', 'ra-widgets-animate' ),
-			'top-center'    => __( 'Top Center', 'ra-widgets-animate' ),
-			'top-top'       => __( 'Top Top', 'ra-widgets-animate' ),
-			'center-bottom' => __( 'Center Bottom', 'ra-widgets-animate' ),
-			'center-center' => __( 'Center Center', 'ra-widgets-animate' ),
-			'center-top'    => __( 'Center Top', 'ra-widgets-animate' ),
-			'bottom-bottom' => __( 'Bottom Bottom', 'ra-widgets-animate' ),
-			'bottom-center' => __( 'Bottom Center', 'ra-widgets-animate' ),
-			'bottom-top'    => __( 'Bottom Top', 'ra-widgets-animate' ),
-		);
-
-		return $placements;
 	}
 
 	/**

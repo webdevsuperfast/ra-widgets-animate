@@ -56,18 +56,6 @@ const easingOptions = {
   "ease-out-quart": __("Ease Out Quart"),
   "ease-in-out-quart": __("Ease In Out Quart")
 };
-const placements = {
-  "": __("Default"),
-  "top-bottom": __("Top Bottom"),
-  "top-center": __("Top Center"),
-  "top-top": __("Top Top"),
-  "center-bottom": __("Center Bottom"),
-  "center-center": __("Center Center"),
-  "center-top": __("Center Top"),
-  "bottom-bottom": __("Bottom Bottom"),
-  "bottom-center": __("Bottom Center"),
-  "bottom-top": __("Bottom Top")
-};
 addFilter(
   "blocks.registerBlockType",
   "rawa/add-animation-attributes",
