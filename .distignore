@@ -5,6 +5,7 @@
 /vendor
 /develop
 /assets-branch
+/.git
 
 .distignore
 .gitignore
