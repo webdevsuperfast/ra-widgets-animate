@@ -13,7 +13,7 @@ Animate widgets using Ultimate Scroll Animation Library.
 
 == Description ==
 
-RA Widgets Animate is a WordPress plugin that adds additional widget fields into existing widget forms using [Ultimate Scroll Animation Library](https://usal.dev) script to render animation. If you're using SiteOrigin Panels, the plugin also adds 'Animation' tab to Widget Styles. Support for Gutenberg Block Editor is added in V2.
+RA Widgets Animate is a WordPress plugin that adds additional widget fields into existing widget forms using [Ultimate Scroll Animation Library](https://usal.dev) script to render animation. If you're using SiteOrigin Panels, the plugin also adds 'Animation' tab to Widget Styles. Gutenberg block editor support is now included starting from V2.
 
 <h3>Features</h3>
 
@@ -39,13 +39,13 @@ RA Widgets Animate is a WordPress plugin that adds additional widget fields into
 
 = Do I need to install SiteOrigin Panels to be able to use the animation? =
 
-No, the fields will attached itself to existing widgets on 'Widgets' screen in WordPress. If you have SiteOrigin Panels installed, the 'Animation' tab will be added to SiteOrigin Panels 'Widget Styles'.
+No, the fields will attached itself to existing widgets on classic 'Widgets' screen in WordPress. If you have SiteOrigin Panels installed, the 'Animation' tab will be added to SiteOrigin Panels 'Widget Styles'. Starting from version 2.0, an 'Animation' panel is also available within the WordPress block editor.
 
 = How can I set Ultimate Scroll Animation Library settings globally without having to edit each widgets?
 
 You can set the global settings through `Settings > RA Widgets Animate > Global Settings`.
 
-= I have Ultimate Scroll Animation Library already, how can I disable the AOS script on your plugin to prevent conflict?
+= I have Ultimate Scroll Animation Library already, how can I disable the USAL script on your plugin to prevent conflict?
 
 You can disable Ultimate Scroll Animation Library scripts and styles through `Settings > RA Widgets Animate > Script Settings`.
 

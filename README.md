@@ -31,13 +31,13 @@ Widgets Animate is a WordPress plugin that adds additional widget fields into ex
 
 Q: Do I need to install SiteOrigin Panels to be able to use the animation?
 
-A: No, the fields will attached itself to existing widgets on 'Widgets' screen in WordPress. If you have SiteOrigin Panels installed, the 'Animation' tab will be added to SiteOrigin Panels 'Widget Styles'.
+A: No, the fields will attached itself to existing widgets on classic 'Widgets' screen in WordPress. If you have SiteOrigin Panels installed, the 'Animation' tab will be added to SiteOrigin Panels 'Widget Styles'. Starting from version 2.0, an 'Animation' panel is also available within the WordPress block editor.
 
 Q: How can I set Ultimate Scroll Animation Library settings globally without having to edit each widgets?
 
 A: You can set the global settings through `Settings > RA Widgets Animate > Global Settings`.
 
-Q: I have Ultimate Scroll Animation Library already, how can I disable the AOS script on your plugin to prevent conflict?
+Q: I have Ultimate Scroll Animation Library already, how can I disable the USAL script on your plugin to prevent conflict?
 
 A: You can disable Ultimate Scroll Animation Library scripts and styles through `Settings > RA Widgets Animate > Script Settings`.
 
