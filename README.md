@@ -1,10 +1,10 @@
 # RA Widgets Animate
 
-Animate widgets and Gutenberg blocks using [Ultimate Scroll Animation Library](https://usal.dev).
+Enhance your WordPress site with smooth scroll-triggered animations for widgets and blocks.
 
 ## Description
 
-Widgets Animate is a WordPress plugin that adds additional widget fields into existing widget forms and uses [Ultimate Scroll Animation Library](https://usal.dev) to render animation. This plugin also adds 'Animation' tab to Widget Styles when use with SiteOrigin Panels and adds animation controls to Gutenberg blocks.
+RA Widgets Animate is a WordPress plugin that adds additional widget fields into existing widget forms using [Ultimate Scroll Animation Library](https://usal.dev) script to render animation. If you're using SiteOrigin Panels, the plugin also adds 'Animation' tab to Widget Styles. Gutenberg block editor support is now included starting from V2.
 
 ## Features
 
@@ -12,7 +12,6 @@ Widgets Animate is a WordPress plugin that adds additional widget fields into ex
 - Animate Gutenberg blocks in the block editor
 - Supports SiteOrigin Panels Widget Styles
 - Ability to choose animation type
-- Ability to choose anchor placement
 - Ability to change anchor element
 - Ability to change easing time
 - Ability to change animation offset

@@ -9,7 +9,7 @@ Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Animate widgets using Ultimate Scroll Animation Library.
+Enhance your WordPress site with smooth scroll-triggered animations for widgets and blocks.
 
 == Description ==
 
