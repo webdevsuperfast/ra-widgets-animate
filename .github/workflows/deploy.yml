@@ -9,7 +9,6 @@ on:
 
 jobs:
   update-assets:
-    if: github.ref == 'refs/heads/assets'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout assets branch
@@ -35,7 +34,6 @@ jobs:
           SVN_PASSWORD: ${{ secrets.WP_PLUGIN_SVN_PASSWORD }}
 
   deploy:
-    if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
