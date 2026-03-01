@@ -19,6 +19,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Define plugin version.
+ */
+define( 'RA_WIDGETS_ANIMATE_VERSION', '2.0' );
+
+/**
  * Main class for RA Widgets Animate.
  */
 class RA_Widgets_Animate {
@@ -724,13 +729,13 @@ class RA_Widgets_Animate {
 
 		if ( ! is_admin() ) {
 			// USAL JS.
-			wp_register_script( 'rawa-usal-js', plugin_dir_url( __FILE__ ) . 'public/js/usal.min.js', array(), '2.0', true );
+			wp_register_script( 'rawa-usal-js', plugin_dir_url( __FILE__ ) . 'public/js/usal.min.js', array(), RA_WIDGETS_ANIMATE_VERSION, true );
 			if ( ! isset( $scripts[0] ) || 'enabled' !== $scripts[0] ) {
 				wp_enqueue_script( 'rawa-usal-js' );
 			}
 
 			// Initialize USAL.
-			wp_register_script( 'rawa-app-js', plugin_dir_url( __FILE__ ) . 'public/js/rawa.min.js', array( 'jquery' ), '2.0', true );
+			wp_register_script( 'rawa-app-js', plugin_dir_url( __FILE__ ) . 'public/js/rawa.min.js', array( 'jquery' ), RA_WIDGETS_ANIMATE_VERSION, true );
 			wp_enqueue_script( 'rawa-app-js' );
 
 			$threshold = get_option( 'rawa_usal_threshold', '10' );
@@ -773,14 +778,14 @@ class RA_Widgets_Animate {
 
 		// Only load if we are not on the widget page - where some of our scripts seem to be conflicting.
 		if ( 'widgets' === $current_page->id || is_customize_preview() ) {
-			wp_enqueue_style( 'rawa-admin-css', plugin_dir_url( __FILE__ ) . 'admin/css/rawa-admin.min.css', array(), '2.0' );
+			wp_enqueue_style( 'rawa-admin-css', plugin_dir_url( __FILE__ ) . 'admin/css/rawa-admin.min.css', array(), RA_WIDGETS_ANIMATE_VERSION );
 
-			wp_register_script( 'rawa-admin-js', plugin_dir_url( __FILE__ ) . 'admin/js/rawa-admin.min.js', array( 'jquery' ), '2.0', true );
+			wp_register_script( 'rawa-admin-js', plugin_dir_url( __FILE__ ) . 'admin/js/rawa-admin.min.js', array( 'jquery' ), RA_WIDGETS_ANIMATE_VERSION, true );
 			wp_enqueue_script( 'rawa-admin-js' );
 		}
 
 		if ( 'settings_page_rawa_settings' === $current_page->id ) {
-			wp_register_script( 'rawa-settings-js', plugin_dir_url( __FILE__ ) . 'admin/js/rawa-settings.min.js', array( 'jquery' ), '2.0', true );
+			wp_register_script( 'rawa-settings-js', plugin_dir_url( __FILE__ ) . 'admin/js/rawa-settings.min.js', array( 'jquery' ), RA_WIDGETS_ANIMATE_VERSION, true );
 			wp_enqueue_script( 'rawa-settings-js' );
 		}
 	}
@@ -789,7 +794,7 @@ class RA_Widgets_Animate {
 	 * Enqueue SiteOrigin Panels admin scripts.
 	 */
 	public function rawa_siteorigin_panels_admin_scripts() {
-		wp_register_script( 'rawa-siteorigin-panels-js', plugin_dir_url( __FILE__ ) . 'admin/js/siteorigin-admin.min.js', array( 'jquery' ), '2.0', true );
+		wp_register_script( 'rawa-siteorigin-panels-js', plugin_dir_url( __FILE__ ) . 'admin/js/siteorigin-admin.min.js', array( 'jquery' ), RA_WIDGETS_ANIMATE_VERSION, true );
 		wp_enqueue_script( 'rawa-siteorigin-panels-js' );
 	}
 
@@ -804,7 +809,7 @@ class RA_Widgets_Animate {
 			return;
 		}
 
-		wp_register_script( 'rawa-gutenberg-admin-js', plugin_dir_url( __FILE__ ) . 'admin/js/gutenberg-admin.min.js', array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-i18n', 'wp-compose', 'wp-hooks' ), '2.0', true );
+		wp_register_script( 'rawa-gutenberg-admin-js', plugin_dir_url( __FILE__ ) . 'admin/js/gutenberg-admin.min.js', array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-i18n', 'wp-compose', 'wp-hooks' ), RA_WIDGETS_ANIMATE_VERSION, true );
 		wp_enqueue_script( 'rawa-gutenberg-admin-js' );
 	}
 
