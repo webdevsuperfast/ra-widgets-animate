@@ -1,7 +1,7 @@
 === RA Widgets Animate ===
 Contributors: FrodoBean
 Donate link: https://paypal.me/webdevsuperfast
-Tags: usal, animate-on-scroll, siteorigin-page-builder, animation
+Tags: gutenberg-blocks, siteorigin-page-builder, animation, animate-on-scroll, gutenberg
 Requires at least: 4.7
 Tested up to: 6.9
 Stable tag: 2.0
