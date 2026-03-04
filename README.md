@@ -12,7 +12,6 @@ RA Widgets Animate is a WordPress plugin that adds additional widget fields into
 - Animate Gutenberg blocks in the block editor
 - Supports SiteOrigin Panels Widget Styles
 - Ability to choose animation type
-- Ability to change anchor element
 - Ability to change easing time
 - Ability to change animation offset
 - Ability to change animation duration
