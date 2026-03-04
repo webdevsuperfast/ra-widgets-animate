@@ -3,11 +3,11 @@
   "version": "2.0",
   "description": "Animate widgets and Gutenberg blocks using USAL.js library.",
   "keywords": [
-    "animate",
     "animation",
-    "usal",
-    "widgets",
-    "siteorigin-panels"
+    "siteorigin-page-builder",
+    "gutenberg-blocks",
+    "animate-on-scroll",
+    "gutenberg"
   ],
   "author": "Rotsen Mark Acob",
   "license": "GPL-2.0",
