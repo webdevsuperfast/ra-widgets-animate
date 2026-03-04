@@ -668,7 +668,7 @@ var __temp = (() => {
   return et(nt);
 })();
 ;
-!function() {
+!(function() {
   var L = __temp.default || __temp;
   "undefined" != typeof window && (window.USAL = L), "undefined" != typeof global && (global.USAL = L);
-}();
+})();
