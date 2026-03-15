@@ -17,9 +17,7 @@ RA Widgets Animate is a WordPress plugin that adds additional widget fields into
 
 <h3>Features</h3>
 
-* Animate almost all of your widgets
-* Animate On Scroll support
-* Supports SiteOrigin Panels Widget Styles
+* Animate almost all of your widgets and blocks
 * Ability to choose animation type
 * Ability to change easing time
 * Ability to change animation offset
@@ -39,7 +37,7 @@ RA Widgets Animate is a WordPress plugin that adds additional widget fields into
 
 = Do I need to install SiteOrigin Panels to be able to use the animation? =
 
-No, the fields will attached itself to existing widgets on classic 'Widgets' screen in WordPress. If you have SiteOrigin Panels installed, the 'Animation' tab will be added to SiteOrigin Panels 'Widget Styles'. Starting from version 2.0, an 'Animation' panel is also available within the WordPress block editor.
+No, the fields will attached itself to existing widgets on classic 'Widgets' screen in WordPress. If you have SiteOrigin Panels installed, the 'Animation' tab will be added to SiteOrigin Panels 'Widget Styles'. With version 2.0, an 'Animation' panel is also available within the WordPress block editor.
 
 = How can I set Ultimate Scroll Animation Library settings globally without having to edit each widgets?
 
